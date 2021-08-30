@@ -9,5 +9,9 @@
     <color name="white">#FFFFFFFF</color>
 
 
+<!-- custom colors -->
+    <color name="ThemeDarkGreen">#104210</color>
+    <color name="ThemeLightGreen">#4A7212</color>
+
 
 </resources>
