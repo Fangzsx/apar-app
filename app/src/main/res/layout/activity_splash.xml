@@ -12,7 +12,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
+        android:src="@drawable/ic_shopping_cart_512"
         app:layout_constraintRight_toRightOf="parent"/>
+
+    <com.fangs.apar_app.utils.HelveticaBoldTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/app_logo"
+        android:text="APAR App"
+        android:textSize="40sp"
+        android:gravity="center"
+        android:textColor="@color/white"/>
+
 
 
 
