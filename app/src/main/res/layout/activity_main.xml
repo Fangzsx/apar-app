@@ -18,9 +18,13 @@
             app:navigationIcon="@drawable/ic_menu_24"
             app:menu="@menu/top_app_bar"
             style="@style/ThemeOverlay.MaterialComponents.Toolbar.Primary"/>
-
-
     </com.google.android.material.appbar.AppBarLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_gravity="bottom"
+        android:background="@drawable/main_bg"
+        android:layout_height="wrap_content"/>
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
