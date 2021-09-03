@@ -78,10 +78,11 @@
                     <com.fangs.apar_app.utils.HelveticaNormalTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Aling Puring Account Represetative"
+                        android:text="Aling Puring Account Representative"
                         android:textColor="#FFFFFF"
-                        android:textSize="8sp"
-                        android:background="@drawable/cornered_gold"/>
+                        android:textSize="10sp"
+                        android:background="@drawable/cornered_gold"
+                        tools:ignore="SmallSp" />
 
                 </LinearLayout>
 
