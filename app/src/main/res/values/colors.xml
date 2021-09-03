@@ -13,6 +13,8 @@
     <color name="ThemeDarkGreen">#104210</color>
     <color name="ThemeLightGreen">#4A7212</color>
     <color name="limeGreen">#719F1E</color>
+    <color name="goldStart">#B78628</color>
+    <color name="goldEnd">#FCC201</color>
 
 
 </resources>
