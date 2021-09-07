@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:title="Add Item"
+        android:icon="@drawable/ic_baseline_add_24"/>
+    <item
+        android:title="Update Item"
+        android:icon="@drawable/ic_baseline_edit_24"/>
+    <item
+        android:title="Remove Item"
+        android:icon="@drawable/ic_baseline_delete_24"/>
+
+</menu>
