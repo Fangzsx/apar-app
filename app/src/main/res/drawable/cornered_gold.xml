@@ -4,11 +4,11 @@
     <gradient
         android:startColor="@color/goldStart"
         android:endColor="@color/goldEnd"/>
-    <corners android:radius="8dp"/>
+    <corners android:radius="3dp"/>
     <padding
         android:bottom="1.5dp"
-        android:left="1.5dp"
-        android:right="1.5dp"
+        android:left="2dp"
+        android:right="2dp"
         android:top="1.5dp"/>
 
 </shape>
