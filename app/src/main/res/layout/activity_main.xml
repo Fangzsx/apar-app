@@ -9,9 +9,14 @@
     tools:context=".activities.MainActivity">
 
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:weightSum="1"
+        android:orientation="vertical">
+
+
+
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
@@ -28,15 +33,60 @@
                 style="@style/ThemeOverlay.MaterialComponents.Toolbar.Primary"/>
         </com.google.android.material.appbar.AppBarLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.30"
+            android:orientation="horizontal"
+            android:background="@drawable/main_bg"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/ic_shopping_cart_512"
+                android:contentDescription="app logo" />
+            <com.fangs.apar_app.utils.HelveticaBoldTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="APAR App"
+                android:layout_marginStart="15dp"
+                android:textSize="30sp"
+                android:textColor="@color/white"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="15dp"
+            android:gravity="center_vertical"
+            android:layout_weight="0.70">
+
+            <com.fangs.apar_app.utils.HelveticaCustomButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Old Member"/>
+
+            <com.fangs.apar_app.utils.HelveticaCustomButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Lapsed/New Member"/>
+
+
+        </LinearLayout>
+
+
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:layout_width="match_parent"
-            android:layout_gravity="bottom"
             android:layout_height="wrap_content"
             app:menu="@menu/bottom_app_bar"
             app:itemIconTint="@color/white"
             app:itemTextColor="@color/white"
             android:background="@drawable/main_bg"/>
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </LinearLayout>
 
 
     <com.google.android.material.navigation.NavigationView
