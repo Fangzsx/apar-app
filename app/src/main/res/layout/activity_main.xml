@@ -30,7 +30,7 @@
                 app:titleTextColor="@color/white"
                 app:navigationIcon="@drawable/ic_menu_24"
                 app:menu="@menu/top_app_bar"
-                style="@style/ThemeOverlay.MaterialComponents.Toolbar.Primary"/>
+                style="@style/MaterialToolbar"/>
         </com.google.android.material.appbar.AppBarLayout>
 
         <LinearLayout
@@ -45,7 +45,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:src="@drawable/ic_shopping_cart_512"
-                android:contentDescription="app logo" />
+                android:contentDescription="@string/app_logo" />
             <com.fangs.apar_app.utils.HelveticaBoldTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
