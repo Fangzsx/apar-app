@@ -61,19 +61,34 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="15dp"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
             android:gravity="center_vertical"
             android:layout_weight="0.70">
 
             <com.fangs.apar_app.utils.HelveticaCustomButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Old Member"/>
+                android:gravity="left|center_vertical"
+                android:text="Old Member"
+                android:textSize="20sp"
+                app:icon="@drawable/ic_old_member"
+                app:iconGravity="end"
+                app:iconSize="50dp"
+                app:iconTint="@null"
+                tools:ignore="RtlHardcoded" />
 
             <com.fangs.apar_app.utils.HelveticaCustomButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Lapsed/New Member"/>
+                app:icon="@drawable/ic_new_member"
+                app:iconTint="@null"
+                app:iconGravity="end"
+                android:gravity="left|center_vertical"
+                app:iconSize="50dp"
+                android:textSize="20sp"
+                android:text="Lapsed/New Member"
+                tools:ignore="RtlHardcoded" />
 
 
         </LinearLayout>
