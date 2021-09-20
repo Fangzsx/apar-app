@@ -27,6 +27,7 @@
     <style name="CustomSearchView" parent="Widget.AppCompat.SearchView.ActionBar">
         <item name="android:editTextColor">@color/white</item>
         <item name="android:textColorHint">@color/white</item>
+        <item name="queryHint">"Product Search"</item>
 
     </style>
 
