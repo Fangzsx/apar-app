@@ -30,6 +30,7 @@
 
     </style>
 
+
     <style name="CustomOutlinedBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxStrokeColor">@color/ThemeDarkGreen</item>
         <item name="hintTextColor">@color/black</item>
