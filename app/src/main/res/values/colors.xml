@@ -15,5 +15,6 @@
     <color name="limeGreen">#719F1E</color>
     <color name="goldStart">#B78628</color>
     <color name="goldEnd">#FCC201</color>
+    <color name="gray">#D7D7D7</color>
 
 </resources>
