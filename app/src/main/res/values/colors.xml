@@ -16,5 +16,6 @@
     <color name="goldStart">#B78628</color>
     <color name="goldEnd">#FCC201</color>
     <color name="gray">#D7D7D7</color>
+    <color name="customButtonGreen">#476D02</color>
 
 </resources>

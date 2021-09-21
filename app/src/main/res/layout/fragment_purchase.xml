@@ -11,7 +11,7 @@
         android:id="@+id/helveticaCustomButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/white_button_curve_corner"
+        android:background="@drawable/custom_button_2_colors"
         android:drawableRight="@drawable/new_member_48"
         android:gravity="left|center_vertical"
         android:text="New Member"
@@ -28,7 +28,7 @@
     <com.fangs.apar_app.utils.HelveticaCustomButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/white_button_curve_corner"
+        android:background="@drawable/custom_button_2_colors"
         android:drawableRight="@drawable/old_member_48"
         android:gravity="left|center_vertical"
         android:text="Old/Lapsed Member"
