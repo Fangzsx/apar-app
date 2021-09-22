@@ -7,6 +7,20 @@
     android:background="@color/gray"
     android:padding="15dp">
 
+    <com.fangs.apar_app.utils.HelveticaBoldTextView
+        android:id="@+id/tv_purchase_orders"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Place an Order"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteY="15dp" />
+
     <com.fangs.apar_app.utils.HelveticaCustomButton
         android:id="@+id/helveticaCustomButton"
         android:layout_width="match_parent"
