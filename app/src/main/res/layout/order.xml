@@ -34,7 +34,8 @@
         android:scaleType="fitCenter"
         android:adjustViewBounds="true"
         android:src="@drawable/ic_baseline_edit_24"
-        app:tint="@color/limeGreen" />
+        app:tint="@color/limeGreen"
+        android:contentDescription="edit order" />
     <ImageButton
         android:id="@+id/order_delete"
         android:background="?android:selectableItemBackground"
@@ -43,7 +44,8 @@
         android:scaleType="fitCenter"
         android:adjustViewBounds="true"
         android:src="@drawable/ic_baseline_delete_24"
-        app:tint="@color/red" />
+        app:tint="@color/red"
+        android:contentDescription="delete order" />
 
     <ImageButton
         android:id="@+id/iv_messenger"
@@ -53,6 +55,7 @@
         android:layout_height="24dp"
         android:scaleType="fitCenter"
         android:adjustViewBounds="true"
-        android:src="@drawable/ic_messenger" />
+        android:src="@drawable/ic_messenger"
+        android:contentDescription="export to messenger" />
 
 </LinearLayout>
