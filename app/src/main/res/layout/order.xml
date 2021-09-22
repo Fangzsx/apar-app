@@ -30,32 +30,38 @@
         android:id="@+id/iv_order_edit"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:background="?android:selectableItemBackground"
-        android:scaleType="fitCenter"
         android:adjustViewBounds="true"
+        android:background="?android:selectableItemBackground"
+        android:contentDescription="edit order"
+        android:scaleType="fitCenter"
         android:src="@drawable/ic_baseline_edit_24"
         app:tint="@color/limeGreen"
-        android:contentDescription="edit order" />
+        tools:ignore="TouchTargetSizeCheck" />
+
     <ImageButton
         android:id="@+id/order_delete"
-        android:background="?android:selectableItemBackground"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:scaleType="fitCenter"
+        android:layout_marginStart="3dp"
+        android:layout_marginEnd="3dp"
         android:adjustViewBounds="true"
+        android:background="?android:selectableItemBackground"
+        android:contentDescription="delete order"
+        android:scaleType="fitCenter"
         android:src="@drawable/ic_baseline_delete_24"
         app:tint="@color/red"
-        android:contentDescription="delete order" />
+        tools:ignore="TouchTargetSizeCheck" />
 
     <ImageButton
         android:id="@+id/iv_messenger"
-        android:background="?android:selectableItemBackground"
-        android:foregroundTint="@null"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:scaleType="fitCenter"
         android:adjustViewBounds="true"
+        android:background="?android:selectableItemBackground"
+        android:contentDescription="export to messenger"
+        android:foregroundTint="@null"
+        android:scaleType="fitCenter"
         android:src="@drawable/ic_messenger"
-        android:contentDescription="export to messenger" />
+        tools:ignore="TouchTargetSizeCheck" />
 
 </LinearLayout>
