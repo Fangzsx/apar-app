@@ -54,8 +54,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/CustomOutlinedBox"
-                android:hint="Username">
+                android:hint="Email">
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_email"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
             </com.google.android.material.textfield.TextInputLayout>
@@ -67,6 +68,7 @@
                 style="@style/CustomOutlinedBox"
                 android:hint="Password">
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_password"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:inputType="textPassword"/>
@@ -103,7 +105,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="2.5dp"
-                    android:text="Sign up here!"/>
+                    android:text="Send a Request here!"/>
 
 
             </LinearLayout>

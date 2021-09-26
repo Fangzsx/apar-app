@@ -2,23 +2,31 @@ package com.fangs.apar_app.activities
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import com.fangs.apar_app.R
-import com.fangs.apar_app.utils.HelveticaCustomButton
+import com.fangs.apar_app.databinding.ActivityLoginBinding
+import com.google.android.material.snackbar.Snackbar
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : BaseActivity() {
+
+    private lateinit var binding : ActivityLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val loginBtn = findViewById<HelveticaCustomButton>(R.id.btn_login)
 
-        loginBtn.setOnClickListener {
-            Intent(this,MainActivity::class.java).also {
+        binding.btnLogin.setOnClickListener {
+
+
+
+            Intent(this, MainActivity::class.java).also {
                 startActivity(it)
             }
+            Snackbar.make(binding.root, "login", Snackbar.LENGTH_LONG).show()
+
+
         }
+
 
     }
 

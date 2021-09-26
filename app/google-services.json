@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "714372143645",
+    "project_id": "apar-app",
+    "storage_bucket": "apar-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:714372143645:android:8107fa80ac63eab11644f4",
+        "android_client_info": {
+          "package_name": "com.fangs.apar_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "714372143645-gqo6b707couvvopim6b7ts1rnktlcekv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fangs.apar_app",
+            "certificate_hash": "6aba0d6cf22e9771078435d324a6272fdb0bcee8"
+          }
+        },
+        {
+          "client_id": "714372143645-6ouomabm015p3sc43b2vs07h1l5aj6qf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBD96qnU39MH3uegMOhlGGkIS600mazFwE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "714372143645-6ouomabm015p3sc43b2vs07h1l5aj6qf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

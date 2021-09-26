@@ -18,5 +18,8 @@
     <color name="gray">#D7D7D7</color>
     <color name="customButtonGreen">#476D02</color>
     <color name="red">#F44444</color>
+    <color name="snackBarError">#DF2D21</color>
+    <color name="snackBarSuccess">#2FAC21</color>
+
 
 </resources>
