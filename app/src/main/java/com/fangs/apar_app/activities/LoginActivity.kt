@@ -15,6 +15,17 @@ class LoginActivity : BaseActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val auth = FirebaseAuth.getInstance()
+
+        //check if user is already logged in
+        val user = auth.currentUser
+        if(user != null){
+            Intent(this, MainActivity::class.java).also {
+                startActivity(it)
+                finish()
+            }
+        }
+
 
         binding.btnLogin.setOnClickListener {
 
@@ -24,7 +35,7 @@ class LoginActivity : BaseActivity() {
 
             if(email.isNotEmpty() && password.isNotEmpty()){
 
-                val auth = FirebaseAuth.getInstance()
+
 
                 auth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener { task ->
@@ -32,6 +43,7 @@ class LoginActivity : BaseActivity() {
                         if(task.isSuccessful){
                             Intent(this, MainActivity::class.java).also {
                                 startActivity(it)
+                                finish()
                             }
                         }
                         else{

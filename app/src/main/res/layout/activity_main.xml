@@ -104,6 +104,7 @@
                 android:layout_gravity="center_vertical"
                 app:tint="@color/white" />
             <com.fangs.apar_app.utils.HelveticaBoldTextView
+                android:id="@+id/tv_sign_out"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"

@@ -1,5 +1,6 @@
 package com.fangs.apar_app.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +13,7 @@ import com.fangs.apar_app.fragments.PurchaseFragment
 import com.fangs.apar_app.fragments.ViewOrderFragment
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : BaseActivity() {
 
@@ -47,6 +49,16 @@ class MainActivity : BaseActivity() {
 
             }
             true
+        }
+
+
+        //sign out
+        binding.tvSignOut.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            Intent(this, LoginActivity::class.java).also {
+                startActivity(it)
+                finish()
+            }
         }
 
 
