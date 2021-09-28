@@ -2,8 +2,9 @@ package com.fangs.apar_app.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import com.fangs.apar_app.databinding.ActivityLoginBinding
-import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : BaseActivity() {
 
@@ -17,12 +18,31 @@ class LoginActivity : BaseActivity() {
 
         binding.btnLogin.setOnClickListener {
 
+            val email = binding.etEmail.text.toString().trim()
+            val password = binding.etPassword.text.toString().trim()
+            hideKeyboard(currentFocus ?: View(this))
 
+            if(email.isNotEmpty() && password.isNotEmpty()){
 
-            Intent(this, MainActivity::class.java).also {
-                startActivity(it)
+                val auth = FirebaseAuth.getInstance()
+
+                auth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener { task ->
+
+                        if(task.isSuccessful){
+                            Intent(this, MainActivity::class.java).also {
+                                startActivity(it)
+                            }
+                        }
+                        else{
+                            showErrorSnackBar(binding.root, "Account does not exist. Try again.", true)
+                        }
+
+                    }
+            } else{
+                showErrorSnackBar(binding.root, "Email and Password cannot be empty!", true)
             }
-            Snackbar.make(binding.root, "login", Snackbar.LENGTH_LONG).show()
+
 
 
         }

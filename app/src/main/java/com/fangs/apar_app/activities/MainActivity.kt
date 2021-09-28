@@ -11,8 +11,9 @@ import com.fangs.apar_app.databinding.ActivityMainBinding
 import com.fangs.apar_app.fragments.PurchaseFragment
 import com.fangs.apar_app.fragments.ViewOrderFragment
 import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.snackbar.Snackbar
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     private lateinit var binding : ActivityMainBinding
 
@@ -22,6 +23,8 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
+
+        showErrorSnackBar(binding.root, "login success", false)
 
         val toolbar = findViewById<MaterialToolbar>(R.id.nav_drawer)
         val drawer = findViewById<DrawerLayout>(R.id.drawer)
