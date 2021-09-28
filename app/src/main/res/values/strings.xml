@@ -1,4 +1,27 @@
 <resources>
     <string name="app_name">apar-app</string>
     <string name="app_logo">app logo</string>
+
+
+    <string-array name="products_category" >
+        <!-- FOOD-->
+        <item>PLEASE SELECT FROM THE FF—</item>
+        <item>POWDERED MILK, JUICE, COFFEE</item>
+        <item>SNACKS, BISCUITS, CANDIES </item>
+        <item>CONDIMENTS, SEASONINGS, OIL</item>
+        <item>NOODLES, PASTA, RICE</item>
+        <item>SUGAR</item>
+        <item>CANNED GOODS, JUICE, MILK</item>
+        <item>RTD, BEVERAGES, LIQUOR</item>
+
+        <!-- NONFOOD-->
+        <item>SHAMPOO, CONDITIONER</item>
+        <item>SOAP, HYGIENE, DENTAL CARE</item>
+        <item>DETERGENT, FABCON, BLEACH </item>
+        <item>DIAPERS, NAPKIN, TISSUE </item>
+        <item>HOUSEHOLD</item>
+        <item>CIGARETTES, MEDICINES</item>
+
+
+    </string-array>
 </resources>

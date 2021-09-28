@@ -2,8 +2,6 @@ package com.fangs.apar_app.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
@@ -12,7 +10,7 @@ import com.fangs.apar_app.databinding.ActivityMainBinding
 import com.fangs.apar_app.fragments.PurchaseFragment
 import com.fangs.apar_app.fragments.ViewOrderFragment
 import com.google.android.material.appbar.MaterialToolbar
-import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : BaseActivity() {
@@ -33,6 +31,24 @@ class MainActivity : BaseActivity() {
         toolbar.setNavigationOnClickListener {
             drawer.openDrawer(GravityCompat.START)
         }
+
+
+        //side navigation
+        val sideNav = NavigationView.OnNavigationItemSelectedListener { item ->
+            when(item.itemId){
+                R.id.side_bar_add_item -> {
+                    Intent(this, AddNewItemActivity::class.java).also {
+                        startActivity(it)
+                    }
+                    return@OnNavigationItemSelectedListener true
+                }
+            }
+            false
+        }
+
+        //set sideNav = navigation for sidebar
+        binding.sideNavBar.setNavigationItemSelectedListener(sideNav)
+
 
 
         //bottom navigation
@@ -64,6 +80,7 @@ class MainActivity : BaseActivity() {
 
 
 
+
     }
 
     private fun replaceFragment(fragment : Fragment) {
@@ -71,7 +88,9 @@ class MainActivity : BaseActivity() {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.fragment_container, fragment)
         transaction.commit()
+    }
 
-
+    private fun proceedToActivity(intent : Intent){
+        startActivity(intent)
     }
 }
