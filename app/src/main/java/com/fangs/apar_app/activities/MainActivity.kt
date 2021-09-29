@@ -1,7 +1,9 @@
 package com.fangs.apar_app.activities
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.view.View
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
@@ -19,17 +21,15 @@ class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = ActivityMainBinding.inflate(layoutInflater)
-
         setContentView(binding.root)
-
 
         showErrorSnackBar(binding.root, "login success", false)
 
-        val toolbar = findViewById<MaterialToolbar>(R.id.nav_drawer)
-        val drawer = findViewById<DrawerLayout>(R.id.drawer)
-        toolbar.setNavigationOnClickListener {
-            drawer.openDrawer(GravityCompat.START)
+
+        binding.navDrawer.setNavigationOnClickListener {
+            binding.drawer.openDrawer(GravityCompat.START)
         }
 
 

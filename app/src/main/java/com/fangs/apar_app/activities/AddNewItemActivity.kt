@@ -1,6 +1,9 @@
 package com.fangs.apar_app.activities
 
+import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.view.View
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import com.fangs.apar_app.R
@@ -15,7 +18,21 @@ class AddNewItemActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        //populate spinner with string array from resource
+
+        populateSpinner()
+
+
+        //back key
+        binding.navBack.setNavigationOnClickListener {
+            Intent(this, MainActivity::class.java).also {
+                startActivity(it)
+            }
+            finish()
+        }
+        
+    }
+
+    private fun populateSpinner() {
         ArrayAdapter.createFromResource(
             this, R.array.products_category,
             R.layout.support_simple_spinner_dropdown_item

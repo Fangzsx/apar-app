@@ -5,22 +5,31 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.fangs.apar_app.utils.HelveticaBoldTextView
-        android:id="@+id/tv_adding_new_item"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/main_bg"
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/ab_adding_new_item"
         app:layout_constraintTop_toTopOf="parent"
-        android:text="Adding new Item"
-        android:textSize="25sp"
-        android:textColor="@color/white"
-        android:padding="10dp"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/nav_back"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/main_bg"
+            android:theme="@style/CustomSearchView"
+            app:title="Dashboard"
+            app:titleTextColor="@color/white"
+            app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
+            style="@style/MaterialToolbar"/>
+    </com.google.android.material.appbar.AppBarLayout>
+
+
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@color/gray"
-        app:layout_constraintTop_toBottomOf="@id/tv_adding_new_item"
+        app:layout_constraintTop_toBottomOf="@id/ab_adding_new_item"
         app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
@@ -38,6 +47,7 @@
                 app:boxBackgroundColor="@color/white"
                 android:hint="Product name:">
                 <com.google.android.material.textfield.TextInputEditText
+                    android:textColor="@color/black"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:inputType="text"/>
@@ -54,6 +64,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/black"
                     android:inputType="numberDecimal"/>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -61,10 +72,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:textColor="@color/black"
                 android:textSize="17sp"
                 android:text="Category:"/>
             <Spinner
                 android:id="@+id/sp_product_category"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/spinner_background"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
