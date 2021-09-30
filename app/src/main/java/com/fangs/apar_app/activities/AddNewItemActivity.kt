@@ -32,6 +32,17 @@ class AddNewItemActivity : AppCompatActivity() {
         
     }
 
+
+    private fun validateProduct(){
+
+        //TODO PRIORITY LEVEL : TOP
+        val newProductName = binding.etNewProductName.text.toString().trim()
+        val newProductPrice = binding.etNewProductPrice.text.toString().trim()
+
+
+
+    }
+
     private fun populateSpinner() {
         ArrayAdapter.createFromResource(
             this, R.array.products_category,
