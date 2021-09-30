@@ -20,6 +20,7 @@ class LoginActivity : BaseActivity() {
         //check if user is already logged in
         val user = auth.currentUser
         if(user != null){
+
             Intent(this, MainActivity::class.java).also {
                 startActivity(it)
                 finish()

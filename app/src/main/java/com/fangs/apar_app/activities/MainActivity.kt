@@ -1,17 +1,13 @@
 package com.fangs.apar_app.activities
 
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
-import android.view.View
 import androidx.core.view.GravityCompat
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.fangs.apar_app.R
 import com.fangs.apar_app.databinding.ActivityMainBinding
 import com.fangs.apar_app.fragments.PurchaseFragment
 import com.fangs.apar_app.fragments.ViewOrderFragment
-import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 
@@ -90,7 +86,4 @@ class MainActivity : BaseActivity() {
         transaction.commit()
     }
 
-    private fun proceedToActivity(intent : Intent){
-        startActivity(intent)
-    }
 }

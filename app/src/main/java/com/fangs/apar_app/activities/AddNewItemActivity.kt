@@ -38,7 +38,7 @@ class AddNewItemActivity : AppCompatActivity() {
             R.layout.support_simple_spinner_dropdown_item
         ).also { adapter ->
             adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item)
-            binding.spProductCategory.adapter = adapter
+            binding.spNewProductCategory.adapter = adapter
 
         }
     }

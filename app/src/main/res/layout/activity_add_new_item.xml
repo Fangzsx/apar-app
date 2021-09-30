@@ -47,6 +47,7 @@
                 app:boxBackgroundColor="@color/white"
                 android:hint="Product name:">
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_new_product_name"
                     android:textColor="@color/black"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -62,6 +63,7 @@
                 android:layout_marginTop="10dp"
                 android:hint="Price:">
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_new_product_price"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
@@ -76,13 +78,14 @@
                 android:textSize="17sp"
                 android:text="Category:"/>
             <Spinner
-                android:id="@+id/sp_product_category"
+                android:id="@+id/sp_new_product_category"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/spinner_background"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
             <com.fangs.apar_app.utils.HelveticaCustomButton
+                android:id="@+id/btn_add_to_database"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
