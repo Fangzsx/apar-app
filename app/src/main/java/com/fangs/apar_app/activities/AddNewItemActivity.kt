@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.fangs.apar_app.R
 import com.fangs.apar_app.databinding.ActivityAddNewItemBinding
+import com.google.firebase.firestore.FirebaseFirestore
 
 class AddNewItemActivity : BaseActivity() {
 
@@ -25,8 +26,11 @@ class AddNewItemActivity : BaseActivity() {
 
         //add to database
         binding.btnAddToDatabase.setOnClickListener {
+            //hide keyboard on btn click
             hideKeyboard(currentFocus ?: View(this))
-            validateProduct()
+
+            addItemToFirebase()
+
         }
 
 
@@ -38,6 +42,32 @@ class AddNewItemActivity : BaseActivity() {
             finish()
         }
         
+    }
+
+    private fun addItemToFirebase(){
+
+        if(validateProduct()){
+
+            val productName = binding.etNewProductName.text.toString().trim()
+            val productPrice = binding.etNewProductPrice.text.toString().trim().toInt()
+            val productCategory = binding.spNewProductCategory.selectedItem.toString()
+
+            //open firestore
+            val root = FirebaseFirestore.getInstance()
+            root.collection("products").add(
+                hashMapOf(
+                    "category" to productCategory,
+                    "name" to productName,
+                    "price" to productPrice
+                )
+            )
+
+            //TODO PRIORITY LEVEL : SEVERE add a snackBar for showing that an item was added to DB
+
+
+
+        }
+
     }
 
 
