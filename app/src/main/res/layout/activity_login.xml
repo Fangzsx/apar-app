@@ -48,7 +48,7 @@
                 android:layout_marginTop="20dp"
                 android:gravity="center"
                 android:text="LOGIN"
-                android:textSize="20sp"/>
+                android:textSize="16sp"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -79,6 +79,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
                 android:gravity="end"
+                android:textSize="16sp"
                 android:text="Forgot your password?"/>
 
             <com.fangs.apar_app.utils.HelveticaCustomButton
@@ -88,7 +89,7 @@
                 android:layout_marginTop="7dp"
                 android:background="@drawable/button_helvetica"
                 android:text="LOGIN"
-                android:textSize="15sp"
+                android:textSize="16sp"
                 app:backgroundTint="@null"/>
 
             <LinearLayout
@@ -101,11 +102,13 @@
                 <com.fangs.apar_app.utils.HelveticaNormalTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="16sp"
                     android:text="Doesn't have an account?"/>
                 <com.fangs.apar_app.utils.HelveticaBoldTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="2.5dp"
+                    android:textSize="16sp"
                     android:text="Send a Request here!"/>
 
 

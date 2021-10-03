@@ -20,6 +20,7 @@
     <color name="red">#F44444</color>
     <color name="snackBarError">#DF2D21</color>
     <color name="snackBarSuccess">#2FAC21</color>
+    <color name="blue">#2196F3</color>
 
 
 </resources>

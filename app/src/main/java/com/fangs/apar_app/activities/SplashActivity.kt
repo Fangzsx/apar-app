@@ -26,7 +26,7 @@ class SplashActivity : AppCompatActivity() {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             finish()
-        }, 2500) // 2500 is the delayed time in milliseconds.
+        }, 1000) // 1000 is the delayed time in milliseconds.
 
     }
 

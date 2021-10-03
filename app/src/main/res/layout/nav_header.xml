@@ -27,19 +27,76 @@
             android:orientation="vertical">
 
             <com.fangs.apar_app.utils.HelveticaBoldTextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Welcome APAR 713!"
+                android:text="Garzon, Jay Gilbert S."
+                android:textSize="16sp"
                 android:textColor="@color/white"/>
 
-            <com.fangs.apar_app.utils.HelveticaNormalTextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Aling Puring Account Representative"
-                android:textColor="#FFFFFF"
-                android:textSize="10sp"
-                android:background="@drawable/cornered_gold"
-                tools:ignore="SmallSp" />
+                android:orientation="horizontal">
+
+                <com.fangs.apar_app.utils.HelveticaNormalTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="APAR 1"
+                    android:textColor="#FFFFFF"
+                    android:textSize="8sp"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:background="@drawable/cornered_gold"
+                    tools:ignore="SmallSp" />
+
+                <com.fangs.apar_app.utils.HelveticaNormalTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="STORE 713"
+                    android:textColor="#FFFFFF"
+                    android:textSize="8sp"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:layout_marginStart="3dp"
+                    android:background="@drawable/cornered_violet"
+                    tools:ignore="SmallSp" />
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+
+                <com.fangs.apar_app.utils.HelveticaNormalTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SOUTH GMA"
+                    android:textColor="#FFFFFF"
+                    android:textSize="8sp"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:background="@drawable/cornered_red"
+                    tools:ignore="SmallSp" />
+
+                <com.fangs.apar_app.utils.HelveticaNormalTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:text="CLUSTER 1"
+                    android:textColor="#FFFFFF"
+                    android:textSize="8sp"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:background="@drawable/cornered_blue"
+                    tools:ignore="SmallSp" />
+
+
+            </LinearLayout>
 
         </LinearLayout>
 

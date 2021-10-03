@@ -21,7 +21,7 @@ class MainActivity : BaseActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        showErrorSnackBar(binding.root, "Welcome User!", false)
+        showErrorSnackBar(binding.root, "Welcome Jay!", false)
 
 
         binding.navDrawer.setNavigationOnClickListener {
