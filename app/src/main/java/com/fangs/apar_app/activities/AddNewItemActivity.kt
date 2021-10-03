@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.fangs.apar_app.R
@@ -49,7 +50,7 @@ class AddNewItemActivity : BaseActivity() {
         if(validateProduct()){
 
             val productName = binding.etNewProductName.text.toString().trim()
-            val productPrice = binding.etNewProductPrice.text.toString().trim().toInt()
+            val productPrice = binding.etNewProductPrice.text.toString().trim().toDouble()
             val productCategory = binding.spNewProductCategory.selectedItem.toString()
 
             //open firestore
@@ -62,8 +63,11 @@ class AddNewItemActivity : BaseActivity() {
                 )
             )
 
-            //TODO PRIORITY LEVEL : SEVERE add a snackBar for showing that an item was added to DB
-
+            Toast.makeText(applicationContext, "A new item was added to database.", Toast.LENGTH_SHORT).show()
+            Intent(this, MainActivity::class.java).also {
+                startActivity(it)
+            }
+            finish()
 
 
         }
@@ -98,7 +102,6 @@ class AddNewItemActivity : BaseActivity() {
             }
 
             else -> {
-                showErrorSnackBar(binding.root, "A new item was added to database.", false)
                 true
             }
 
