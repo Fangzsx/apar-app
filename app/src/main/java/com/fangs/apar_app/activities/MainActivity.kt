@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 
@@ -97,27 +98,23 @@ class MainActivity : BaseActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.top_app_bar, menu)
 
-        val searchItem = menu?.findItem(R.id.top_nav_search)
+        val searchItem: MenuItem? = menu?.findItem(R.id.top_nav_search)
+        val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
+        val searchView: SearchView = searchItem?.actionView as SearchView
 
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
 
-        if(searchItem != null){
-            val searchView = searchItem.actionView as SearchView
-            searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
-                override fun onQueryTextSubmit(query: String?): Boolean {
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                Toast.makeText(this@MainActivity, "Looking for $query", Toast.LENGTH_SHORT).show()
+                return true
+            }
 
-                    //show submitted text for testing purposes.
-                    Toast.makeText(this@MainActivity, "Looking for $query", Toast.LENGTH_SHORT).show()
-                    return true
-                }
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return true
+            }
 
-                override fun onQueryTextChange(newText: String?): Boolean {
-                    return true
-                }
-
-            })
-        }
-
-
+        })
         return super.onCreateOptionsMenu(menu)
     }
 
