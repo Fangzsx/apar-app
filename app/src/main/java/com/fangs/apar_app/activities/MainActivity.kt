@@ -1,7 +1,13 @@
 package com.fangs.apar_app.activities
 
+import android.app.SearchManager
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.widget.Toast
+import androidx.appcompat.widget.SearchView
+
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.fangs.apar_app.R
@@ -15,6 +21,8 @@ class MainActivity : BaseActivity() {
 
     private lateinit var binding : ActivityMainBinding
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -27,6 +35,7 @@ class MainActivity : BaseActivity() {
         binding.navDrawer.setNavigationOnClickListener {
             binding.drawer.openDrawer(GravityCompat.START)
         }
+
 
 
         //side navigation
@@ -85,5 +94,32 @@ class MainActivity : BaseActivity() {
         transaction.replace(R.id.fragment_container, fragment)
         transaction.commit()
     }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.top_app_bar, menu)
+
+        val searchItem = menu?.findItem(R.id.top_nav_search)
+
+
+        if(searchItem != null){
+            val searchView = searchItem.actionView as SearchView
+            searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+                override fun onQueryTextSubmit(query: String?): Boolean {
+
+                    //show submitted text for testing purposes.
+                    Toast.makeText(this@MainActivity, "Looking for $query", Toast.LENGTH_SHORT).show()
+                    return true
+                }
+
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    return true
+                }
+
+            })
+        }
+
+
+        return super.onCreateOptionsMenu(menu)
+    }
+
 
 }
