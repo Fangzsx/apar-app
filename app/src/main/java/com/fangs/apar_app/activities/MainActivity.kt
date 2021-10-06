@@ -110,15 +110,27 @@ class MainActivity : BaseActivity() {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 if (query != null) {
 
-                    productsRef.whereEqualTo("name", query)
+                    productsRef.whereEqualTo("name", query.lowercase()).get()
+
+                            
+                        .addOnSuccessListener { documents ->
+                            for(document in documents){
+                                Toast.makeText(this@MainActivity, "Item found! : ${document.data["name"]}", Toast.LENGTH_SHORT).show()
+                            }
+
+
+                        }
+                        .addOnFailureListener { exception ->
+                            Toast.makeText(this@MainActivity, exception.message, Toast.LENGTH_SHORT).show()
+                        }
 
                 }
                 return true
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                Toast.makeText(this@MainActivity, newText, Toast.LENGTH_SHORT).show()
-                return true
+
+                return false
             }
 
 
