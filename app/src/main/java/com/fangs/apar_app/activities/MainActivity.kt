@@ -112,10 +112,10 @@ class MainActivity : BaseActivity() {
 
                     productsRef.whereEqualTo("name", query.lowercase()).get()
 
-                            
+
                         .addOnSuccessListener { documents ->
                             for(document in documents){
-                                Toast.makeText(this@MainActivity, "Item found! : ${document.data["name"]}", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(this@MainActivity, "Item found! : ${document.data}", Toast.LENGTH_SHORT).show()
                             }
 
 
