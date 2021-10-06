@@ -17,6 +17,8 @@ import com.fangs.apar_app.fragments.PurchaseFragment
 import com.fangs.apar_app.fragments.ViewOrderFragment
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class MainActivity : BaseActivity() {
 
@@ -58,7 +60,7 @@ class MainActivity : BaseActivity() {
     }
 
 
-    
+
 
     private fun manageBottomNavigation() {
         //bottom navigation
@@ -97,16 +99,26 @@ class MainActivity : BaseActivity() {
     }
 
     private fun manageToolbar() {
+
+        //search
+
+        val productsRef = Firebase.firestore.collection("products")
+
+
         binding.toolbar.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+
             override fun onQueryTextSubmit(query: String?): Boolean {
                 if (query != null) {
-                    Toast.makeText(this@MainActivity, query, Toast.LENGTH_SHORT).show()
+
+                    productsRef.whereEqualTo("name", query)
+
                 }
-                return false
+                return true
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                return false
+                Toast.makeText(this@MainActivity, newText, Toast.LENGTH_SHORT).show()
+                return true
             }
 
 

@@ -46,9 +46,9 @@ class AddNewItemActivity : BaseActivity() {
 
         if(validateProduct()){
 
-            val productName = binding.etNewProductName.text.toString().trim()
+            val productName = binding.etNewProductName.text.toString().trim().lowercase()
             val productPrice = binding.etNewProductPrice.text.toString().trim().toDouble()
-            val productCategory = binding.spNewProductCategory.selectedItem.toString()
+            val productCategory = binding.spNewProductCategory.selectedItem.toString().lowercase()
 
             //open firestore
             val root = FirebaseFirestore.getInstance()
