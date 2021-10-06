@@ -30,18 +30,58 @@ class MainActivity : BaseActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+
+
         showErrorSnackBar(binding.root, "Welcome Jay!", false)
 
 
-        binding.navDrawer.setNavigationOnClickListener {
+        //open drawer
+        binding.toolbar.navDrawerToolbar.setNavigationOnClickListener {
             binding.drawer.openDrawer(GravityCompat.START)
         }
 
 
+        manageToolbar()
+        manageSideNavigation()
+        manageBottomNavigation()
 
+
+        //sign out
+        binding.tvSignOut.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            Intent(this, LoginActivity::class.java).also {
+                startActivity(it)
+                finish()
+            }
+        }
+    }
+
+
+    
+
+    private fun manageBottomNavigation() {
+        //bottom navigation
+
+        val purchaseFragment = PurchaseFragment()
+        val viewOrderFragment = ViewOrderFragment()
+
+        replaceFragment(purchaseFragment)
+        binding.bottomNavigation.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.btm_nav_purchase -> replaceFragment(purchaseFragment)
+                R.id.btm_nav_view_orders -> replaceFragment(viewOrderFragment)
+
+
+            }
+            true
+        }
+    }
+
+    private fun manageSideNavigation() {
         //side navigation
         val sideNav = NavigationView.OnNavigationItemSelectedListener { item ->
-            when(item.itemId){
+            when (item.itemId) {
                 R.id.side_bar_add_item -> {
                     Intent(this, AddNewItemActivity::class.java).also {
                         startActivity(it)
@@ -54,39 +94,23 @@ class MainActivity : BaseActivity() {
 
         //set sideNav = navigation for sidebar
         binding.sideNavBar.setNavigationItemSelectedListener(sideNav)
+    }
 
-
-
-        //bottom navigation
-
-        val purchaseFragment = PurchaseFragment()
-        val viewOrderFragment = ViewOrderFragment()
-
-        replaceFragment(purchaseFragment)
-        binding.bottomNavigation.setOnItemSelectedListener {
-            when(it.itemId){
-                R.id.btm_nav_purchase -> replaceFragment(purchaseFragment)
-                R.id.btm_nav_view_orders ->replaceFragment(viewOrderFragment)
-
-
+    private fun manageToolbar() {
+        binding.toolbar.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                if (query != null) {
+                    Toast.makeText(this@MainActivity, query, Toast.LENGTH_SHORT).show()
+                }
+                return false
             }
-            true
-        }
 
-
-        //sign out
-        binding.tvSignOut.setOnClickListener {
-            FirebaseAuth.getInstance().signOut()
-            Intent(this, LoginActivity::class.java).also {
-                startActivity(it)
-                finish()
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return false
             }
-        }
 
 
-
-
-
+        })
     }
 
     private fun replaceFragment(fragment : Fragment) {
@@ -94,28 +118,6 @@ class MainActivity : BaseActivity() {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.fragment_container, fragment)
         transaction.commit()
-    }
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.top_app_bar, menu)
-
-        val searchItem: MenuItem? = menu?.findItem(R.id.top_nav_search)
-        val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
-        val searchView: SearchView = searchItem?.actionView as SearchView
-
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
-
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                Toast.makeText(this@MainActivity, "Looking for $query", Toast.LENGTH_SHORT).show()
-                return true
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                return true
-            }
-
-        })
-        return super.onCreateOptionsMenu(menu)
     }
 
 
