@@ -1,16 +1,20 @@
 package com.fangs.apar_app.activities
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import com.fangs.apar_app.R
 import com.fangs.apar_app.databinding.ActivityAddNewItemBinding
 import com.google.firebase.firestore.FirebaseFirestore
 
-class AddNewItemActivity : BaseActivity() {
+class AddNewItemActivity : BaseActivity(){
 
     private lateinit var binding : ActivityAddNewItemBinding
 
@@ -49,6 +53,9 @@ class AddNewItemActivity : BaseActivity() {
             val productName = binding.etNewProductName.text.toString().trim().lowercase()
             val productPrice = binding.etNewProductPrice.text.toString().trim().toDouble()
             val productCategory = binding.spNewProductCategory.selectedItem.toString().lowercase()
+
+
+
 
             //open firestore
             val root = FirebaseFirestore.getInstance()
@@ -112,6 +119,8 @@ class AddNewItemActivity : BaseActivity() {
 
     private fun populateSpinner() {
 
+        val spinner = binding.spNewProductCategory
+
         ArrayAdapter.createFromResource(
             this, R.array.products_category,
             R.layout.support_simple_spinner_dropdown_item
@@ -119,8 +128,30 @@ class AddNewItemActivity : BaseActivity() {
             adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item)
 
 
-            binding.spNewProductCategory.adapter = adapter
+            spinner.adapter = adapter
 
+            //set text color of selected text
+            spinner.onItemSelectedListener = object :
+
+
+                AdapterView.OnItemSelectedListener{
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+                    val tv = spinner.selectedView as TextView
+                    tv.setTextColor(ContextCompat.getColor(applicationContext, R.color.red))
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+
+                }
+
+            }
         }
     }
+
+
 }

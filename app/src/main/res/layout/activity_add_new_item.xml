@@ -84,6 +84,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/spinner_background"
                 android:layout_width="match_parent"
+                android:theme="@style/CustomSpinner"
                 android:layout_height="wrap_content"/>
 
             <com.fangs.apar_app.utils.HelveticaCustomButton

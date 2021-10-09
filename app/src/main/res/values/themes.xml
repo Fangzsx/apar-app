@@ -31,6 +31,10 @@
 
     </style>
 
+    <style name="CustomSpinner" parent="Widget.AppCompat.Light.DropDownItem.Spinner">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
 
     <style name="CustomOutlinedBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxStrokeColor">@color/ThemeDarkGreen</item>
