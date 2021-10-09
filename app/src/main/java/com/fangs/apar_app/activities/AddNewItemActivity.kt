@@ -142,7 +142,7 @@ class AddNewItemActivity : BaseActivity(){
                     id: Long
                 ) {
                     val tv = spinner.selectedView as TextView
-                    tv.setTextColor(ContextCompat.getColor(applicationContext, R.color.red))
+                    tv.setTextColor(ContextCompat.getColor(applicationContext, R.color.black))
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>?) {
