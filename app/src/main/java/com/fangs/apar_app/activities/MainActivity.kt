@@ -6,6 +6,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.AutoCompleteTextView
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 
@@ -101,11 +103,14 @@ class MainActivity : BaseActivity() {
     private fun manageToolbar() {
 
         //search
-
+        val searchView = binding.toolbar.searchView
         val productsRef = Firebase.firestore.collection("products")
 
+        searchView.findViewById<AutoCompleteTextView>(R.id.search_src_text)
 
-        binding.toolbar.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
 
             override fun onQueryTextSubmit(query: String?): Boolean {
                 if (query != null) {
@@ -115,6 +120,7 @@ class MainActivity : BaseActivity() {
 
                         .addOnSuccessListener { documents ->
                             for(document in documents){
+
                                 Toast.makeText(this@MainActivity, "Item found! : ${document.data}", Toast.LENGTH_SHORT).show()
                             }
 
@@ -123,12 +129,24 @@ class MainActivity : BaseActivity() {
                         .addOnFailureListener { exception ->
                             Toast.makeText(this@MainActivity, exception.message, Toast.LENGTH_SHORT).show()
                         }
+                    //toggle keyboard off
+                    hideKeyboard(currentFocus ?: View(this@MainActivity))
 
                 }
                 return true
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
+
+//                productsRef.whereEqualTo("name", newText!!.lowercase()).get()
+//                    .addOnSuccessListener { documents ->
+//                        for(document in documents){
+//                            if(document.data["name"].toString().contains(newText)){
+//
+//                            }
+//                        }
+//
+//                    }
 
                 return false
             }

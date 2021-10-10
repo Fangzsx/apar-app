@@ -1,7 +1,6 @@
 package com.fangs.apar_app.activities
 
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
