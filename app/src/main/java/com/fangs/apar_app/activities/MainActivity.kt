@@ -1,16 +1,13 @@
 package com.fangs.apar_app.activities
 
-import android.app.SearchManager
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
-
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.fangs.apar_app.R
@@ -106,13 +103,39 @@ class MainActivity : BaseActivity() {
         val searchView = binding.toolbar.searchView
         val productsRef = Firebase.firestore.collection("products")
 
-        searchView.findViewById<AutoCompleteTextView>(R.id.search_src_text)
 
+
+
+        val productList = mutableListOf<String>()
+        //get all products name in firebase
+        productsRef.get()
+            .addOnSuccessListener { documents ->
+                for(document in documents){
+                    productList.add(document["name"].toString())
+                }
+            }
+
+        val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, productList)
+        val autoComplete = searchView.findViewById<AutoCompleteTextView>(R.id.search_src_text)
+        autoComplete.setAdapter(arrayAdapter)
+
+        autoComplete.onItemClickListener = object : AdapterView.OnItemClickListener{
+            override fun onItemClick(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                Toast.makeText(this@MainActivity, arrayAdapter.getItem(position), Toast.LENGTH_SHORT).show()
+            }
+
+        }
 
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
 
             override fun onQueryTextSubmit(query: String?): Boolean {
+                searchView.clearFocus()
                 if (query != null) {
 
                     productsRef.whereEqualTo("name", query.lowercase()).get()
@@ -130,23 +153,13 @@ class MainActivity : BaseActivity() {
                             Toast.makeText(this@MainActivity, exception.message, Toast.LENGTH_SHORT).show()
                         }
                     //toggle keyboard off
-                    hideKeyboard(currentFocus ?: View(this@MainActivity))
+//                    hideKeyboard(currentFocus ?: View(this@MainActivity))
 
                 }
-                return true
+                return false
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-
-//                productsRef.whereEqualTo("name", newText!!.lowercase()).get()
-//                    .addOnSuccessListener { documents ->
-//                        for(document in documents){
-//                            if(document.data["name"].toString().contains(newText)){
-//
-//                            }
-//                        }
-//
-//                    }
 
                 return false
             }
