@@ -161,6 +161,8 @@ class MainActivity : BaseActivity() {
 
             override fun onQueryTextChange(newText: String?): Boolean {
 
+                arrayAdapter.filter.filter(newText)
+
                 return false
             }
 
