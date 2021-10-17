@@ -1,5 +1,6 @@
 package com.fangs.apar_app.activities
 
+import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -119,17 +120,13 @@ class MainActivity : BaseActivity() {
         val autoComplete = searchView.findViewById<AutoCompleteTextView>(R.id.search_src_text)
         autoComplete.setAdapter(arrayAdapter)
 
-        autoComplete.onItemClickListener = object : AdapterView.OnItemClickListener{
-            override fun onItemClick(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
+        autoComplete.onItemClickListener =
+            AdapterView.OnItemClickListener { parent, view, position, id ->
                 Toast.makeText(this@MainActivity, arrayAdapter.getItem(position), Toast.LENGTH_SHORT).show()
+                val dialog = Dialog(this@MainActivity, R.style.CustomDialog)
+                dialog.setContentView(R.layout.dialog_search)
+                dialog.show()
             }
-
-        }
 
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
