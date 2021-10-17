@@ -1,18 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/dialog_bg_shape">
 
     <com.fangs.apar_app.utils.HelveticaBoldTextView
+        android:id="@+id/tv_product_found"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         android:text="Product Found!"
         android:textSize="16sp"
+
         android:textColor="@color/white"
-        android:background="@color/customButtonGreen"/>
+        android:background="@drawable/gradient_color_green"/>
 
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.fangs.apar_app.utils.HelveticaNormalTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="Name"/>
+        <com.fangs.apar_app.utils.HelveticaNormalTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="Category"/>
+        <com.fangs.apar_app.utils.HelveticaNormalTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="Price"/>
+
+
+
+
+
+
+</LinearLayout>

@@ -125,6 +125,10 @@ class MainActivity : BaseActivity() {
                 Toast.makeText(this@MainActivity, arrayAdapter.getItem(position), Toast.LENGTH_SHORT).show()
                 val dialog = Dialog(this@MainActivity, R.style.CustomDialog)
                 dialog.setContentView(R.layout.dialog_search)
+
+
+
+
                 dialog.show()
             }
 
