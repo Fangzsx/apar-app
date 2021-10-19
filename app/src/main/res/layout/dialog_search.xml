@@ -6,34 +6,81 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/dialog_bg_shape">
 
-    <com.fangs.apar_app.utils.HelveticaBoldTextView
-        android:id="@+id/tv_product_found"
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient_color_green"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <com.fangs.apar_app.utils.HelveticaBoldTextView
+            android:id="@+id/tv_product_found"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="Product Found!"
+            android:textSize="16sp"
+            android:textColor="@color/white"/>
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ok"
+            android:layout_marginStart="5dp"
+            android:layout_gravity="center_vertical"
+            android:scaleType="fitXY"/>
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="Product Found!"
-        android:textSize="16sp"
-
-        android:textColor="@color/white"
-        android:background="@drawable/gradient_color_green"/>
-
-
+        android:orientation="vertical"
+        android:padding="15dp">
 
         <com.fangs.apar_app.utils.HelveticaNormalTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:text="Name"/>
+            android:text="Name"
+            android:textColor="@color/black" />
         <com.fangs.apar_app.utils.HelveticaNormalTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:text="Category"/>
         <com.fangs.apar_app.utils.HelveticaNormalTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:text="Price"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="end"
+            android:orientation="horizontal">
+            <com.fangs.apar_app.utils.HelveticaNormalTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="EDIT"/>
+            <com.fangs.apar_app.utils.HelveticaBoldTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/red"
+                android:layout_marginStart="10dp"
+                android:text="DELETE"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+
 
 
 
