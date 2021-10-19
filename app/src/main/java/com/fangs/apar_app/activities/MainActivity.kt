@@ -1,5 +1,6 @@
 package com.fangs.apar_app.activities
 
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
@@ -15,6 +16,7 @@ import com.fangs.apar_app.R
 import com.fangs.apar_app.databinding.ActivityMainBinding
 import com.fangs.apar_app.fragments.PurchaseFragment
 import com.fangs.apar_app.fragments.ViewOrderFragment
+import com.fangs.apar_app.utils.HelveticaNormalTextView
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
@@ -98,15 +100,12 @@ class MainActivity : BaseActivity() {
         binding.sideNavBar.setNavigationItemSelectedListener(sideNav)
     }
 
+    @SuppressLint("SetTextI18n")
     private fun manageToolbar() {
 
         //search
         val searchView = binding.toolbar.searchView
         val productsRef = Firebase.firestore.collection("products")
-
-
-
-
         val productList = mutableListOf<String>()
         //get all products name in firebase
         productsRef.get()
@@ -115,6 +114,9 @@ class MainActivity : BaseActivity() {
                     productList.add(document["name"].toString())
                 }
             }
+            .addOnFailureListener { exception ->
+                Toast.makeText(this, "auto complete text error.", Toast.LENGTH_SHORT).show()
+            }
 
         val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, productList)
         val autoComplete = searchView.findViewById<AutoCompleteTextView>(R.id.search_src_text)
@@ -122,9 +124,39 @@ class MainActivity : BaseActivity() {
 
         autoComplete.onItemClickListener =
             AdapterView.OnItemClickListener { parent, view, position, id ->
-                Toast.makeText(this@MainActivity, arrayAdapter.getItem(position), Toast.LENGTH_SHORT).show()
+                
+                //get current item
+                val item = arrayAdapter.getItem(position)
                 val dialog = Dialog(this@MainActivity, R.style.CustomDialog)
                 dialog.setContentView(R.layout.dialog_search)
+                
+                
+                //layout fields
+                val productName = dialog.findViewById<HelveticaNormalTextView>(R.id.tv_search_product_name)
+                val productCategory = dialog.findViewById<HelveticaNormalTextView>(R.id.tv_search_product_category)
+                val productPrice = dialog.findViewById<HelveticaNormalTextView>(R.id.tv_search_product_price)
+                
+                
+                
+                //get all products, get document where name = search result 
+                productsRef.whereEqualTo("name", item!!.lowercase()).get()
+                    .addOnSuccessListener { documents ->
+                        
+                        for(document in documents){
+                            productName.text = "Name: ${document["name"]}"
+                            productCategory.text = "Category: ${ document["category"]}"
+                            productPrice.text = "Price: ${document["price"]}"
+
+                            Toast.makeText(this, "Search Complete.", Toast.LENGTH_SHORT).show()
+                            
+                        }
+
+                    }
+                    .addOnFailureListener { 
+                        
+                    }
+
+
 
 
 
@@ -136,27 +168,27 @@ class MainActivity : BaseActivity() {
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
 
             override fun onQueryTextSubmit(query: String?): Boolean {
-                searchView.clearFocus()
-                if (query != null) {
-
-                    productsRef.whereEqualTo("name", query.lowercase()).get()
-
-
-                        .addOnSuccessListener { documents ->
-                            for(document in documents){
-
-                                Toast.makeText(this@MainActivity, "Item found! : ${document.data}", Toast.LENGTH_SHORT).show()
-                            }
-
-
-                        }
-                        .addOnFailureListener { exception ->
-                            Toast.makeText(this@MainActivity, exception.message, Toast.LENGTH_SHORT).show()
-                        }
-                    //toggle keyboard off
-//                    hideKeyboard(currentFocus ?: View(this@MainActivity))
-
-                }
+//                searchView.clearFocus()
+//                if (query != null) {
+//
+//                    productsRef.whereEqualTo("name", query.lowercase()).get()
+//
+//
+//                        .addOnSuccessListener { documents ->
+//                            for(document in documents){
+//
+//                                Toast.makeText(this@MainActivity, "Item found! : ${document.data}", Toast.LENGTH_SHORT).show()
+//                            }
+//
+//
+//                        }
+//                        .addOnFailureListener { exception ->
+//                            Toast.makeText(this@MainActivity, exception.message, Toast.LENGTH_SHORT).show()
+//                        }
+//                    //toggle keyboard off
+////
+//
+//                }
                 return false
             }
 
