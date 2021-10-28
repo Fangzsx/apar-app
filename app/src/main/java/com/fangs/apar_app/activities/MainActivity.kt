@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -115,7 +116,7 @@ class MainActivity : BaseActivity() {
                 }
             }
             .addOnFailureListener { exception ->
-                Toast.makeText(this, "auto complete text error.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "auto complete text error. ${exception.message}", Toast.LENGTH_SHORT).show()
             }
 
         val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, productList)
