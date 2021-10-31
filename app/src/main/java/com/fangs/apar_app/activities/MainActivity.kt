@@ -27,8 +27,6 @@ class MainActivity : BaseActivity() {
 
     private lateinit var binding : ActivityMainBinding
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -157,6 +155,15 @@ class MainActivity : BaseActivity() {
                         
                     }
 
+                //update item dialog
+                dialog.findViewById<HelveticaNormalTextView>(R.id.tv_update).setOnClickListener {
+                    //open dialog
+                    val updateDialog = Dialog(this, R.style.CustomDialog)
+                    updateDialog.setContentView(R.layout.dialog_update)
+                    updateDialog.show()
+
+
+                }
 
 
 

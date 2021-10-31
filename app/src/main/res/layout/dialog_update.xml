@@ -19,14 +19,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
-            android:text="Product Found!"
+            android:text="Update Product"
             android:textSize="16sp"
             android:textColor="@color/white"/>
 
         <ImageView
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/ic_check"
+            android:src="@drawable/ic_edit"
             android:layout_marginStart="5dp"
             android:layout_gravity="center_vertical"
             android:scaleType="fitXY"/>
@@ -38,26 +38,32 @@
         android:orientation="vertical"
         android:padding="15dp">
 
-        <com.fangs.apar_app.utils.HelveticaNormalTextView
-            android:id="@+id/tv_search_product_name"
-            android:layout_width="wrap_content"
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Name"
-            android:textColor="@color/black" />
-        <com.fangs.apar_app.utils.HelveticaNormalTextView
-            android:id="@+id/tv_search_product_category"
-            android:layout_width="wrap_content"
+            style="@style/CustomOutlinedBox"
+            android:hint="Name"
+            app:boxBackgroundColor="@color/white">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:text="Category"/>
-        <com.fangs.apar_app.utils.HelveticaNormalTextView
-            android:id="@+id/tv_search_product_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:text="Price"/>
+            style="@style/CustomOutlinedBox"
+            android:hint="Price"
+            app:boxBackgroundColor="@color/white">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:textColor="@color/black"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
