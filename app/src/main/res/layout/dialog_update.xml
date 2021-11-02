@@ -45,6 +45,7 @@
             android:hint="Name"
             app:boxBackgroundColor="@color/white">
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_update_product_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"/>
@@ -74,6 +75,7 @@
             android:hint="Price"
             app:boxBackgroundColor="@color/white">
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_update_product_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"

@@ -38,26 +38,58 @@
         android:orientation="vertical"
         android:padding="15dp">
 
-        <com.fangs.apar_app.utils.HelveticaNormalTextView
-            android:id="@+id/tv_search_product_name"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Name"
-            android:textColor="@color/black" />
-        <com.fangs.apar_app.utils.HelveticaNormalTextView
-            android:id="@+id/tv_search_product_category"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <com.fangs.apar_app.utils.HelveticaNormalTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name: "
+                android:textColor="@color/black" />
+            <com.fangs.apar_app.utils.HelveticaNormalTextView
+                android:id="@+id/tv_search_product_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="product name"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:text="Category"/>
-        <com.fangs.apar_app.utils.HelveticaNormalTextView
-            android:id="@+id/tv_search_product_price"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <com.fangs.apar_app.utils.HelveticaNormalTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Category: "
+                android:textColor="@color/black" />
+            <com.fangs.apar_app.utils.HelveticaNormalTextView
+                android:id="@+id/tv_search_product_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="product name"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:text="Price"/>
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <com.fangs.apar_app.utils.HelveticaNormalTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Price: "
+                android:textColor="@color/black" />
+            <com.fangs.apar_app.utils.HelveticaNormalTextView
+                android:id="@+id/tv_search_product_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="product name"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+
 
         <LinearLayout
             android:layout_width="match_parent"

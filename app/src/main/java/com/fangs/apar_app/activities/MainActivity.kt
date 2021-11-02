@@ -17,6 +17,7 @@ import com.fangs.apar_app.fragments.PurchaseFragment
 import com.fangs.apar_app.fragments.ViewOrderFragment
 import com.fangs.apar_app.utils.HelveticaNormalTextView
 import com.google.android.material.navigation.NavigationView
+import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -140,9 +141,9 @@ class MainActivity : BaseActivity() {
                     .addOnSuccessListener { documents ->
                         
                         for(document in documents){
-                            productName.text = "Name: ${document["name"]}"
-                            productCategory.text = "Category: ${ document["category"]}"
-                            productPrice.text = "Price: ${document["price"]}"
+                            productName.text = document["name"].toString()
+                            productCategory.text = document["category"].toString()
+                            productPrice.text = document["price"].toString()
 
                             Toast.makeText(this, "Search Complete.", Toast.LENGTH_SHORT).show()
                             
@@ -201,6 +202,12 @@ class MainActivity : BaseActivity() {
                     }
 
                     //update item selected
+                    //set default text of editTexts to current product data
+                    val updateProductName = updateDialog.findViewById<TextInputEditText>(R.id.et_update_product_name)
+                    val updateProductPrice = updateDialog.findViewById<TextInputEditText>(R.id.et_update_product_price)
+
+                    updateProductName.setText(productName.text.toString())
+                    updateProductPrice.setText(productPrice.text.toString())
 
 
 
