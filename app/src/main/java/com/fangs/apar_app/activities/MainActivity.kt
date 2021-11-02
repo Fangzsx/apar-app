@@ -1,6 +1,5 @@
 package com.fangs.apar_app.activities
 
-import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
@@ -12,6 +11,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.fangs.apar_app.R
+import com.fangs.apar_app.R.id.sp_update
 import com.fangs.apar_app.databinding.ActivityMainBinding
 import com.fangs.apar_app.fragments.PurchaseFragment
 import com.fangs.apar_app.fragments.ViewOrderFragment
@@ -98,7 +98,6 @@ class MainActivity : BaseActivity() {
         binding.sideNavBar.setNavigationItemSelectedListener(sideNav)
     }
 
-    @SuppressLint("SetTextI18n")
     private fun manageToolbar() {
 
         //search
@@ -121,7 +120,7 @@ class MainActivity : BaseActivity() {
         autoComplete.setAdapter(arrayAdapter)
 
         autoComplete.onItemClickListener =
-            AdapterView.OnItemClickListener { parent, view, position, id ->
+            AdapterView.OnItemClickListener { _, _, position, _ ->
                 
                 //get current item
                 val item = arrayAdapter.getItem(position)
@@ -162,7 +161,7 @@ class MainActivity : BaseActivity() {
                     updateDialog.setCancelable(false)
 
                     //populate spinner
-                    val spinnerUpdate = updateDialog.findViewById<Spinner>(R.id.sp_update)
+                    val spinnerUpdate = updateDialog.findViewById<Spinner>(sp_update)
                     ArrayAdapter.createFromResource(
                         this, R.array.products_category,
                         R.layout.support_simple_spinner_dropdown_item
@@ -189,9 +188,14 @@ class MainActivity : BaseActivity() {
 
                             override fun onNothingSelected(parent: AdapterView<*>?) {
 
-                            }
+                             }
 
                         }
+
+
+                        //set default selected item = current item
+                        spinnerUpdate.setSelection(adapter.getPosition(productCategory.text.toString().uppercase()))
+
                     }
 
 
@@ -208,6 +212,10 @@ class MainActivity : BaseActivity() {
 
                     updateProductName.setText(productName.text.toString())
                     updateProductPrice.setText(productPrice.text.toString())
+
+
+
+
 
 
 
