@@ -160,6 +160,12 @@ class MainActivity : BaseActivity() {
                     //open dialog
                     val updateDialog = Dialog(this, R.style.CustomDialog)
                     updateDialog.setContentView(R.layout.dialog_update)
+                    updateDialog.setCancelable(false)
+
+                    //cancel
+
+
+
                     updateDialog.show()
 
 

@@ -71,19 +71,20 @@
             android:layout_marginTop="10dp"
             android:gravity="end"
             android:orientation="horizontal">
+            <com.fangs.apar_app.utils.HelveticaBoldTextView
+                android:id="@+id/tv_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="8dp"
+                android:text="UPDATE"/>
             <com.fangs.apar_app.utils.HelveticaNormalTextView
                 android:id="@+id/tv_update"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
-                android:text="UPDATE"/>
-            <com.fangs.apar_app.utils.HelveticaBoldTextView
-                android:id="@+id/tv_delete"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/red"
-                android:layout_marginStart="10dp"
-                android:text="DELETE"/>
+                android:text="CANCEL"/>
 
         </LinearLayout>
 
