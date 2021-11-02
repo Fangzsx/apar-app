@@ -6,11 +6,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.widget.SearchView
+import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.fangs.apar_app.R
@@ -162,7 +160,47 @@ class MainActivity : BaseActivity() {
                     updateDialog.setContentView(R.layout.dialog_update)
                     updateDialog.setCancelable(false)
 
+                    //populate spinner
+                    val spinnerUpdate = updateDialog.findViewById<Spinner>(R.id.sp_update)
+                    ArrayAdapter.createFromResource(
+                        this, R.array.products_category,
+                        R.layout.support_simple_spinner_dropdown_item
+                    ).also { adapter ->
+                        adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item)
+
+
+                        spinnerUpdate.adapter = adapter
+
+                        //set text color of selected text
+                        spinnerUpdate.onItemSelectedListener = object :
+
+
+                            AdapterView.OnItemSelectedListener{
+                            override fun onItemSelected(
+                                parent: AdapterView<*>?,
+                                view: View?,
+                                position: Int,
+                                id: Long
+                            ) {
+                                val tv = spinnerUpdate.selectedView as TextView
+                                tv.setTextColor(ContextCompat.getColor(applicationContext, R.color.black))
+                            }
+
+                            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+                            }
+
+                        }
+                    }
+
+
                     //cancel
+                    val cancel = updateDialog.findViewById<HelveticaNormalTextView>(R.id.tv_cancel)
+                    cancel.setOnClickListener {
+                        updateDialog.dismiss()
+                    }
+
+                    //update item selected
 
 
 
