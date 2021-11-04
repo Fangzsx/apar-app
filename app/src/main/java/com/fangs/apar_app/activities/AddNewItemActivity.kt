@@ -88,6 +88,8 @@ class AddNewItemActivity : BaseActivity(){
         val newProductPrice = binding.etNewProductPrice.text.toString().trim()
         val newProductCategory = binding.spNewProductCategory.selectedItem.toString()
 
+
+
         return when{
             TextUtils.isEmpty(newProductName) -> {
                 showErrorSnackBar(binding.root, "Product name cannot be empty.", true)
@@ -105,8 +107,10 @@ class AddNewItemActivity : BaseActivity(){
                 false
             }
 
-            //check if this item already exist on firestore
-            
+            //check if this item already exist on firestore, if exist, return false
+            //TODO
+
+
 
 
             else -> {
