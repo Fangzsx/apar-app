@@ -74,8 +74,6 @@ class MainActivity : BaseActivity() {
                 }
 
             }
-
-
         }
 
 
@@ -124,6 +122,35 @@ class MainActivity : BaseActivity() {
         val autoCompleteTextView = searchView.findViewById<AutoCompleteTextView>(R.id.search_src_text)
         val searchViewAdapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, suggestions)
         autoCompleteTextView.setAdapter(searchViewAdapter)
+
+
+        autoCompleteTextView.setOnItemClickListener { _, _, position, _ ->
+
+            val currentProduct = searchViewAdapter.getItem(position)
+
+            //display data of current product using dialog
+            val showItemDialog = Dialog(this, R.style.CustomDialog)
+            showItemDialog.setContentView(R.layout.dialog_search)
+            val dialogProdName = showItemDialog.findViewById<HelveticaNormalTextView>(R.id.tv_search_product_name)
+            val dialogProductCategory = showItemDialog.findViewById<HelveticaNormalTextView>(R.id.tv_search_product_category)
+            val dialogProductPrice = showItemDialog.findViewById<HelveticaNormalTextView>(R.id.tv_search_product_price)
+
+            productsCollectionRef.whereEqualTo("name", currentProduct!!.lowercase()).get()
+                .addOnSuccessListener { documents ->
+                    for (document in documents) {
+                        dialogProdName.text = document["name"].toString()
+                        dialogProductCategory.text = document["category"].toString()
+                        dialogProductPrice.text = document["price"].toString()
+                    }
+                }
+                .addOnFailureListener { exception ->
+                    Log.e("manage toolbar", exception.message.toString())
+                }
+
+            showItemDialog.show()
+
+
+        }
 
 
 
