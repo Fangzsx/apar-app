@@ -26,6 +26,8 @@ import com.google.firebase.ktx.Firebase
 class MainActivity : BaseActivity() {
 
     private lateinit var binding : ActivityMainBinding
+    private var suggestions = mutableListOf<String>()
+    private val productsCollectionRef = Firebase.firestore.collection("products")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,10 +35,9 @@ class MainActivity : BaseActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-
-
         showErrorSnackBar(binding.root, "Welcome Jay!", false)
+        getRealTimeUpdates()
+
 
 
         //open drawer
@@ -60,7 +61,25 @@ class MainActivity : BaseActivity() {
         }
     }
 
+    private fun getRealTimeUpdates(){
+        productsCollectionRef.addSnapshotListener { snapshot, error ->
+            error?.let {
+                Toast.makeText(this, error.message, Toast.LENGTH_SHORT).show()
+                return@addSnapshotListener
+            }
 
+            snapshot?.let {
+                for(document in it){
+                    suggestions.add(document["name"].toString())
+                }
+
+            }
+
+
+        }
+
+
+    }
 
 
     private fun manageBottomNavigation() {
@@ -88,6 +107,7 @@ class MainActivity : BaseActivity() {
                 R.id.side_bar_add_item -> {
                     Intent(this, AddNewItemActivity::class.java).also {
                         startActivity(it)
+                        finish()
                     }
                     return@OnNavigationItemSelectedListener true
                 }
@@ -100,11 +120,10 @@ class MainActivity : BaseActivity() {
     }
 
     private fun manageToolbar() {
-
-        //search
         val searchView = binding.toolbar.searchView
-        
-
+        val autoCompleteTextView = searchView.findViewById<AutoCompleteTextView>(R.id.search_src_text)
+        val searchViewAdapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, suggestions)
+        autoCompleteTextView.setAdapter(searchViewAdapter)
 
 
 
@@ -116,6 +135,8 @@ class MainActivity : BaseActivity() {
         transaction.replace(R.id.fragment_container, fragment)
         transaction.commit()
     }
+
+
 
 
 }
