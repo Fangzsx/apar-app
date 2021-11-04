@@ -12,10 +12,13 @@ import androidx.core.content.ContextCompat
 import com.fangs.apar_app.R
 import com.fangs.apar_app.databinding.ActivityAddNewItemBinding
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class AddNewItemActivity : BaseActivity(){
 
     private lateinit var binding : ActivityAddNewItemBinding
+    private val productsCollectionRef = Firebase.firestore.collection("products")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityAddNewItemBinding.inflate(layoutInflater)
@@ -57,8 +60,7 @@ class AddNewItemActivity : BaseActivity(){
 
 
             //open firestore
-            val root = FirebaseFirestore.getInstance()
-            root.collection("products").add(
+            productsCollectionRef.add(
                 hashMapOf(
                     "category" to productCategory,
                     "name" to productName,
@@ -102,6 +104,10 @@ class AddNewItemActivity : BaseActivity(){
                 showErrorSnackBar(binding.root, "Please select a valid category.", true)
                 false
             }
+
+            //check if this item already exist on firestore
+            
+
 
             else -> {
                 true
