@@ -15,6 +15,7 @@ import com.fangs.apar_app.R.id.sp_update
 import com.fangs.apar_app.databinding.ActivityMainBinding
 import com.fangs.apar_app.fragments.PurchaseFragment
 import com.fangs.apar_app.fragments.ViewOrderFragment
+import com.fangs.apar_app.utils.HelveticaBoldTextView
 import com.fangs.apar_app.utils.HelveticaNormalTextView
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.textfield.TextInputEditText
@@ -102,172 +103,11 @@ class MainActivity : BaseActivity() {
 
         //search
         val searchView = binding.toolbar.searchView
-        val productsRef = Firebase.firestore.collection("products")
-        val productList = mutableListOf<String>()
-        //get all products name in firebase
-        productsRef.get()
-            .addOnSuccessListener { documents ->
-                for(document in documents){
-                    productList.add(document["name"].toString())
-                }
-            }
-            .addOnFailureListener { exception ->
-                Toast.makeText(this, "auto complete text error. ${exception.message}", Toast.LENGTH_SHORT).show()
-            }
-
-        val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, productList)
-        val autoComplete = searchView.findViewById<AutoCompleteTextView>(R.id.search_src_text)
-        autoComplete.setAdapter(arrayAdapter)
-
-        autoComplete.onItemClickListener =
-            AdapterView.OnItemClickListener { _, _, position, _ ->
-                
-                //get current item
-                val item = arrayAdapter.getItem(position)
-                val dialog = Dialog(this@MainActivity, R.style.CustomDialog)
-                dialog.setContentView(R.layout.dialog_search)
-                
-                
-                //layout fields
-                val productName = dialog.findViewById<HelveticaNormalTextView>(R.id.tv_search_product_name)
-                val productCategory = dialog.findViewById<HelveticaNormalTextView>(R.id.tv_search_product_category)
-                val productPrice = dialog.findViewById<HelveticaNormalTextView>(R.id.tv_search_product_price)
-                
-                
-                
-                //get all products, get document where name = search result 
-                productsRef.whereEqualTo("name", item!!.lowercase()).get()
-                    .addOnSuccessListener { documents ->
-                        
-                        for(document in documents){
-                            productName.text = document["name"].toString()
-                            productCategory.text = document["category"].toString()
-                            productPrice.text = document["price"].toString()
-
-                            Toast.makeText(this, "Search Complete.", Toast.LENGTH_SHORT).show()
-                            
-                        }
-
-                    }
-                    .addOnFailureListener { 
-                        
-                    }
-
-                //update item dialog
-                dialog.findViewById<HelveticaNormalTextView>(R.id.tv_update).setOnClickListener {
-                    //open dialog
-                    val updateDialog = Dialog(this, R.style.CustomDialog)
-                    updateDialog.setContentView(R.layout.dialog_update)
-                    updateDialog.setCancelable(false)
-
-                    //populate spinner
-                    val spinnerUpdate = updateDialog.findViewById<Spinner>(sp_update)
-                    ArrayAdapter.createFromResource(
-                        this, R.array.products_category,
-                        R.layout.support_simple_spinner_dropdown_item
-                    ).also { adapter ->
-                        adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item)
-
-
-                        spinnerUpdate.adapter = adapter
-
-                        //set text color of selected text
-                        spinnerUpdate.onItemSelectedListener = object :
-
-
-                            AdapterView.OnItemSelectedListener{
-                            override fun onItemSelected(
-                                parent: AdapterView<*>?,
-                                view: View?,
-                                position: Int,
-                                id: Long
-                            ) {
-                                val tv = spinnerUpdate.selectedView as TextView
-                                tv.setTextColor(ContextCompat.getColor(applicationContext, R.color.black))
-                            }
-
-                            override fun onNothingSelected(parent: AdapterView<*>?) {
-
-                             }
-
-                        }
-
-
-                        //set default selected item = current item
-                        spinnerUpdate.setSelection(adapter.getPosition(productCategory.text.toString().uppercase()))
-
-                    }
-
-
-                    //cancel
-                    val cancel = updateDialog.findViewById<HelveticaNormalTextView>(R.id.tv_cancel)
-                    cancel.setOnClickListener {
-                        updateDialog.dismiss()
-                    }
-
-                    //update item selected
-                    //set default text of editTexts to current product data
-                    val updateProductName = updateDialog.findViewById<TextInputEditText>(R.id.et_update_product_name)
-                    val updateProductPrice = updateDialog.findViewById<TextInputEditText>(R.id.et_update_product_price)
-
-                    updateProductName.setText(productName.text.toString())
-                    updateProductPrice.setText(productPrice.text.toString())
+        
 
 
 
 
-
-
-
-                    updateDialog.show()
-
-
-                }
-
-
-
-
-
-                dialog.show()
-            }
-
-
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-
-            override fun onQueryTextSubmit(query: String?): Boolean {
-//                searchView.clearFocus()
-//                if (query != null) {
-//
-//                    productsRef.whereEqualTo("name", query.lowercase()).get()
-//
-//
-//                        .addOnSuccessListener { documents ->
-//                            for(document in documents){
-//
-//                                Toast.makeText(this@MainActivity, "Item found! : ${document.data}", Toast.LENGTH_SHORT).show()
-//                            }
-//
-//
-//                        }
-//                        .addOnFailureListener { exception ->
-//                            Toast.makeText(this@MainActivity, exception.message, Toast.LENGTH_SHORT).show()
-//                        }
-//                    //toggle keyboard off
-////
-//
-//                }
-                return false
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-
-                arrayAdapter.filter.filter(newText)
-
-                return false
-            }
-
-
-        })
     }
 
     private fun replaceFragment(fragment : Fragment) {

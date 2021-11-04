@@ -82,7 +82,6 @@ class AddNewItemActivity : BaseActivity(){
 
     private fun validateProduct() : Boolean{
 
-        //TODO PRIORITY LEVEL : TOP
         val newProductName = binding.etNewProductName.text.toString().trim()
         val newProductPrice = binding.etNewProductPrice.text.toString().trim()
         val newProductCategory = binding.spNewProductCategory.selectedItem.toString()
