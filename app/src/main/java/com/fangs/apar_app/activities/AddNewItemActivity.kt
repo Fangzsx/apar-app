@@ -11,8 +11,10 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.fangs.apar_app.R
 import com.fangs.apar_app.databinding.ActivityAddNewItemBinding
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.tasks.await
 
 class AddNewItemActivity : BaseActivity(){
 
@@ -24,7 +26,6 @@ class AddNewItemActivity : BaseActivity(){
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-
         populateSpinner()
 
         //add to database
@@ -35,8 +36,6 @@ class AddNewItemActivity : BaseActivity(){
             addItemToFirebase()
 
         }
-
-
         //back key
         binding.navBack.setNavigationOnClickListener {
             Intent(this, MainActivity::class.java).also {
@@ -44,9 +43,7 @@ class AddNewItemActivity : BaseActivity(){
             }
             finish()
         }
-        
     }
-
     private fun addItemToFirebase(){
 
         if(validateProduct()){
@@ -54,10 +51,6 @@ class AddNewItemActivity : BaseActivity(){
             val productName = binding.etNewProductName.text.toString().trim().lowercase()
             val productPrice = binding.etNewProductPrice.text.toString().trim().toDouble()
             val productCategory = binding.spNewProductCategory.selectedItem.toString().lowercase()
-
-
-
-
             //open firestore
             productsCollectionRef.add(
                 hashMapOf(
@@ -66,7 +59,6 @@ class AddNewItemActivity : BaseActivity(){
                     "price" to productPrice
                 )
             )
-
             Toast.makeText(applicationContext, "A new item was added to database.", Toast.LENGTH_SHORT).show()
             Intent(this, MainActivity::class.java).also {
                 startActivity(it)
@@ -86,46 +78,30 @@ class AddNewItemActivity : BaseActivity(){
         val newProductName = binding.etNewProductName.text.toString().trim()
         val newProductPrice = binding.etNewProductPrice.text.toString().trim()
         val newProductCategory = binding.spNewProductCategory.selectedItem.toString()
-
-
-
         return when{
             TextUtils.isEmpty(newProductName) -> {
                 showErrorSnackBar(binding.root, "Product name cannot be empty.", true)
                 false
-
             }
             TextUtils.isEmpty(newProductPrice) -> {
                 showErrorSnackBar(binding.root, "Price cannot be empty.", true)
                 false
             }
-
             //make sure the first element is not a valid category
             newProductCategory == binding.spNewProductCategory.getItemAtPosition(0) -> {
                 showErrorSnackBar(binding.root, "Please select a valid category.", true)
                 false
             }
-
             //check if this item already exist on firestore, if exist, return false
             //TODO
-
-
 
 
             else -> {
                 true
             }
-
         }
-
-
-
-
-
-
-
     }
-
+    
 
 
 
