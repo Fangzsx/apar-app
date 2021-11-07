@@ -14,6 +14,9 @@ import com.fangs.apar_app.databinding.ActivityAddNewItemBinding
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.Runnable
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
 class AddNewItemActivity : BaseActivity(){
@@ -32,9 +35,10 @@ class AddNewItemActivity : BaseActivity(){
         binding.btnAddToDatabase.setOnClickListener {
             //hide keyboard on btn click
             hideKeyboard(currentFocus ?: View(this))
-
-            addItemToFirebase()
-
+            
+            GlobalScope.launch {
+                addItemToFirebase()
+            }
         }
         //back key
         binding.navBack.setNavigationOnClickListener {
@@ -44,7 +48,7 @@ class AddNewItemActivity : BaseActivity(){
             finish()
         }
     }
-    private fun addItemToFirebase(){
+    private suspend fun addItemToFirebase(){
 
         if(validateProduct()){
 
@@ -59,13 +63,22 @@ class AddNewItemActivity : BaseActivity(){
                     "price" to productPrice
                 )
             )
-            Toast.makeText(applicationContext, "A new item was added to database.", Toast.LENGTH_SHORT).show()
+
+            Thread(Runnable {
+                this.runOnUiThread {
+                    Toast.makeText(
+                        this@AddNewItemActivity,
+                        "A new item was added to database.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }).start()
+
+
             Intent(this, MainActivity::class.java).also {
                 startActivity(it)
             }
             finish()
-
-
         }
 
     }
@@ -73,7 +86,7 @@ class AddNewItemActivity : BaseActivity(){
 
 
 
-    private fun validateProduct() : Boolean{
+    private suspend fun validateProduct() : Boolean{
 
         val newProductName = binding.etNewProductName.text.toString().trim()
         val newProductPrice = binding.etNewProductPrice.text.toString().trim()
@@ -93,7 +106,10 @@ class AddNewItemActivity : BaseActivity(){
                 false
             }
             //check if this item already exist on firestore, if exist, return false
-            //TODO
+            isProductExisting(newProductName) ->{
+                showErrorSnackBar(binding.root, "Product already exists.", true)
+                false
+            }
 
 
             else -> {
@@ -101,13 +117,25 @@ class AddNewItemActivity : BaseActivity(){
             }
         }
     }
-    
 
+    private suspend fun getDocumentsOnFirestore() : List<DocumentSnapshot>{
+        val snapshot = productsCollectionRef.get().await()
+        return snapshot.documents
+    }
 
+    private suspend fun isProductExisting(productName : String) : Boolean{
+        var isExisting = false
+        val documents = getDocumentsOnFirestore()
+        for(document in documents){
+            if(document["name"].toString() == productName){
+                isExisting = true
+            }
 
+        }
+        return isExisting
+    }
 
     private fun populateSpinner() {
-
         val spinner = binding.spNewProductCategory
 
         ArrayAdapter.createFromResource(
@@ -115,14 +143,9 @@ class AddNewItemActivity : BaseActivity(){
             R.layout.support_simple_spinner_dropdown_item
         ).also { adapter ->
             adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item)
-
-
             spinner.adapter = adapter
-
             //set text color of selected text
             spinner.onItemSelectedListener = object :
-
-
                 AdapterView.OnItemSelectedListener{
                 override fun onItemSelected(
                     parent: AdapterView<*>?,

@@ -35,7 +35,6 @@ class MainActivity : BaseActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        showErrorSnackBar(binding.root, "Welcome Jay!", false)
         getRealTimeUpdates()
 
 
