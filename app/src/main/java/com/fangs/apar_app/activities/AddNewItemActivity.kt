@@ -11,7 +11,6 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.fangs.apar_app.R
 import com.fangs.apar_app.databinding.ActivityAddNewItemBinding
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -123,7 +122,13 @@ class AddNewItemActivity : BaseActivity(){
 
 
 
+
+
     }
+
+
+
+
 
     private fun populateSpinner() {
 

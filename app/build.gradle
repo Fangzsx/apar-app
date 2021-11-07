@@ -53,6 +53,9 @@ dependencies {
     //firestore
     implementation 'com.google.firebase:firebase-firestore-ktx'
 
+    //coroutine
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
+
 
     //navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
