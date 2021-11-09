@@ -131,6 +131,7 @@ class MainActivity : BaseActivity() {
             val dialogProdName = showItemDialog.findViewById<HelveticaNormalTextView>(R.id.tv_search_product_name)
             val dialogProductCategory = showItemDialog.findViewById<HelveticaNormalTextView>(R.id.tv_search_product_category)
             val dialogProductPrice = showItemDialog.findViewById<HelveticaNormalTextView>(R.id.tv_search_product_price)
+            var productID : String? = null
 
             productsCollectionRef.whereEqualTo("name", currentProduct!!.lowercase()).get()
                 .addOnSuccessListener { documents ->
@@ -138,6 +139,7 @@ class MainActivity : BaseActivity() {
                         dialogProdName.text = document["name"].toString()
                         dialogProductCategory.text = document["category"].toString()
                         dialogProductPrice.text = document["price"].toString()
+                        productID = document.id
                     }
                 }
                 .addOnFailureListener { exception ->
@@ -167,11 +169,35 @@ class MainActivity : BaseActivity() {
 
                 //update item
                 val tvSubmitToFirestore = updateDialog.findViewById<HelveticaBoldTextView>(R.id.tv_update_item)
+
+                //TODO allow user to update an item with the same name provided that it should only exist once
+                // and must be unique
+                
                 tvSubmitToFirestore.setOnClickListener {
                     //validate item: check if the product name already exists.
                     if(suggestions.contains(etProductName.text.toString())){
                         Toast.makeText(this@MainActivity, "A product with the same name already exist.", Toast.LENGTH_SHORT).show()
                     }
+
+                    else{
+                        productsCollectionRef.document(productID!!)
+                            .update(mapOf(
+                                "name" to etProductName.text.toString().lowercase(),
+                                "category" to spinner.selectedItem.toString().lowercase(),
+                                "price" to etProductPrice.text.toString().lowercase()
+                            ))
+
+                        Toast.makeText(this@MainActivity, "Product with ID :$productID was updated.", Toast.LENGTH_SHORT).show()
+                        overridePendingTransition(0, 0);
+                        finish();
+                        overridePendingTransition(0, 0);
+                        startActivity(intent);
+                        overridePendingTransition(0, 0);
+
+                    }
+
+
+
                 }
 
 
