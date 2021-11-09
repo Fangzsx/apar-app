@@ -8,12 +8,12 @@ import android.view.View
 import android.widget.*
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.fangs.apar_app.R
 import com.fangs.apar_app.databinding.ActivityMainBinding
 import com.fangs.apar_app.fragments.PurchaseFragment
 import com.fangs.apar_app.fragments.ViewOrderFragment
+import com.fangs.apar_app.utils.HelveticaBoldTextView
 import com.fangs.apar_app.utils.HelveticaNormalTextView
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.textfield.TextInputEditText
@@ -33,7 +33,6 @@ class MainActivity : BaseActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         getRealTimeUpdates()
 
 
@@ -42,8 +41,6 @@ class MainActivity : BaseActivity() {
         binding.toolbar.navDrawerToolbar.setNavigationOnClickListener {
             binding.drawer.openDrawer(GravityCompat.START)
         }
-
-
         manageToolbar()
         manageSideNavigation()
         manageBottomNavigation()
@@ -118,6 +115,9 @@ class MainActivity : BaseActivity() {
         val searchView = binding.toolbar.searchView
         val autoCompleteTextView = searchView.findViewById<AutoCompleteTextView>(R.id.search_src_text)
         val searchViewAdapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, suggestions)
+
+
+
         autoCompleteTextView.setAdapter(searchViewAdapter)
 
 
@@ -165,8 +165,16 @@ class MainActivity : BaseActivity() {
                 etProductName.setText(dialogProdName.text.toString())
                 etProductPrice.setText(dialogProductPrice.text.toString())
 
-                //validate item: check if the product name already exists.
-                
+                //update item
+                val tvSubmitToFirestore = updateDialog.findViewById<HelveticaBoldTextView>(R.id.tv_update_item)
+                tvSubmitToFirestore.setOnClickListener {
+                    //validate item: check if the product name already exists.
+                    if(suggestions.contains(etProductName.text.toString())){
+                        Toast.makeText(this@MainActivity, "A product with the same name already exist.", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+
 
                 //dismiss/cancel update dialog
                 val tvCancelUpdate = updateDialog.findViewById<HelveticaNormalTextView>(R.id.tv_cancel_update)
@@ -178,6 +186,7 @@ class MainActivity : BaseActivity() {
             showItemDialog.show()
         }
     }
+
 
     private fun populateSpinner(spinner : Spinner, defaultValue : String) {
         ArrayAdapter.createFromResource(
