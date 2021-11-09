@@ -4,8 +4,11 @@ import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.*
+import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.fangs.apar_app.R
 import com.fangs.apar_app.databinding.ActivityMainBinding
@@ -13,6 +16,7 @@ import com.fangs.apar_app.fragments.PurchaseFragment
 import com.fangs.apar_app.fragments.ViewOrderFragment
 import com.fangs.apar_app.utils.HelveticaNormalTextView
 import com.google.android.material.navigation.NavigationView
+import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -106,7 +110,6 @@ class MainActivity : BaseActivity() {
             }
             false
         }
-
         //set sideNav = navigation for sidebar
         binding.sideNavBar.setNavigationItemSelectedListener(sideNav)
     }
@@ -150,22 +153,60 @@ class MainActivity : BaseActivity() {
                 val updateDialog = Dialog(this, R.style.CustomDialog)
                 updateDialog.setContentView(R.layout.dialog_update)
                 updateDialog.setCancelable(false)
-                updateDialog.show()
 
+                //spinner settings
+                val spinner = updateDialog.findViewById<Spinner>(R.id.sp_update)
+                populateSpinner(spinner, dialogProductCategory.text.toString())
+
+                //set default values of update dialog fields == the current product's properties(name, category, price)
+                val etProductName = updateDialog.findViewById<TextInputEditText>(R.id.et_update_product_name)
+                val etProductPrice = updateDialog.findViewById<TextInputEditText>(R.id.et_update_product_price)
+
+                etProductName.setText(dialogProdName.text.toString())
+                etProductPrice.setText(dialogProductPrice.text.toString())
+
+                //validate item: check if the product name already exists.
+                
+
+                //dismiss/cancel update dialog
                 val tvCancelUpdate = updateDialog.findViewById<HelveticaNormalTextView>(R.id.tv_cancel_update)
                 tvCancelUpdate.setOnClickListener {
                     updateDialog.dismiss()
                 }
-
+                updateDialog.show()
             }
-
-
-
             showItemDialog.show()
         }
+    }
 
+    private fun populateSpinner(spinner : Spinner, defaultValue : String) {
+        ArrayAdapter.createFromResource(
+            this, R.array.products_category,
+            R.layout.support_simple_spinner_dropdown_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item)
+            spinner.adapter = adapter
+            val defaultIndex = adapter.getPosition(defaultValue.uppercase())
+            spinner.setSelection(defaultIndex)
 
+            //set text color of selected text
+            spinner.onItemSelectedListener = object :
+                AdapterView.OnItemSelectedListener{
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
 
+                    val tv = spinner.selectedView as TextView
+                    tv.setTextColor(ContextCompat.getColor(applicationContext, R.color.black))
+                }
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+
+                }
+            }
+        }
     }
 
     private fun replaceFragment(fragment : Fragment) {
@@ -174,8 +215,4 @@ class MainActivity : BaseActivity() {
         transaction.replace(R.id.fragment_container, fragment)
         transaction.commit()
     }
-
-
-
-
 }
