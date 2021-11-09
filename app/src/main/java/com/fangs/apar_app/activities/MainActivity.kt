@@ -141,9 +141,27 @@ class MainActivity : BaseActivity() {
                     Log.e("manage toolbar", exception.message.toString())
                 }
 
+            //update item
+            val tvUpdate = showItemDialog.findViewById<HelveticaNormalTextView>(R.id.tv_update)
+            tvUpdate.setOnClickListener {
+                //close search dialog
+                showItemDialog.dismiss()
+
+                val updateDialog = Dialog(this, R.style.CustomDialog)
+                updateDialog.setContentView(R.layout.dialog_update)
+                updateDialog.setCancelable(false)
+                updateDialog.show()
+
+                val tvCancelUpdate = updateDialog.findViewById<HelveticaNormalTextView>(R.id.tv_cancel_update)
+                tvCancelUpdate.setOnClickListener {
+                    updateDialog.dismiss()
+                }
+
+            }
+
+
+
             showItemDialog.show()
-
-
         }
 
 
