@@ -25,6 +25,8 @@ class AddNewItemActivity : BaseActivity(){
     private val productsCollectionRef = Firebase.firestore.collection("products")
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        supportActionBar?.hide()
+
         binding = ActivityAddNewItemBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)

@@ -4,21 +4,15 @@ import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.*
-import androidx.appcompat.widget.SearchView
-import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.fangs.apar_app.R
-import com.fangs.apar_app.R.id.sp_update
 import com.fangs.apar_app.databinding.ActivityMainBinding
 import com.fangs.apar_app.fragments.PurchaseFragment
 import com.fangs.apar_app.fragments.ViewOrderFragment
-import com.fangs.apar_app.utils.HelveticaBoldTextView
 import com.fangs.apar_app.utils.HelveticaNormalTextView
 import com.google.android.material.navigation.NavigationView
-import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -30,6 +24,7 @@ class MainActivity : BaseActivity() {
     private val productsCollectionRef = Firebase.firestore.collection("products")
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        supportActionBar?.hide()
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
