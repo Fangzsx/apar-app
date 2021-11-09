@@ -35,7 +35,7 @@ class AddNewItemActivity : BaseActivity(){
         binding.btnAddToDatabase.setOnClickListener {
             //hide keyboard on btn click
             hideKeyboard(currentFocus ?: View(this))
-            
+
             GlobalScope.launch {
                 addItemToFirebase()
             }
