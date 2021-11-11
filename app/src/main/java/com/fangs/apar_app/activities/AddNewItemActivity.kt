@@ -113,6 +113,11 @@ class AddNewItemActivity : BaseActivity(){
                 false
             }
 
+            newProductPrice.toDouble() <=  0 -> {
+                showErrorSnackBar(binding.root, "Price cannot be equal or less than 0", true)
+                false
+            }
+
 
             else -> {
                 true

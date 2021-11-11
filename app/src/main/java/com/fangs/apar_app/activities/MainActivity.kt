@@ -3,6 +3,7 @@ package com.fangs.apar_app.activities
 import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import android.widget.*
@@ -20,6 +21,7 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.tasks.await
 
 class MainActivity : BaseActivity() {
 
@@ -172,29 +174,16 @@ class MainActivity : BaseActivity() {
 
                 //TODO allow user to update an item with the same name provided that it should only exist once
                 // and must be unique
-                
+
                 tvSubmitToFirestore.setOnClickListener {
-                    //validate item: check if the product name already exists.
-                    if(suggestions.contains(etProductName.text.toString())){
-                        Toast.makeText(this@MainActivity, "A product with the same name already exist.", Toast.LENGTH_SHORT).show()
-                    }
 
-                    else{
-                        productsCollectionRef.document(productID!!)
-                            .update(mapOf(
-                                "name" to etProductName.text.toString().lowercase(),
-                                "category" to spinner.selectedItem.toString().lowercase(),
-                                "price" to etProductPrice.text.toString().lowercase()
-                            ))
 
-                        Toast.makeText(this@MainActivity, "Product with ID :$productID was updated.", Toast.LENGTH_SHORT).show()
-                        overridePendingTransition(0, 0);
-                        finish();
-                        overridePendingTransition(0, 0);
-                        startActivity(intent);
-                        overridePendingTransition(0, 0);
 
-                    }
+                    val newProductName = etProductName.text.toString().trim()
+                    val newProductCategory = spinner.selectedItem.toString().uppercase()
+                    val newProductPrice = etProductPrice.text.toString().toDouble()
+
+                    validateProduct(newProductName, newProductCategory, newProductPrice)
 
 
 
@@ -202,7 +191,7 @@ class MainActivity : BaseActivity() {
 
 
 
-                //dismiss/cancel update dialog
+                //dismiss/cancel update dialo
                 val tvCancelUpdate = updateDialog.findViewById<HelveticaNormalTextView>(R.id.tv_cancel_update)
                 tvCancelUpdate.setOnClickListener {
                     updateDialog.dismiss()
@@ -211,6 +200,35 @@ class MainActivity : BaseActivity() {
             }
             showItemDialog.show()
         }
+    }
+
+
+    private fun validateProduct(name : String, category : String, price : Double) : Boolean{
+
+        return when{
+            TextUtils.isEmpty(name) -> {
+                showErrorSnackBar(binding.root, "Product name cannot be empty.", true)
+                false
+            }
+            category.uppercase() == "PLEASE SELECT FROM THE FF--" -> {
+                showErrorSnackBar(binding.root, "Select a valid category.", true)
+                false
+            }
+            price <= 0 -> {
+                showErrorSnackBar(binding.root, "Price cannot be less than or equal to 0.", true)
+                false
+            }
+
+
+            else -> {
+                true
+            }
+
+
+        }
+
+
+
     }
 
 
