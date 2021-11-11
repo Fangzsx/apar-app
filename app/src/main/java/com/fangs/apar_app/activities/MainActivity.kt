@@ -19,8 +19,11 @@ import com.fangs.apar_app.utils.HelveticaNormalTextView
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
 class MainActivity : BaseActivity() {
@@ -177,21 +180,21 @@ class MainActivity : BaseActivity() {
 
                 tvSubmitToFirestore.setOnClickListener {
 
-
-
                     val newProductName = etProductName.text.toString().trim()
                     val newProductCategory = spinner.selectedItem.toString().uppercase()
                     val newProductPrice = etProductPrice.text.toString().toDouble()
 
-                    validateProduct(newProductName, newProductCategory, newProductPrice)
+                    GlobalScope.launch {
+                        validateProduct(newProductName, newProductCategory, newProductPrice)
+                    }
 
-
+                    //TODO : allow user to reuse the product name when updating
 
                 }
 
 
 
-                //dismiss/cancel update dialo
+                //dismiss/cancel update dialog
                 val tvCancelUpdate = updateDialog.findViewById<HelveticaNormalTextView>(R.id.tv_cancel_update)
                 tvCancelUpdate.setOnClickListener {
                     updateDialog.dismiss()
@@ -203,7 +206,7 @@ class MainActivity : BaseActivity() {
     }
 
 
-    private fun validateProduct(name : String, category : String, price : Double) : Boolean{
+    private suspend fun validateProduct(name : String, category : String, price : Double) : Boolean{
 
         return when{
             TextUtils.isEmpty(name) -> {
@@ -219,6 +222,11 @@ class MainActivity : BaseActivity() {
                 false
             }
 
+            isExisting(name) -> {
+                showErrorSnackBar(binding.root, "A product with the same name already exist.", true)
+                false
+            }
+
 
             else -> {
                 true
@@ -227,6 +235,15 @@ class MainActivity : BaseActivity() {
 
         }
 
+
+
+    }
+
+    private suspend fun isExisting(productName : String) : Boolean{
+
+        val result = productsCollectionRef.whereEqualTo("name", productName).limit(1).get().await()
+        val documents = result.documents
+        return documents.count() == 1
 
 
     }
