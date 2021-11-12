@@ -48,6 +48,7 @@
                 android:id="@+id/et_update_product_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="text"
                 android:textColor="@color/black"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -90,7 +91,7 @@
             android:gravity="end"
             android:orientation="horizontal">
             <com.fangs.apar_app.utils.HelveticaBoldTextView
-                android:id="@+id/tv_update_item"
+                android:id="@+id/tv_update_item1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"

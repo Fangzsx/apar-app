@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
+import android.view.WindowManager
 import android.widget.*
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
@@ -173,20 +174,14 @@ class MainActivity : BaseActivity() {
                 etProductPrice.setText(dialogProductPrice.text.toString())
 
                 //update item
-                val tvSubmitToFirestore = updateDialog.findViewById<HelveticaBoldTextView>(R.id.tv_update_item)
+                val tvSubmitToFirestore = updateDialog.findViewById<HelveticaBoldTextView>(R.id.tv_update_item1)
 
                 //TODO allow user to update an item with the same name provided that it should only exist once
                 // and must be unique
 
                 tvSubmitToFirestore.setOnClickListener {
 
-                    val newProductName = etProductName.text.toString().trim()
-                    val newProductCategory = spinner.selectedItem.toString().uppercase()
-                    val newProductPrice = etProductPrice.text.toString().toDouble()
 
-                    GlobalScope.launch {
-                        validateProduct(newProductName, newProductCategory, newProductPrice)
-                    }
 
                     //TODO : allow user to reuse the product name when updating
 
