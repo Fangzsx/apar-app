@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
-import android.view.WindowManager
 import android.widget.*
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
@@ -20,11 +19,10 @@ import com.fangs.apar_app.utils.HelveticaNormalTextView
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.tasks.await
 
 class MainActivity : BaseActivity() {
@@ -174,16 +172,21 @@ class MainActivity : BaseActivity() {
                 etProductPrice.setText(dialogProductPrice.text.toString())
 
                 //update item
-                val tvSubmitToFirestore = updateDialog.findViewById<HelveticaBoldTextView>(R.id.tv_update_item1)
+                val tvUpdateDoc = updateDialog.findViewById<HelveticaBoldTextView>(R.id.tv_update_item1)
 
                 //TODO allow user to update an item with the same name provided that it should only exist once
                 // and must be unique
 
-                tvSubmitToFirestore.setOnClickListener {
-
-
-
+                tvUpdateDoc.setOnClickListener {
                     //TODO : allow user to reuse the product name when updating
+
+                    runBlocking {
+                        launch {
+
+                        }
+                    }
+
+
 
                 }
 
