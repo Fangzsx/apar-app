@@ -22,11 +22,12 @@
             android:layout_marginEnd="12dp"
             android:src="@drawable/ic_user"/>
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <com.fangs.apar_app.utils.HelveticaBoldTextView
+                android:id="@+id/tv_apar_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Garzon, Jay Gilbert S."
@@ -39,6 +40,7 @@
                 android:orientation="horizontal">
 
                 <com.fangs.apar_app.utils.HelveticaNormalTextView
+                    android:id="@+id/tv_apar_no"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="APAR 1"
@@ -50,6 +52,7 @@
                     tools:ignore="SmallSp" />
 
                 <com.fangs.apar_app.utils.HelveticaNormalTextView
+                    android:id="@+id/tv_store_code"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="STORE 713"
@@ -73,9 +76,9 @@
 
 
                 <com.fangs.apar_app.utils.HelveticaNormalTextView
+                    android:id="@+id/tv_region"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="SOUTH GMA"
                     android:textColor="#FFFFFF"
                     android:textSize="8sp"
                     android:paddingStart="10dp"
@@ -84,6 +87,7 @@
                     tools:ignore="SmallSp" />
 
                 <com.fangs.apar_app.utils.HelveticaNormalTextView
+                    android:id="@+id/tv_cluster_no"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="3dp"

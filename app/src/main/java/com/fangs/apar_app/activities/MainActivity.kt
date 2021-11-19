@@ -19,6 +19,7 @@ import com.fangs.apar_app.utils.HelveticaNormalTextView
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.GlobalScope
@@ -30,6 +31,8 @@ class MainActivity : BaseActivity() {
     private lateinit var binding : ActivityMainBinding
     private var suggestions = mutableListOf<String>()
     private val productsCollectionRef = Firebase.firestore.collection("products")
+    private val usersRef = Firebase.firestore.collection("users")
+    private lateinit var userID : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         supportActionBar?.hide()
@@ -38,6 +41,8 @@ class MainActivity : BaseActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         getRealTimeUpdates()
+        //get user ID
+        userID = FirebaseAuth.getInstance().currentUser!!.uid
 
         manageToolbar()
         manageSideNavigation()
@@ -58,6 +63,12 @@ class MainActivity : BaseActivity() {
                 finish()
             }
         }
+    }
+
+    private suspend fun getUserData(): DocumentSnapshot {
+        return usersRef.document(userID).get().await()
+
+
     }
 
     private fun getRealTimeUpdates(){
@@ -98,6 +109,35 @@ class MainActivity : BaseActivity() {
     }
 
     private fun manageSideNavigation() {
+
+        val headerView = binding.sideNavBar.getHeaderView(0)
+        val tvAPARname = headerView.findViewById<HelveticaBoldTextView>(R.id.tv_apar_name)
+        val tvAPARno = headerView.findViewById<HelveticaNormalTextView>(R.id.tv_apar_no)
+        val tvStoreCode = headerView.findViewById<HelveticaNormalTextView>(R.id.tv_store_code)
+        val tvRegion = headerView.findViewById<HelveticaNormalTextView>(R.id.tv_region)
+        val tvClusterNo = headerView.findViewById<HelveticaNormalTextView>(R.id.tv_cluster_no)
+
+        GlobalScope.launch {
+            val userDoc = getUserData()
+
+            Log.i("doc", userDoc.data.toString())
+            runOnUiThread(Runnable{
+
+                tvAPARname.text = userDoc["lastname"].toString()
+                tvAPARno.text = userDoc["apar no"].toString()
+                tvRegion.text = userDoc["region"].toString()
+                tvStoreCode.text = userDoc["store code"].toString()
+                tvClusterNo.text = userDoc["cluster"].toString()
+
+
+            })
+
+
+
+
+        }
+
+
         //side navigation
         val sideNav = NavigationView.OnNavigationItemSelectedListener { item ->
             when (item.itemId) {
