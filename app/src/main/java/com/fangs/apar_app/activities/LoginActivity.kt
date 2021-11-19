@@ -3,6 +3,7 @@ package com.fangs.apar_app.activities
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import com.fangs.apar_app.databinding.ActivityLoginBinding
 import com.google.firebase.auth.FirebaseAuth
 

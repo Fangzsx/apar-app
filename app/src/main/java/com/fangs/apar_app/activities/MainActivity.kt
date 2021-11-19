@@ -62,6 +62,7 @@ class MainActivity : BaseActivity() {
                 startActivity(it)
                 finish()
             }
+
         }
     }
 
@@ -123,11 +124,11 @@ class MainActivity : BaseActivity() {
             Log.i("doc", userDoc.data.toString())
             runOnUiThread(Runnable{
 
-                tvAPARname.text = userDoc["lastname"].toString()
-                tvAPARno.text = userDoc["apar no"].toString()
-                tvRegion.text = userDoc["region"].toString()
-                tvStoreCode.text = userDoc["store code"].toString()
-                tvClusterNo.text = userDoc["cluster"].toString()
+                tvAPARname.text = "${userDoc["lastname"]}, ${userDoc["firstname"]} ${userDoc["middlename"]}"
+                tvAPARno.text = userDoc["apar no"].toString().uppercase()
+                tvRegion.text = userDoc["region"].toString().uppercase()
+                tvStoreCode.text = userDoc["store code"].toString().uppercase()
+                tvClusterNo.text = userDoc["cluster"].toString().uppercase()
 
 
             })
