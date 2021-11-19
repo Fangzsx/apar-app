@@ -39,15 +39,15 @@ class MainActivity : BaseActivity() {
         setContentView(binding.root)
         getRealTimeUpdates()
 
-
+        manageToolbar()
+        manageSideNavigation()
+        manageBottomNavigation()
 
         //open drawer
         binding.toolbar.navDrawerToolbar.setNavigationOnClickListener {
             binding.drawer.openDrawer(GravityCompat.START)
         }
-        manageToolbar()
-        manageSideNavigation()
-        manageBottomNavigation()
+
 
 
         //sign out
