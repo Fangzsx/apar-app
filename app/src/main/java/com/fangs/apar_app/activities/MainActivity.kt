@@ -21,8 +21,8 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.tasks.await
 
 class MainActivity : BaseActivity() {
@@ -155,6 +155,7 @@ class MainActivity : BaseActivity() {
             tvUpdate.setOnClickListener {
                 //close search dialog
                 showItemDialog.dismiss()
+                suggestions.remove(dialogProdName.text.toString())
 
                 val updateDialog = Dialog(this, R.style.CustomDialog)
                 updateDialog.setContentView(R.layout.dialog_update)
@@ -172,20 +173,34 @@ class MainActivity : BaseActivity() {
                 etProductPrice.setText(dialogProductPrice.text.toString())
 
                 //update item
-                val tvUpdateDoc = updateDialog.findViewById<HelveticaBoldTextView>(R.id.tv_update_item1)
+                val tvUpdateDoc = updateDialog.findViewById<HelveticaBoldTextView>(R.id.tv_update_item)
 
-                //TODO allow user to update an item with the same name provided that it should only exist once
+                //allow user to update an item with the same name provided that it should only exist once
                 // and must be unique
 
                 tvUpdateDoc.setOnClickListener {
-                    //TODO : allow user to reuse the product name when updating
+                    //allow user to reuse the product name when updating
+                    val newProductName = etProductName.text.toString()
+                    val newProductCategory = spinner.selectedItem.toString().uppercase()
+                    val newProductPrice = etProductPrice.text.toString().toDouble()
+                    
+                    if(validateProduct(newProductName, newProductCategory, newProductPrice)){
+                        //update the doc in firebase
+                        productsCollectionRef.document(productID!!).update(
+                            mapOf(
+                                "name" to newProductName,
+                                "category" to newProductCategory.lowercase(),
+                                "price" to newProductPrice.toString()
+                            )
+                        )
+                        Toast.makeText(this, "Product updated!", Toast.LENGTH_SHORT).show()
 
-                    runBlocking {
-                        launch {
+                        updateDialog.dismiss()
+                        finish();
+                        startActivity(intent);
+                        overridePendingTransition(0, 0);
 
-                        }
                     }
-
 
 
                 }
@@ -203,8 +218,16 @@ class MainActivity : BaseActivity() {
         }
     }
 
+    private fun isExisting(name : String) : Boolean{
+        val productNameList = suggestions.toMutableList()
+        return productNameList.contains(name)
 
-    private suspend fun validateProduct(name : String, category : String, price : Double) : Boolean{
+    }
+
+
+
+
+    private fun validateProduct(name : String, category : String, price : Double) : Boolean{
 
         return when{
             TextUtils.isEmpty(name) -> {
@@ -221,7 +244,7 @@ class MainActivity : BaseActivity() {
             }
 
             isExisting(name) -> {
-                showErrorSnackBar(binding.root, "A product with the same name already exist.", true)
+                showErrorSnackBar(binding.root, "Product with the same name alread exist.", true)
                 false
             }
 
@@ -237,14 +260,6 @@ class MainActivity : BaseActivity() {
 
     }
 
-    private suspend fun isExisting(productName : String) : Boolean{
-
-        val result = productsCollectionRef.whereEqualTo("name", productName).limit(1).get().await()
-        val documents = result.documents
-        return documents.count() == 1
-
-
-    }
 
 
     private fun populateSpinner(spinner : Spinner, defaultValue : String) {

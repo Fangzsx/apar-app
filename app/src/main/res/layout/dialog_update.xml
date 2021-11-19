@@ -91,7 +91,7 @@
             android:gravity="end"
             android:orientation="horizontal">
             <com.fangs.apar_app.utils.HelveticaBoldTextView
-                android:id="@+id/tv_update_item1"
+                android:id="@+id/tv_update_item"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
