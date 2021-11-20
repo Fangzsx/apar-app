@@ -20,6 +20,8 @@ import com.google.android.material.navigation.NavigationView
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.ListenerRegistration
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.GlobalScope
@@ -57,12 +59,13 @@ class MainActivity : BaseActivity() {
 
         //sign out
         binding.tvSignOut.setOnClickListener {
+
             FirebaseAuth.getInstance().signOut()
+
             Intent(this, LoginActivity::class.java).also {
                 startActivity(it)
                 finish()
             }
-
         }
     }
 
@@ -86,8 +89,6 @@ class MainActivity : BaseActivity() {
 
             }
         }
-
-
     }
 
 
@@ -156,7 +157,7 @@ class MainActivity : BaseActivity() {
         binding.sideNavBar.setNavigationItemSelectedListener(sideNav)
     }
 
-    private fun manageToolbar() {
+    private fun manageToolbar(){
         val searchView = binding.toolbar.searchView
         val autoCompleteTextView = searchView.findViewById<AutoCompleteTextView>(R.id.search_src_text)
         val searchViewAdapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, suggestions)
@@ -257,6 +258,7 @@ class MainActivity : BaseActivity() {
             }
             showItemDialog.show()
         }
+
     }
 
     private fun isExisting(name : String) : Boolean{
