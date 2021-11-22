@@ -127,7 +127,7 @@ class MainActivity : BaseActivity() {
             Log.i("doc", userDoc.data.toString())
             runOnUiThread(Runnable{
 
-                tvAPARname.text = "${userDoc["lastname"]}, ${userDoc["firstname"]} ${userDoc["middlename"]}"
+                tvAPARname.text = "${userDoc["lastname"]}, ${userDoc["firstname"]} ${userDoc["middlename"]}".uppercase()
                 tvAPARno.text = userDoc["apar no"].toString().uppercase()
                 tvRegion.text = userDoc["region"].toString().uppercase()
                 tvStoreCode.text = userDoc["store code"].toString().uppercase()
