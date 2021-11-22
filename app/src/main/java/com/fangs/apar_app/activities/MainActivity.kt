@@ -204,12 +204,24 @@ class MainActivity : BaseActivity() {
 
                 //product name to be deleted
                 val tvTobeDeletedProdName = deleteDialog.findViewById<HelveticaBoldTextView>(R.id.tv_delete_product_name)
-                tvTobeDeletedProdName.setText(dialogProdName.text.toString())
+                tvTobeDeletedProdName.text = dialogProdName.text.toString()
 
                 //cancel delete
                 val tvCancel = deleteDialog.findViewById<HelveticaNormalTextView>(R.id.tv_delete_cancel)
                 tvCancel.setOnClickListener {
                     deleteDialog.dismiss()
+                }
+
+                //delete proper
+                val tvConfirmDelete = deleteDialog.findViewById<HelveticaBoldTextView>(R.id.tv_delete_confirm)
+                tvConfirmDelete.setOnClickListener {
+                    Toast.makeText(this, "Product with name: ${dialogProdName.text.toString().uppercase()} was successfully deleted.", Toast.LENGTH_LONG).show()
+                    productsCollectionRef.document(productID!!).delete()
+                    deleteDialog.dismiss()
+                    finish();
+                    startActivity(intent);
+                    overridePendingTransition(0, 0);
+
                 }
 
                 deleteDialog.show()
