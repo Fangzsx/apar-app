@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/dialog_bg_shape">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient_color_green"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <com.fangs.apar_app.utils.HelveticaBoldTextView
+            android:id="@+id/tv_product_found"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="Delete Item"
+            android:textSize="16sp"
+            android:textColor="@color/white"/>
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_cross"
+            android:layout_marginStart="5dp"
+            android:layout_gravity="center_vertical"
+            android:scaleType="fitXY"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <com.fangs.apar_app.utils.HelveticaNormalTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Are you sure you want to delete this item?"
+            android:gravity="center"/>
+        <com.fangs.apar_app.utils.HelveticaBoldTextView
+            android:id="@+id/tv_delete_product_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text= "SOME ITEM NAME"
+            android:gravity="center"/>
+
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="end"
+            android:orientation="horizontal">
+            <com.fangs.apar_app.utils.HelveticaNormalTextView
+                android:id="@+id/tv_delete_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="CANCEL"/>
+            <com.fangs.apar_app.utils.HelveticaBoldTextView
+                android:id="@+id/tv_delete_confirm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/red"
+                android:layout_marginStart="10dp"
+                android:text="DELETE"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+</LinearLayout>
