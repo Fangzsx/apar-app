@@ -35,6 +35,7 @@ class MainActivity : BaseActivity() {
     private val productsCollectionRef = Firebase.firestore.collection("products")
     private val usersRef = Firebase.firestore.collection("users")
     private lateinit var userID : String
+    private lateinit var listenerRegistration: ListenerRegistration
 
     override fun onCreate(savedInstanceState: Bundle?) {
         supportActionBar?.hide()
@@ -60,6 +61,7 @@ class MainActivity : BaseActivity() {
         //sign out
         binding.tvSignOut.setOnClickListener {
 
+            listenerRegistration.remove()
             FirebaseAuth.getInstance().signOut()
 
             Intent(this, LoginActivity::class.java).also {
@@ -75,8 +77,8 @@ class MainActivity : BaseActivity() {
 
     }
 
-    private fun getRealTimeUpdates(){
-        productsCollectionRef.addSnapshotListener { snapshot, error ->
+    private fun getRealTimeUpdates() {
+        listenerRegistration = productsCollectionRef.addSnapshotListener { snapshot, error ->
             error?.let {
                 Toast.makeText(this, error.message, Toast.LENGTH_SHORT).show()
                 return@addSnapshotListener
@@ -86,9 +88,9 @@ class MainActivity : BaseActivity() {
                 for(document in it){
                     suggestions.add(document["name"].toString())
                 }
-
             }
         }
+
     }
 
 

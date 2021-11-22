@@ -98,8 +98,8 @@ class AddNewItemActivity : BaseActivity(){
                 showErrorSnackBar(binding.root, "Product name cannot be empty.", true)
                 false
             }
-            TextUtils.isEmpty(newProductPrice) -> {
-                showErrorSnackBar(binding.root, "Price cannot be empty.", true)
+            TextUtils.isEmpty(newProductPrice) || newProductPrice.toDouble() <= 0-> {
+                showErrorSnackBar(binding.root, "Price cannot be less than or equal to zero.", true)
                 false
             }
             //make sure the first element is not a valid category
