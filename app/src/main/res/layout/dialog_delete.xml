@@ -42,12 +42,14 @@
         <com.fangs.apar_app.utils.HelveticaNormalTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
             android:text="Are you sure you want to delete this item?"
             android:gravity="center"/>
         <com.fangs.apar_app.utils.HelveticaBoldTextView
             android:id="@+id/tv_delete_product_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
             tools:text= "SOME ITEM NAME"
             android:gravity="center"/>
 

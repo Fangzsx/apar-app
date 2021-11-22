@@ -194,6 +194,29 @@ class MainActivity : BaseActivity() {
                     Log.e("manage toolbar", exception.message.toString())
                 }
 
+            //delete item
+            val tvDelete = showItemDialog.findViewById<HelveticaBoldTextView>(R.id.tv_delete)
+            tvDelete.setOnClickListener {
+                showItemDialog.dismiss()
+                val deleteDialog = Dialog(this, R.style.CustomDialog)
+                deleteDialog.setCancelable(false)
+                deleteDialog.setContentView(R.layout.dialog_delete)
+
+                //product name to be deleted
+                val tvTobeDeletedProdName = deleteDialog.findViewById<HelveticaBoldTextView>(R.id.tv_delete_product_name)
+                tvTobeDeletedProdName.setText(dialogProdName.text.toString())
+
+                //cancel delete
+                val tvCancel = deleteDialog.findViewById<HelveticaNormalTextView>(R.id.tv_delete_cancel)
+                tvCancel.setOnClickListener {
+                    deleteDialog.dismiss()
+                }
+
+                deleteDialog.show()
+            }
+
+
+
             //update item
             val tvUpdate = showItemDialog.findViewById<HelveticaNormalTextView>(R.id.tv_update)
             tvUpdate.setOnClickListener {
