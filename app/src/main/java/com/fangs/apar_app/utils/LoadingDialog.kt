@@ -4,7 +4,7 @@ import android.app.Activity
 import android.app.AlertDialog
 import com.fangs.apar_app.R
 
-class LoadingDialog(val activity : Activity) {
+class LoadingDialog(private val activity : Activity) {
     private lateinit var dialog : AlertDialog
 
     fun startLoading(){
