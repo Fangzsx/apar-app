@@ -55,8 +55,6 @@ class MainActivity : BaseActivity() {
         getRealTimeUpdates()
 
 
-
-
         //get user ID
         userID = FirebaseAuth.getInstance().currentUser!!.uid
 
@@ -68,7 +66,6 @@ class MainActivity : BaseActivity() {
         binding.toolbar.navDrawerToolbar.setNavigationOnClickListener {
             binding.drawer.openDrawer(GravityCompat.START)
         }
-
 
 
         //sign out
@@ -234,9 +231,6 @@ class MainActivity : BaseActivity() {
                     finish();
                     startActivity(intent);
                     overridePendingTransition(0, 0);
-
-
-
                 }
 
                 deleteDialog.show()
