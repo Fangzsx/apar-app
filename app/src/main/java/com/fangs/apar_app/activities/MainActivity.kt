@@ -1,5 +1,6 @@
 package com.fangs.apar_app.activities
 
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
@@ -23,7 +24,6 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.ListenerRegistration
-import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.GlobalScope
@@ -122,6 +122,7 @@ class MainActivity : BaseActivity() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun manageSideNavigation() {
 
         val headerView = binding.sideNavBar.getHeaderView(0)
@@ -228,9 +229,9 @@ class MainActivity : BaseActivity() {
                     Toast.makeText(this, "Product with name: ${dialogProdName.text.toString().uppercase()} was successfully deleted.", Toast.LENGTH_LONG).show()
                     productsCollectionRef.document(productID!!).delete()
                     deleteDialog.dismiss()
-                    finish();
-                    startActivity(intent);
-                    overridePendingTransition(0, 0);
+                    finish()
+                    startActivity(intent)
+                    overridePendingTransition(0, 0)
                 }
 
                 deleteDialog.show()
@@ -284,9 +285,9 @@ class MainActivity : BaseActivity() {
                         Toast.makeText(this, "Product updated!", Toast.LENGTH_SHORT).show()
 
                         updateDialog.dismiss()
-                        finish();
-                        startActivity(intent);
-                        overridePendingTransition(0, 0);
+                        finish()
+                        startActivity(intent)
+                        overridePendingTransition(0, 0)
 
                     }
 
@@ -333,7 +334,7 @@ class MainActivity : BaseActivity() {
             }
 
             isExisting(name) -> {
-                showErrorSnackBar(binding.root, "Product with the same name alread exist.", true)
+                showErrorSnackBar(binding.root, "Product with the same name already exist.", true)
                 false
             }
 
