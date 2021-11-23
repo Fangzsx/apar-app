@@ -47,7 +47,7 @@ class MainActivity : BaseActivity() {
         loadingDialog.startLoading()
         Handler().postDelayed({
             loadingDialog.dismiss()
-        }, 2000) // 1000 is the delayed time in milliseconds.
+        }, 1500) // 1000 is the delayed time in milliseconds.
 
 
         binding = ActivityMainBinding.inflate(layoutInflater)
