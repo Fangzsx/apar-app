@@ -3,6 +3,7 @@ package com.fangs.apar_app.activities
 import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
@@ -16,6 +17,7 @@ import com.fangs.apar_app.fragments.PurchaseFragment
 import com.fangs.apar_app.fragments.ViewOrderFragment
 import com.fangs.apar_app.utils.HelveticaBoldTextView
 import com.fangs.apar_app.utils.HelveticaNormalTextView
+import com.fangs.apar_app.utils.LoadingDialog
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
@@ -221,6 +223,14 @@ class MainActivity : BaseActivity() {
                     finish();
                     startActivity(intent);
                     overridePendingTransition(0, 0);
+
+                    //show loading screen
+                    val loadingDialog = LoadingDialog(this)
+                    loadingDialog.startLoading()
+                    val handler = Handler()
+                    handler.postDelayed({ loadingDialog.dismiss() }, 5000)
+
+
 
                 }
 
