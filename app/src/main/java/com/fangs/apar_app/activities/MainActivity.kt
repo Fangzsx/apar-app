@@ -43,9 +43,20 @@ class MainActivity : BaseActivity() {
         supportActionBar?.hide()
         super.onCreate(savedInstanceState)
 
+        val loadingDialog = LoadingDialog(this@MainActivity)
+        loadingDialog.startLoading()
+        Handler().postDelayed({
+            loadingDialog.dismiss()
+        }, 2000) // 1000 is the delayed time in milliseconds.
+
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         getRealTimeUpdates()
+
+
+
+
         //get user ID
         userID = FirebaseAuth.getInstance().currentUser!!.uid
 
@@ -223,12 +234,6 @@ class MainActivity : BaseActivity() {
                     finish();
                     startActivity(intent);
                     overridePendingTransition(0, 0);
-
-                    //show loading screen
-                    val loadingDialog = LoadingDialog(this)
-                    loadingDialog.startLoading()
-                    val handler = Handler()
-                    handler.postDelayed({ loadingDialog.dismiss() }, 5000)
 
 
 
