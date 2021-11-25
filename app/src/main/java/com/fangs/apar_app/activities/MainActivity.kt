@@ -221,6 +221,7 @@ class MainActivity : BaseActivity() {
                 val tvCancel = deleteDialog.findViewById<HelveticaNormalTextView>(R.id.tv_delete_cancel)
                 tvCancel.setOnClickListener {
                     deleteDialog.dismiss()
+                    searchView.onActionViewCollapsed()
                 }
 
                 //delete proper
