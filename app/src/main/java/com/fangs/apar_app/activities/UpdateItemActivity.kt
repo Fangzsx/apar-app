@@ -26,6 +26,11 @@ class UpdateItemActivity : BaseActivity() {
 
         binding.llDisappearingText.isVisible = false
 
+        //TODO: UPDATE PROPER
+        binding.btnSideNavUpdate.setOnClickListener {
+
+        }
+
 
 
 

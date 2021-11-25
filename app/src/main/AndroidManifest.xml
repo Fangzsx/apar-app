@@ -28,8 +28,10 @@
         <activity
             android:name=".activities.LoginActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".activities.AddNewItemActivity"/>
-        <activity android:name=".activities.UpdateItemActivity"/>
+        <activity android:name=".activities.AddNewItemActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.UpdateItemActivity"
+            android:screenOrientation="portrait"/>
 
     </application>
 
