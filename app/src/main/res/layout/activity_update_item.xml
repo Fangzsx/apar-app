@@ -51,6 +51,28 @@
                 app:searchIcon="@drawable/ic_search_gray"
                 app:closeIcon="@drawable/ic_close_gray"/>
 
+            <LinearLayout
+                android:id="@+id/ll_disappearing_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1">
+                <com.fangs.apar_app.utils.HelveticaBoldTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.15"
+                    android:textColor="@color/red"
+                    android:text="FOUND: "/>
+                <com.fangs.apar_app.utils.HelveticaNormalTextView
+                    android:id="@+id/tv_side_nav_update_product_found"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.80"
+                    tools:text="SOME PRODUCT HERE"/>
+
+            </LinearLayout>
+
+
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/ti_side_nav_update_new_product_name"
@@ -96,7 +118,7 @@
                 android:textSize="16sp"
                 android:text="Category:"/>
             <Spinner
-                android:id="@+id/sp_new_product_category"
+                android:id="@+id/sp_side_nav_update_new_category"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/spinner_background"
                 android:layout_width="match_parent"
@@ -108,7 +130,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:textSize="16sp"
-                android:text="Add to database"/>
+                android:text="Update"/>
         </LinearLayout>
     </FrameLayout>
 

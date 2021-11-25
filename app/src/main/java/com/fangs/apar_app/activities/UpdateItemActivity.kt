@@ -3,6 +3,7 @@ package com.fangs.apar_app.activities
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import androidx.core.view.isVisible
 import com.fangs.apar_app.databinding.ActivityUpdateItemBinding
 
 class UpdateItemActivity : BaseActivity() {
@@ -22,7 +23,9 @@ class UpdateItemActivity : BaseActivity() {
                 finish()
             }
         }
-        
+
+        binding.llDisappearingText.isVisible = false
+
 
 
 
