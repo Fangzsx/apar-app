@@ -184,7 +184,6 @@ class MainActivity : BaseActivity() {
         val searchViewAdapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, suggestions)
 
 
-
         autoCompleteTextView.setAdapter(searchViewAdapter)
 
 
