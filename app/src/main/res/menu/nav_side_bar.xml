@@ -3,13 +3,13 @@
 
     <item
         android:id="@+id/side_bar_add_item"
-        android:title="Add Item"
+        android:title="Add Product"
         android:icon="@drawable/ic_add_green"/>
     <item
-        android:title="Update Item"
+        android:title="Update Product"
         android:icon="@drawable/ic_edit"/>
     <item
-        android:title="Remove Item"
+        android:title="Remove Product"
         android:icon="@drawable/ic_delete_green"/>
 
 </menu>
