@@ -44,11 +44,17 @@
         <entry key="..\:/Users/Nikz/Desktop/aparapp/app/src/main/res/menu/bottom_app_bar.xml" value="0.22708333333333333" />
         <entry key="..\:/Users/Nikz/Desktop/aparapp/app/src/main/res/menu/nav_side_bar.xml" value="0.22708333333333333" />
         <entry key="..\:/Users/Nikz/Desktop/aparapp/app/src/main/res/menu/top_app_bar.xml" value="0.22708333333333333" />
+        <entry key="..\:/Users/jygrz/apar-app/app/src/main/res/drawable/button_helvetica.xml" value="0.21614583333333334" />
+        <entry key="..\:/Users/jygrz/apar-app/app/src/main/res/drawable/button_image_background.xml" value="0.21614583333333334" />
+        <entry key="..\:/Users/jygrz/apar-app/app/src/main/res/drawable/custom_button.xml" value="0.21614583333333334" />
+        <entry key="..\:/Users/jygrz/apar-app/app/src/main/res/drawable/custom_button_2_colors.xml" value="0.21614583333333334" />
+        <entry key="..\:/Users/jygrz/apar-app/app/src/main/res/drawable/custom_search_view_for_update.xml" value="0.21614583333333334" />
+        <entry key="..\:/Users/jygrz/apar-app/app/src/main/res/drawable/dialog_bg_shape.xml" value="0.21614583333333334" />
         <entry key="..\:/Users/jygrz/apar-app/app/src/main/res/drawable/ic_check.xml" value="0.21614583333333334" />
         <entry key="..\:/Users/jygrz/apar-app/app/src/main/res/layout/activity_add_new_item.xml" value="0.2" />
         <entry key="..\:/Users/jygrz/apar-app/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/Users/jygrz/apar-app/app/src/main/res/layout/activity_main.xml" value="0.22" />
-        <entry key="..\:/Users/jygrz/apar-app/app/src/main/res/layout/activity_update_item.xml" value="0.2" />
+        <entry key="..\:/Users/jygrz/apar-app/app/src/main/res/layout/activity_update_item.xml" value="0.9" />
         <entry key="..\:/Users/jygrz/apar-app/app/src/main/res/layout/custom_toolbar.xml" value="0.2" />
         <entry key="..\:/Users/jygrz/apar-app/app/src/main/res/layout/dialog_delete.xml" value="0.2" />
         <entry key="..\:/Users/jygrz/apar-app/app/src/main/res/layout/dialog_loading.xml" value="0.67" />

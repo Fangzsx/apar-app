@@ -164,6 +164,13 @@ class MainActivity : BaseActivity() {
                     }
                     return@OnNavigationItemSelectedListener true
                 }
+                R.id.side_bar_update_item -> {
+                    Intent(this, UpdateItemActivity::class.java).also {
+                        startActivity(it)
+                        finish()
+                    }
+                    return@OnNavigationItemSelectedListener true
+                }
             }
             false
         }

@@ -6,6 +6,7 @@
         android:title="Add Product"
         android:icon="@drawable/ic_add_green"/>
     <item
+        android:id="@+id/side_bar_update_item"
         android:title="Update Product"
         android:icon="@drawable/ic_edit"/>
     <item

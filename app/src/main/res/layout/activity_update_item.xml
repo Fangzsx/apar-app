@@ -39,18 +39,32 @@
             android:orientation="vertical"
             tools:ignore="UselessParent">
 
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/sv_side_nav_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:queryHint="Search Product"
+                app:iconifiedByDefault="false"
+                android:focusable="true"
+                android:background="@drawable/custom_search_view_for_update"
+                android:layout_marginBottom="10dp"
+                app:searchIcon="@drawable/ic_search_gray"
+                app:closeIcon="@drawable/ic_close_gray"/>
+
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/ti_product_name"
                 style="@style/CustomOutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:boxBackgroundColor="@color/white"
-                android:hint="Product name">
+                android:hint="New Product name">
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_new_product_name"
+                    android:id="@+id/et_side_nav_product_name"
                     android:textColor="@color/black"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
                     android:textSize="16sp"
                     android:inputType="text"/>
             </com.google.android.material.textfield.TextInputLayout>
@@ -64,7 +78,7 @@
                 android:layout_marginTop="10dp"
                 android:hint="Price">
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_new_product_price"
+                    android:id="@+id/et_side_nav_price"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
@@ -87,7 +101,7 @@
                 android:theme="@style/CustomSpinner"
                 android:layout_height="wrap_content"/>
             <com.fangs.apar_app.utils.HelveticaCustomButton
-                android:id="@+id/btn_add_to_database"
+                android:id="@+id/btn_side_nav_update"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"

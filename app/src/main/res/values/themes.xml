@@ -31,7 +31,12 @@
         <item name="android:editTextColor">@color/white</item>
         <item name="android:textColorHint">@color/white</item>
         <item name="queryHint">"Product Search"</item>
+    </style>
 
+    <style name="CustomSearchView1" parent="Widget.AppCompat.SearchView.ActionBar">
+        <item name="queryHint">"Product Search"</item>
+        <item name="android:radius">8dp</item>
+        <item name="background">@drawable/dialog_bg_shape</item>
     </style>
 
     <style name="CustomDialog" parent="ThemeOverlay.AppCompat.Dialog">
