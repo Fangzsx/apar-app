@@ -7,12 +7,12 @@
 
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/ab_adding_new_item"
+        android:id="@+id/ab_updating_item"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/nav_back_add"
+            android:id="@+id/nav_back_update"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@drawable/main_bg"
@@ -86,7 +86,6 @@
                 android:layout_width="match_parent"
                 android:theme="@style/CustomSpinner"
                 android:layout_height="wrap_content"/>
-
             <com.fangs.apar_app.utils.HelveticaCustomButton
                 android:id="@+id/btn_add_to_database"
                 android:layout_width="match_parent"
@@ -94,16 +93,7 @@
                 android:layout_marginTop="20dp"
                 android:textSize="16sp"
                 android:text="Add to database"/>
-
-
-
-
         </LinearLayout>
-
-
-
     </FrameLayout>
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -43,7 +43,7 @@ class AddNewItemActivity : BaseActivity(){
             }
         }
         //back key
-        binding.navBack.setNavigationOnClickListener {
+        binding.navBackAdd.setNavigationOnClickListener {
             Intent(this, MainActivity::class.java).also {
                 startActivity(it)
             }

@@ -97,6 +97,7 @@ class MainActivity : BaseActivity() {
             snapshot?.let {
                 for(document in it){
                     suggestions.add(document["name"].toString())
+
                 }
             }
         }
@@ -295,11 +296,10 @@ class MainActivity : BaseActivity() {
 
                 }
 
-
-
                 //dismiss/cancel update dialog
                 val tvCancelUpdate = updateDialog.findViewById<HelveticaNormalTextView>(R.id.tv_cancel_update)
                 tvCancelUpdate.setOnClickListener {
+                    searchView.onActionViewCollapsed()
                     updateDialog.dismiss()
                 }
                 updateDialog.show()
