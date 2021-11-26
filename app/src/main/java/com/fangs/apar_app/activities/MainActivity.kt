@@ -144,13 +144,7 @@ class MainActivity : BaseActivity() {
                 tvRegion.text = userDoc["region"].toString().uppercase()
                 tvStoreCode.text = userDoc["store code"].toString().uppercase()
                 tvClusterNo.text = userDoc["cluster"].toString().uppercase()
-
-
             })
-
-
-
-
         }
 
 
@@ -183,10 +177,7 @@ class MainActivity : BaseActivity() {
         val autoCompleteTextView = searchView.findViewById<AutoCompleteTextView>(R.id.search_src_text)
         val searchViewAdapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, suggestions)
 
-
         autoCompleteTextView.setAdapter(searchViewAdapter)
-
-
         autoCompleteTextView.setOnItemClickListener { _, _, position, _ ->
 
             val currentProduct = searchViewAdapter.getItem(position)
@@ -298,10 +289,7 @@ class MainActivity : BaseActivity() {
                         overridePendingTransition(0, 0)
 
                     }
-
-
                 }
-
                 //dismiss/cancel update dialog
                 val tvCancelUpdate = updateDialog.findViewById<HelveticaNormalTextView>(R.id.tv_cancel_update)
                 tvCancelUpdate.setOnClickListener {
@@ -312,20 +300,14 @@ class MainActivity : BaseActivity() {
             }
             showItemDialog.show()
         }
-
     }
 
     private fun isExisting(name : String) : Boolean{
         val productNameList = suggestions.toMutableList()
         return productNameList.contains(name)
-
     }
 
-
-
-
     private fun validateProduct(name : String, category : String, price : Double) : Boolean{
-
         return when{
             TextUtils.isEmpty(name) -> {
                 showErrorSnackBar(binding.root, "Product name cannot be empty.", true)
@@ -344,17 +326,13 @@ class MainActivity : BaseActivity() {
                 showErrorSnackBar(binding.root, "Product with the same name already exist.", true)
                 false
             }
-
-
             else -> {
                 true
             }
         }
     }
 
-
     private fun replaceFragment(fragment : Fragment) {
-
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.fragment_container, fragment)
         transaction.commit()
