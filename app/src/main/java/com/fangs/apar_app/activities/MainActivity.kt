@@ -349,45 +349,9 @@ class MainActivity : BaseActivity() {
             else -> {
                 true
             }
-
-
-        }
-
-
-
-    }
-
-
-
-    private fun populateSpinner(spinner : Spinner, defaultValue : String) {
-        ArrayAdapter.createFromResource(
-            this, R.array.products_category,
-            R.layout.support_simple_spinner_dropdown_item
-        ).also { adapter ->
-            adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item)
-            spinner.adapter = adapter
-            val defaultIndex = adapter.getPosition(defaultValue.uppercase())
-            spinner.setSelection(defaultIndex)
-
-            //set text color of selected text
-            spinner.onItemSelectedListener = object :
-                AdapterView.OnItemSelectedListener{
-                override fun onItemSelected(
-                    parent: AdapterView<*>?,
-                    view: View?,
-                    position: Int,
-                    id: Long
-                ) {
-
-                    val tv = spinner.selectedView as TextView
-                    tv.setTextColor(ContextCompat.getColor(applicationContext, R.color.black))
-                }
-                override fun onNothingSelected(parent: AdapterView<*>?) {
-
-                }
-            }
         }
     }
+
 
     private fun replaceFragment(fragment : Fragment) {
 
