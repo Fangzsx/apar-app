@@ -60,14 +60,17 @@
                 <com.fangs.apar_app.utils.HelveticaBoldTextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.15"
+                    android:layout_weight="0.30"
                     android:textColor="@color/red"
+                    android:textSize="18sp"
                     android:text="FOUND: "/>
                 <com.fangs.apar_app.utils.HelveticaNormalTextView
                     android:id="@+id/tv_side_nav_update_product_found"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.80"
+                    android:layout_weight="0.70"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
                     tools:text="SOME PRODUCT HERE"/>
 
             </LinearLayout>
@@ -75,11 +78,12 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/ti_side_nav_update_new_product_name"
+                android:id="@+id/ti_side_nav_update_product_name"
                 style="@style/CustomOutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:boxBackgroundColor="#A5A0A0"
+                android:layout_marginTop="10dp"
                 android:hint="New Product name">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_side_nav_product_name"
@@ -93,7 +97,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/ti_side_nav_update_new_product_price"
+                android:id="@+id/ti_side_nav_update_product_price"
                 style="@style/CustomOutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -101,7 +105,7 @@
                 android:layout_marginTop="10dp"
                 android:hint="Price">
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_side_nav_price"
+                    android:id="@+id/et_side_nav_product_price"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
