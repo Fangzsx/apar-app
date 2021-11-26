@@ -84,7 +84,7 @@
                 android:layout_height="wrap_content"
                 app:boxBackgroundColor="#A5A0A0"
                 android:layout_marginTop="10dp"
-                android:hint="New Product name">
+                android:hint="Product name">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_side_nav_product_name"
                     android:textColor="@color/black"

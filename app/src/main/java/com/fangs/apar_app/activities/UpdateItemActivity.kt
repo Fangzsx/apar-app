@@ -10,6 +10,7 @@ import androidx.core.view.isVisible
 import com.fangs.apar_app.R
 import com.fangs.apar_app.databinding.ActivityUpdateItemBinding
 import com.fangs.apar_app.utils.HelveticaNormalTextView
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.tasks.await
@@ -19,6 +20,7 @@ class UpdateItemActivity : BaseActivity() {
     private lateinit var binding : ActivityUpdateItemBinding
     private var suggestions = mutableListOf<String>()
     private val productsCollectionRef = Firebase.firestore.collection("products")
+    private val documents = mutableListOf<DocumentSnapshot>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         supportActionBar?.hide()
@@ -67,17 +69,25 @@ class UpdateItemActivity : BaseActivity() {
 
 
 
+
             //if a product is found,
             //enable edit texts by changing bg of text inputs
             if(hiddenTv.text.toString().isNotBlank()){
+
                 tiProductName.boxBackgroundColor = Color.WHITE
                 etNewProductName.isEnabled = true
 
                 tiProductPrice.boxBackgroundColor = Color.WHITE
                 etNewProductPrice.isEnabled = true
+
+                for(document in documents){
+                    if(document["name"] == hiddenTv.text.toString().lowercase()){
+                        etNewProductName.setText(document["name"].toString())
+                        etNewProductPrice.setText(document["price"].toString())
+                        break
+                    }
+                }
             }
-
-
         }
 
 
@@ -96,9 +106,10 @@ class UpdateItemActivity : BaseActivity() {
             error?.let {
                 Toast.makeText(this@UpdateItemActivity, error.message, Toast.LENGTH_SHORT).show()
             }
-            snapshot?.let { documents ->
-                for (document in documents){
-                    suggestions.add(document["name"].toString())
+            snapshot?.let { docs ->
+                for (doc in docs){
+                    suggestions.add(doc["name"].toString())
+                    documents.add(doc)
                 }
             }
 
