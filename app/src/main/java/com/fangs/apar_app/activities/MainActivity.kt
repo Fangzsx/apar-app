@@ -66,8 +66,7 @@ class MainActivity : BaseActivity() {
         binding.toolbar.navDrawerToolbar.setNavigationOnClickListener {
             binding.drawer.openDrawer(GravityCompat.START)
         }
-
-
+        
         //sign out
         binding.tvSignOut.setOnClickListener {
 
@@ -83,8 +82,6 @@ class MainActivity : BaseActivity() {
 
     private suspend fun getUserData(): DocumentSnapshot {
         return usersRef.document(userID).get().await()
-
-
     }
 
     private fun getRealTimeUpdates() {
@@ -97,13 +94,10 @@ class MainActivity : BaseActivity() {
             snapshot?.let {
                 for(document in it){
                     suggestions.add(document["name"].toString())
-
                 }
             }
         }
-
     }
-
 
     private fun manageBottomNavigation() {
         //bottom navigation
@@ -116,8 +110,6 @@ class MainActivity : BaseActivity() {
             when (it.itemId) {
                 R.id.btm_nav_purchase -> replaceFragment(purchaseFragment)
                 R.id.btm_nav_view_orders -> replaceFragment(viewOrderFragment)
-
-
             }
             true
         }
@@ -146,7 +138,6 @@ class MainActivity : BaseActivity() {
                 tvClusterNo.text = userDoc["cluster"].toString().uppercase()
             })
         }
-
 
         //side navigation
         val sideNav = NavigationView.OnNavigationItemSelectedListener { item ->
