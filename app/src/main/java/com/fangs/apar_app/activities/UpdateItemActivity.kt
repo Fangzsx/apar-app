@@ -3,9 +3,9 @@ package com.fangs.apar_app.activities
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
-import android.widget.Toast
+import android.view.View
+import android.widget.*
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.fangs.apar_app.R
 import com.fangs.apar_app.databinding.ActivityUpdateItemBinding
@@ -56,6 +56,8 @@ class UpdateItemActivity : BaseActivity() {
         //textInputs, initially grayed out.
         val tiProductName = binding.tiSideNavUpdateProductName
         val tiProductPrice = binding.tiSideNavUpdateProductPrice
+        //spinner
+        val spinner = binding.spSideNavUpdateNewCategory
 
 
         autoCompleteText.setOnItemClickListener { _, _, position, _ ->
@@ -66,8 +68,6 @@ class UpdateItemActivity : BaseActivity() {
             searchView.onActionViewCollapsed()
             searchView.isIconified = false
             searchView.clearFocus()
-
-
 
 
             //if a product is found,
@@ -84,6 +84,7 @@ class UpdateItemActivity : BaseActivity() {
                     if(document["name"] == hiddenTv.text.toString().lowercase()){
                         etNewProductName.setText(document["name"].toString())
                         etNewProductPrice.setText(document["price"].toString())
+                        populateSpinner(spinner, document["category"].toString())
                         break
                     }
                 }
@@ -97,6 +98,36 @@ class UpdateItemActivity : BaseActivity() {
         //TODO: UPDATE PROPER
         binding.btnSideNavUpdate.setOnClickListener {
 
+        }
+    }
+
+    private fun populateSpinner(spinner : Spinner, defaultValue : String) {
+        ArrayAdapter.createFromResource(
+            this, R.array.products_category,
+            R.layout.support_simple_spinner_dropdown_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item)
+            spinner.adapter = adapter
+            val defaultIndex = adapter.getPosition(defaultValue.uppercase())
+            spinner.setSelection(defaultIndex)
+
+            //set text color of selected text
+            spinner.onItemSelectedListener = object :
+                AdapterView.OnItemSelectedListener{
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+
+                    val tv = spinner.selectedView as TextView
+                    tv.setTextColor(ContextCompat.getColor(applicationContext, R.color.black))
+                }
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+
+                }
+            }
         }
     }
 
