@@ -32,6 +32,8 @@ class DeleteItemActivity : BaseActivity() {
         val searchView = binding.svSideNavSearch
         val autoCompleteTextView = searchView.findViewById<AutoCompleteTextView>(R.id.search_src_text)
         val adapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, suggestions)
+        var productID : String? = null
+        var productName : String? = null
         autoCompleteTextView.setAdapter(adapter)
 
         autoCompleteTextView.setOnItemClickListener { _, _, position, _ ->
@@ -40,17 +42,36 @@ class DeleteItemActivity : BaseActivity() {
             searchView.isIconified = false
             searchView.clearFocus()
 
+
+
             val currentProduct = adapter.getItem(position)
             //find doc with product name = current product
             for(document in documents){
                 if(document["name"].toString() == currentProduct){
-                    binding.tvProductName.text = document["name"].toString().uppercase()
-                    binding.tvProductCategory.text = document["category"].toString().uppercase()
+                    binding.tvProductName.text = document["name"].toString()
+                    binding.tvProductCategory.text = document["category"].toString()
                     binding.tvProductPrice.text = document["price"].toString()
+                    productID = document.id
+                    productName = document["name"].toString().uppercase()
                 }
             }
             val frame = binding.flProductInfo
             frame.isVisible = true
+        }
+
+        //delete proper
+        binding.btnSideNavDelete.setOnClickListener {
+            productsCollectionRef.document(productID!!).delete()
+                .addOnSuccessListener {
+                    Toast.makeText(this, "Product with name $productName was deleted.", Toast.LENGTH_LONG).show()
+                    Intent(this, MainActivity::class.java).also {
+                        startActivity(it)
+                        finish()
+                    }
+                }
+                .addOnFailureListener {
+                    Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
+                }
         }
 
 

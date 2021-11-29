@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/ab_updating_item"
         app:layout_constraintTop_toTopOf="parent"
@@ -22,8 +21,6 @@
             app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
             style="@style/MaterialToolbar"/>
     </com.google.android.material.appbar.AppBarLayout>
-
-
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -51,8 +48,6 @@
                 app:searchIcon="@drawable/ic_search_gray"
                 app:closeIcon="@drawable/ic_close_gray"/>
 
-
-
             <FrameLayout
                 android:id="@+id/fl_product_info"
                 android:layout_width="match_parent"
@@ -64,7 +59,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
-
                     <com.fangs.apar_app.utils.HelveticaBoldTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -73,7 +67,6 @@
                         android:gravity="center"
                         android:layout_marginBottom="10dp"
                         android:textColor="@color/black"/>
-
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -115,7 +108,6 @@
                             android:textSize="18sp"
                             android:textColor="@color/black"
                             tools:text="SOME PRODUCT HERE"/>
-
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -140,9 +132,8 @@
                     </LinearLayout>
                 </LinearLayout>
             </FrameLayout>
-
             <com.fangs.apar_app.utils.HelveticaCustomButton
-                android:id="@+id/btn_side_nav_update"
+                android:id="@+id/btn_side_nav_delete"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/red"
@@ -151,5 +142,4 @@
                 android:text="Delete"/>
         </LinearLayout>
     </FrameLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
