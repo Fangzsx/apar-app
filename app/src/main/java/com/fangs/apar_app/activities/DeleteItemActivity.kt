@@ -15,6 +15,8 @@ class DeleteItemActivity : BaseActivity() {
         setContentView(binding.root)
 
 
+
+
         //cancel
         binding.navBackDelete.setOnClickListener {
             Intent(this, MainActivity::class.java).also{
