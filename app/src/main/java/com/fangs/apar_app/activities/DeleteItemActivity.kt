@@ -8,9 +8,7 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import com.fangs.apar_app.R
 import com.fangs.apar_app.databinding.ActivityDeleteBinding
-import com.fangs.apar_app.utils.HelveticaNormalTextView
 import com.google.firebase.firestore.DocumentSnapshot
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -65,6 +63,7 @@ class DeleteItemActivity : BaseActivity() {
                 .addOnSuccessListener {
                     Toast.makeText(this, "Product with name $productName was deleted.", Toast.LENGTH_LONG).show()
                     Intent(this, MainActivity::class.java).also {
+                        listener.remove()
                         startActivity(it)
                         finish()
                     }
