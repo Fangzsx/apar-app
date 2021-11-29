@@ -10,6 +10,7 @@
         android:title="Update Product"
         android:icon="@drawable/ic_edit"/>
     <item
+        android:id="@+id/side_bar_delete_item"
         android:title="Remove Product"
         android:icon="@drawable/ic_delete_green"/>
 

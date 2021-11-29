@@ -142,11 +142,22 @@ class MainActivity : BaseActivity() {
         //side navigation
         val sideNav = NavigationView.OnNavigationItemSelectedListener { item ->
             when (item.itemId) {
+                R.id.side_bar_delete_item ->{
+                    Intent(this, DeleteItemActivity::class.java).also {
+                        startActivity(it)
+                        finish()
+                    }
+
+                    return@OnNavigationItemSelectedListener true
+                }
+
+
                 R.id.side_bar_add_item -> {
                     Intent(this, AddNewItemActivity::class.java).also {
                         startActivity(it)
                         finish()
                     }
+
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.side_bar_update_item -> {

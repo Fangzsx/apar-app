@@ -47,7 +47,6 @@ class UpdateItemActivity : BaseActivity() {
 
         disappearingText.isVisible = false
 
-        //TODO :setup search view
         val searchView = binding.svSideNavSearch
         val autoCompleteText = searchView.findViewById<AutoCompleteTextView>(R.id.search_src_text)
         val adapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, suggestions)
@@ -120,9 +119,11 @@ class UpdateItemActivity : BaseActivity() {
                 //return to MainActivity
                 Intent(this, MainActivity::class.java).also {
                     startActivity(it)
+                    listener.remove()
+                    finish()
                 }
-                listener.remove()
-                finish()
+
+
             }
         }
     }

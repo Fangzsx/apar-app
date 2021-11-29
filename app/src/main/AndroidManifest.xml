@@ -32,6 +32,8 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".activities.UpdateItemActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".activities.DeleteItemActivity"
+            android:screenOrientation="portrait"/>
 
     </application>
 
