@@ -66,7 +66,7 @@ class MainActivity : BaseActivity() {
         binding.toolbar.navDrawerToolbar.setNavigationOnClickListener {
             binding.drawer.openDrawer(GravityCompat.START)
         }
-        
+
         //sign out
         binding.tvSignOut.setOnClickListener {
 
@@ -269,7 +269,7 @@ class MainActivity : BaseActivity() {
                             mapOf(
                                 "name" to newProductName,
                                 "category" to newProductCategory.lowercase(),
-                                "price" to newProductPrice.toString()
+                                "price" to newProductPrice
                             )
                         )
                         Toast.makeText(this, "Product updated!", Toast.LENGTH_SHORT).show()

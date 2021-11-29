@@ -2,6 +2,7 @@ package com.fangs.apar_app.activities
 
 import android.app.Activity
 import android.content.Context
+import android.text.TextUtils
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager

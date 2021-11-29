@@ -3,17 +3,16 @@ package com.fangs.apar_app.activities
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.view.View
+import android.text.TextUtils
 import android.widget.*
-import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.fangs.apar_app.R
 import com.fangs.apar_app.databinding.ActivityUpdateItemBinding
 import com.fangs.apar_app.utils.HelveticaNormalTextView
 import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.ListenerRegistration
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import kotlinx.coroutines.tasks.await
 
 class UpdateItemActivity : BaseActivity() {
 
@@ -21,6 +20,7 @@ class UpdateItemActivity : BaseActivity() {
     private var suggestions = mutableListOf<String>()
     private val productsCollectionRef = Firebase.firestore.collection("products")
     private val documents = mutableListOf<DocumentSnapshot>()
+    private lateinit var listener : ListenerRegistration
 
     override fun onCreate(savedInstanceState: Bundle?) {
         supportActionBar?.hide()
@@ -58,10 +58,14 @@ class UpdateItemActivity : BaseActivity() {
         val tiProductPrice = binding.tiSideNavUpdateProductPrice
         //spinner
         val spinner = binding.spSideNavUpdateNewCategory
+        var productID : String? = null
 
 
         autoCompleteText.setOnItemClickListener { _, _, position, _ ->
             val currentProduct = adapter.getItem(position)
+            //remove this item in list
+            suggestions.remove(currentProduct)
+
             val hiddenTv = disappearingText.findViewById<HelveticaNormalTextView>(R.id.tv_side_nav_update_product_found)
             hiddenTv.text = currentProduct.toString().uppercase()
             disappearingText.isVisible = true
@@ -85,6 +89,7 @@ class UpdateItemActivity : BaseActivity() {
                         etNewProductName.setText(document["name"].toString())
                         etNewProductPrice.setText(document["price"].toString())
                         populateSpinner(spinner, document["category"].toString())
+                        productID = document.id
                         break
                     }
                 }
@@ -93,18 +98,39 @@ class UpdateItemActivity : BaseActivity() {
 
 
 
-
-
         //TODO: UPDATE PROPER
         binding.btnSideNavUpdate.setOnClickListener {
+            //validate
+            val productName = etNewProductName.text.toString().trim().lowercase()
+            val productPrice = etNewProductPrice.text.toString().toDouble()
+            val productCategory = spinner.selectedItem.toString().uppercase()
 
+
+
+            //update doc corresponding to the product selected
+            if(validateProduct(productName, productCategory, productPrice)){
+                productsCollectionRef.document(productID!!).update(
+                    mapOf(
+                        "name" to productName,
+                        "category" to productCategory.lowercase(),
+                        "price" to productPrice
+                    )
+                )
+                Toast.makeText(this, "Product updated!", Toast.LENGTH_SHORT).show()
+                //return to MainActivity
+                Intent(this, MainActivity::class.java).also {
+                    startActivity(it)
+                }
+                listener.remove()
+                finish()
+            }
         }
     }
 
 
     private fun getRealTimeUpdates() {
         
-        productsCollectionRef.addSnapshotListener { snapshot, error ->
+        listener = productsCollectionRef.addSnapshotListener { snapshot, error ->
             error?.let {
                 Toast.makeText(this@UpdateItemActivity, error.message, Toast.LENGTH_SHORT).show()
             }
@@ -114,10 +140,37 @@ class UpdateItemActivity : BaseActivity() {
                     documents.add(doc)
                 }
             }
-
-
         }
-        
+    }
+
+    private fun isExisting(name : String) : Boolean{
+        val productNameList = suggestions.toMutableList()
+        return productNameList.contains(name)
+    }
+
+    private fun validateProduct(name : String, category : String, price : Double) : Boolean{
+        return when{
+            TextUtils.isEmpty(name) -> {
+                showErrorSnackBar(binding.root, "Product name cannot be empty.", true)
+                false
+            }
+            category.uppercase() == "PLEASE SELECT FROM THE FF--" -> {
+                showErrorSnackBar(binding.root, "Select a valid category.", true)
+                false
+            }
+            price <= 0 -> {
+                showErrorSnackBar(binding.root, "Price cannot be less than or equal to 0.", true)
+                false
+            }
+
+            isExisting(name) -> {
+                showErrorSnackBar(binding.root, "Product with the same name already exist.", true)
+                false
+            }
+            else -> {
+                true
+            }
+        }
     }
 
 }
