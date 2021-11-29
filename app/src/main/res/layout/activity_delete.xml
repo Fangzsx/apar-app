@@ -57,7 +57,9 @@
                 android:id="@+id/fl_product_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="gone">
+                android:visibility="gone"
+                android:background="@drawable/dialog_bg_shape"
+                android:padding="10dp">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -85,7 +87,7 @@
                             android:textSize="18sp"
                             android:text="Name: "/>
                         <com.fangs.apar_app.utils.HelveticaNormalTextView
-                            android:id="@+id/tv_side_nav_update_product_found"
+                            android:id="@+id/tv_product_name"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.70"
@@ -94,7 +96,6 @@
                             tools:text="SOME PRODUCT HERE"/>
                     </LinearLayout>
                     <LinearLayout
-                        android:id="@+id/ll_disappearing_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
@@ -107,6 +108,7 @@
                             android:textSize="18sp"
                             android:text="Category: "/>
                         <com.fangs.apar_app.utils.HelveticaNormalTextView
+                            android:id="@+id/tv_product_category"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.70"
@@ -128,27 +130,16 @@
                             android:textSize="18sp"
                             android:text="Price"/>
                         <com.fangs.apar_app.utils.HelveticaNormalTextView
+                            android:id="@+id/tv_product_price"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="0.70"
                             android:textSize="18sp"
                             android:textColor="@color/black"
                             tools:text="SOME PRODUCT HERE"/>
-
                     </LinearLayout>
-
-
                 </LinearLayout>
-
-
             </FrameLayout>
-
-
-
-
-
-
-
 
             <com.fangs.apar_app.utils.HelveticaCustomButton
                 android:id="@+id/btn_side_nav_update"
