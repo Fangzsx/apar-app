@@ -75,6 +75,8 @@ class DeleteItemActivity : BaseActivity() {
                     .addOnFailureListener {
                         Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
                     }
+            }else{
+                showErrorSnackBar(binding.root, "Please search a product to be deleted.", true)
             }
         }
 

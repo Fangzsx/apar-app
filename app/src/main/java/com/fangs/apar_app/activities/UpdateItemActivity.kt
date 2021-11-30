@@ -126,6 +126,8 @@ class UpdateItemActivity : BaseActivity() {
                         finish()
                     }
                 }
+            }else{
+                showErrorSnackBar(binding.root, "Please search an item to be updated.", true)
             }
         }
     }
