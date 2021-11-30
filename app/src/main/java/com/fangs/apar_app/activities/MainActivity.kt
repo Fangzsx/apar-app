@@ -12,6 +12,7 @@ import android.widget.*
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
+import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 import com.fangs.apar_app.R
 import com.fangs.apar_app.databinding.ActivityMainBinding
@@ -345,8 +346,11 @@ class MainActivity : BaseActivity() {
     private fun manageImageSlider(){
         val slider = binding.imageSlider
         val imageList = ArrayList<SlideModel>()
-        imageList.add(SlideModel("https://i.pinimg.com/originals/67/6a/05/676a05b2a6695e36410882611e5f449c.jpg"))
-        imageList.add(SlideModel("https://i.pinimg.com/originals/6f/6b/80/6f6b80513afda9363a0900726f382b7b.jpg"))
+        imageList.add(SlideModel("https://static.vecteezy.com/system/resources/previews/000/179/195/original/weekend-special-sale-banner-design-in-green-and-yellow-color-vector.jpg",ScaleTypes.CENTER_CROP))
+        imageList.add(SlideModel("https://static.vecteezy.com/system/resources/previews/000/177/011/original/vector-stylish-sale-banner-with-colorful-background.jpg",ScaleTypes.CENTER_CROP))
+        imageList.add(SlideModel("https://images.vexels.com/media/users/3/152066/raw/cfa8213abe1afe20ccc88e935918db23-super-sale-online-shopping-banner.jpg",ScaleTypes.CENTER_CROP))
+        imageList.add(SlideModel("https://static.vecteezy.com/system/resources/previews/001/183/360/original/summer-sale-banner-with-pool-vector.jpg",ScaleTypes.CENTER_CROP))
+        imageList.add(SlideModel("https://static.vecteezy.com/system/resources/previews/000/176/887/original/creative-sale-banner-in-purple-and-yellow-color-with-offer-and-d-vector.jpg",ScaleTypes.CENTER_CROP))
 
         slider.setImageList(imageList)
 
