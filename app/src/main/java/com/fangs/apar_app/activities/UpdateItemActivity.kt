@@ -58,6 +58,7 @@ class UpdateItemActivity : BaseActivity() {
         //spinner
         val spinner = binding.spSideNavUpdateNewCategory
         var productID : String? = null
+        var isFound = false
 
 
         autoCompleteText.setOnItemClickListener { _, _, position, _ ->
@@ -76,7 +77,7 @@ class UpdateItemActivity : BaseActivity() {
             //if a product is found,
             //enable edit texts by changing bg of text inputs
             if(hiddenTv.text.toString().isNotBlank()){
-
+                isFound = true
                 tiProductName.boxBackgroundColor = Color.WHITE
                 etNewProductName.isEnabled = true
 
@@ -99,31 +100,32 @@ class UpdateItemActivity : BaseActivity() {
 
         //TODO: UPDATE PROPER
         binding.btnSideNavUpdate.setOnClickListener {
-            //validate
-            val productName = etNewProductName.text.toString().trim().lowercase()
-            val productPrice = etNewProductPrice.text.toString().toDouble()
-            val productCategory = spinner.selectedItem.toString().uppercase()
+
+            if(isFound){
+                //validate
+                val productName = etNewProductName.text.toString().trim().lowercase()
+                val productPrice = etNewProductPrice.text.toString().toDouble()
+                val productCategory = spinner.selectedItem.toString().uppercase()
 
 
 
-            //update doc corresponding to the product selected
-            if(validateProduct(productName, productCategory, productPrice)){
-                productsCollectionRef.document(productID!!).update(
-                    mapOf(
-                        "name" to productName,
-                        "category" to productCategory.lowercase(),
-                        "price" to productPrice
+                //update doc corresponding to the product selected
+                if(validateProduct(productName, productCategory, productPrice)){
+                    productsCollectionRef.document(productID!!).update(
+                        mapOf(
+                            "name" to productName,
+                            "category" to productCategory.lowercase(),
+                            "price" to productPrice
+                        )
                     )
-                )
-                Toast.makeText(this, "Product updated!", Toast.LENGTH_SHORT).show()
-                //return to MainActivity
-                Intent(this, MainActivity::class.java).also {
-                    startActivity(it)
-                    listener.remove()
-                    finish()
+                    Toast.makeText(this, "Product updated!", Toast.LENGTH_SHORT).show()
+                    //return to MainActivity
+                    Intent(this, MainActivity::class.java).also {
+                        startActivity(it)
+                        listener.remove()
+                        finish()
+                    }
                 }
-
-
             }
         }
     }
