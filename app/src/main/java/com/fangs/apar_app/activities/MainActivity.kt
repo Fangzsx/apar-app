@@ -148,7 +148,6 @@ class MainActivity : BaseActivity() {
                 R.id.side_bar_delete_item ->{
                     Intent(this, DeleteItemActivity::class.java).also {
                         startActivity(it)
-                        finish()
                     }
 
                     return@OnNavigationItemSelectedListener true
@@ -158,7 +157,6 @@ class MainActivity : BaseActivity() {
                 R.id.side_bar_add_item -> {
                     Intent(this, AddNewItemActivity::class.java).also {
                         startActivity(it)
-                        finish()
                     }
 
                     return@OnNavigationItemSelectedListener true
@@ -166,7 +164,6 @@ class MainActivity : BaseActivity() {
                 R.id.side_bar_update_item -> {
                     Intent(this, UpdateItemActivity::class.java).also {
                         startActivity(it)
-                        finish()
                     }
                     return@OnNavigationItemSelectedListener true
                 }

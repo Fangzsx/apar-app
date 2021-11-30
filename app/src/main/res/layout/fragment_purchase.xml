@@ -15,11 +15,11 @@
         android:text="Place an Order"
         android:textColor="@color/black"
         android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/helveticaCustomButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteY="15dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.fangs.apar_app.utils.HelveticaCustomButton
         android:id="@+id/helveticaCustomButton"
