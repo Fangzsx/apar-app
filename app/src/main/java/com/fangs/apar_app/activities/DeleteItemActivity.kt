@@ -32,9 +32,12 @@ class DeleteItemActivity : BaseActivity() {
         val adapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, suggestions)
         var productID : String? = null
         var productName : String? = null
+        var isFound = false
+
         autoCompleteTextView.setAdapter(adapter)
 
         autoCompleteTextView.setOnItemClickListener { _, _, position, _ ->
+            isFound = true
             searchView.onActionViewCollapsed()
             searchView.onActionViewCollapsed()
             searchView.isIconified = false
@@ -59,18 +62,20 @@ class DeleteItemActivity : BaseActivity() {
 
         //delete proper
         binding.btnSideNavDelete.setOnClickListener {
-            productsCollectionRef.document(productID!!).delete()
-                .addOnSuccessListener {
-                    Toast.makeText(this, "Product with name $productName was deleted.", Toast.LENGTH_LONG).show()
-                    Intent(this, MainActivity::class.java).also {
-                        listener.remove()
-                        startActivity(it)
-                        finish()
+            if(isFound){
+                productsCollectionRef.document(productID!!).delete()
+                    .addOnSuccessListener {
+                        Toast.makeText(this, "Product with name $productName was deleted.", Toast.LENGTH_LONG).show()
+                        Intent(this, MainActivity::class.java).also {
+                            listener.remove()
+                            startActivity(it)
+                            finish()
+                        }
                     }
-                }
-                .addOnFailureListener {
-                    Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
-                }
+                    .addOnFailureListener {
+                        Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
+                    }
+            }
         }
 
 
