@@ -12,6 +12,7 @@ import android.widget.*
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
+import com.denzcoskun.imageslider.models.SlideModel
 import com.fangs.apar_app.R
 import com.fangs.apar_app.databinding.ActivityMainBinding
 import com.fangs.apar_app.fragments.PurchaseFragment
@@ -58,6 +59,7 @@ class MainActivity : BaseActivity() {
         //get user ID
         userID = FirebaseAuth.getInstance().currentUser!!.uid
 
+        manageImageSlider()
         manageToolbar()
         manageSideNavigation()
         manageBottomNavigation()
@@ -338,5 +340,15 @@ class MainActivity : BaseActivity() {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.fragment_container, fragment)
         transaction.commit()
+    }
+
+    private fun manageImageSlider(){
+        val slider = binding.imageSlider
+        val imageList = ArrayList<SlideModel>()
+        imageList.add(SlideModel("https://i.pinimg.com/originals/67/6a/05/676a05b2a6695e36410882611e5f449c.jpg"))
+        imageList.add(SlideModel("https://i.pinimg.com/originals/6f/6b/80/6f6b80513afda9363a0900726f382b7b.jpg"))
+
+        slider.setImageList(imageList)
+
     }
 }

@@ -22,7 +22,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.30"
+            android:layout_weight="0.20"
             android:orientation="horizontal"
             android:background="@drawable/main_bg"
             android:gravity="center">
@@ -42,6 +42,17 @@
 
         </LinearLayout>
 
+        <com.denzcoskun.imageslider.ImageSlider
+            android:id="@+id/image_slider"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="0.30"
+            app:iss_auto_cycle="true"
+            app:iss_delay="0"
+            app:iss_placeholder="@color/ThemeDarkGreen"
+            app:iss_error_image="@color/red"/>
+
+
 
         <FrameLayout
             android:id="@+id/fragment_container"
@@ -49,7 +60,7 @@
             android:layout_height="0dp"
             android:orientation="vertical"
             android:gravity="center_vertical"
-            android:layout_weight="0.70">
+            android:layout_weight="0.50">
 
         </FrameLayout>
 
