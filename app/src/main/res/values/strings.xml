@@ -3,7 +3,7 @@
     <string name="app_logo">app logo</string>
 
 
-    <string-array name="products_category" >
+    <string-array name="products_category">
         <!-- FOOD-->
         <item>PLEASE SELECT FROM THE FF—</item>
         <item>POWDERED MILK, JUICE, COFFEE</item>
@@ -24,4 +24,20 @@
 
 
     </string-array>
+
+    <string-array name="months">
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
+    </string-array>
+
 </resources>

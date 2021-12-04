@@ -7,6 +7,7 @@ data class Customer(
     val firstname : String,
     val birthday : LocalDate,
     val address : String,
-    val contactNumber : Long
+    val contactNumber : Long,
+    val signedUpDate : LocalDate
 
     )
