@@ -7,9 +7,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.text.TextUtils
 import android.util.Log
-import android.view.View
 import android.widget.*
-import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.denzcoskun.imageslider.constants.ScaleTypes
@@ -23,6 +21,7 @@ import com.fangs.apar_app.utils.HelveticaNormalTextView
 import com.fangs.apar_app.utils.LoadingDialog
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.textfield.TextInputEditText
+import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.ListenerRegistration
@@ -31,6 +30,8 @@ import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
+import java.util.*
+import kotlin.collections.ArrayList
 
 class MainActivity : BaseActivity() {
 
@@ -50,6 +51,8 @@ class MainActivity : BaseActivity() {
         Handler().postDelayed({
             loadingDialog.dismiss()
         }, 1500) // 1000 is the delayed time in milliseconds.
+
+
 
 
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -234,6 +237,7 @@ class MainActivity : BaseActivity() {
                     startActivity(intent)
                     overridePendingTransition(0, 0)
                 }
+
 
                 deleteDialog.show()
             }
