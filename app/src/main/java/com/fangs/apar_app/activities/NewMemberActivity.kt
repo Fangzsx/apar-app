@@ -1,8 +1,8 @@
 package com.fangs.apar_app.activities
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
-import com.fangs.apar_app.R
+import androidx.appcompat.app.AppCompatActivity
 import com.fangs.apar_app.databinding.ActivityNewMemberBinding
 
 class NewMemberActivity : AppCompatActivity() {
@@ -12,6 +12,12 @@ class NewMemberActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityNewMemberBinding.inflate(layoutInflater)
+        binding.sideBarNewMemberBack.setNavigationOnClickListener{
+            Intent(this, MainActivity::class.java).also {
+                startActivity(it)
+                finish()
+            }
+        }
 
 
         setContentView(binding.root)

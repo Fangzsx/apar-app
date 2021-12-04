@@ -46,8 +46,9 @@ class AddNewItemActivity : BaseActivity(){
         binding.navBackAdd.setNavigationOnClickListener {
             Intent(this, MainActivity::class.java).also {
                 startActivity(it)
+                finish()
             }
-            finish()
+
         }
     }
     private suspend fun addItemToFirebase(){

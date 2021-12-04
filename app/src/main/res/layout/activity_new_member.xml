@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/side_bar_new_member_back"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@drawable/main_bg"
@@ -136,34 +137,17 @@
                     android:textSize="18sp"
                     android:gravity="center"
                     android:text="Birthdate: "/>
-                <DatePicker
-                    android:layout_width="0dp"
-                    android:layout_height="70dp"
-                    android:layout_weight="0.70"
-                    android:background="@color/white"
-                    android:calendarViewShown="false"
-                    android:layout_gravity="end"
-                    android:datePickerMode="spinner" />
+
 
             </LinearLayout>
-
-
-
-
-
         </LinearLayout>
 
-
-
+        <com.fangs.apar_app.utils.HelveticaCustomButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:layout_gravity="bottom"
+            android:text="SUBMIT"/>
     </FrameLayout>
-    <com.fangs.apar_app.utils.HelveticaCustomButton
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_margin="15dp"
-        app:layout_constraintBottom_toBottomOf="@id/form_layout"
-        android:text="SUBMIT"/>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
