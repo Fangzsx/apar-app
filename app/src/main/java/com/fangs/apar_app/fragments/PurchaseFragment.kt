@@ -1,10 +1,13 @@
 package com.fangs.apar_app.fragments
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.fangs.apar_app.activities.NewMemberActivity
 import com.fangs.apar_app.databinding.FragmentPurchaseBinding
 
 class PurchaseFragment : Fragment() {
@@ -18,6 +21,16 @@ class PurchaseFragment : Fragment() {
     ): View {
 
         binding = FragmentPurchaseBinding.inflate(inflater, container, false)
+
+        //back to main
+
+        binding.btnNewMember.setOnClickListener {
+            Intent(context, NewMemberActivity::class.java).also {
+                startActivity(it)
+            }
+        }
+
         return binding.root
     }
+
 }
