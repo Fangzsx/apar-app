@@ -10,7 +10,7 @@ data class Customer(
     val phaseSubd : String,
     val city : String,
     val birthday : String,
-    val contactNumber : Long,
+    val contactNumber : String,
     val signedUpDate : LocalDate
 
     )

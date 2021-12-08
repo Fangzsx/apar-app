@@ -8,12 +8,17 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.fangs.apar_app.databinding.ActivityNewMemberBinding
 import com.fangs.apar_app.dataclass.Customer
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
 class NewMemberActivity : BaseActivity() {
 
     private lateinit var binding : ActivityNewMemberBinding
+    private val userID = FirebaseAuth.getInstance().currentUser!!.uid
+    private val customersCollectionRef = Firebase.firestore.collection("users/$userID/customers")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,10 +44,10 @@ class NewMemberActivity : BaseActivity() {
                 val houseSt = binding.etNewMemberHouseNoSt.text.toString()
                 val phaseSubd = binding.etNewMemberPhaseSubd.text.toString()
                 val city = binding.etNewMemberCity.text.toString()
+                val contactNumber = binding.etNewMemberContactNumber.text.toString()
                 val birthday = binding.etNewMemberBirthday.text.toString()
 
-                val customer = Customer(lastname, firstname, middlename, houseSt, phaseSubd, city, birthday, )
-
+                //MAKE ORDER.
 
             }
         }
