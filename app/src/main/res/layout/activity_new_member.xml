@@ -137,14 +137,13 @@
                     android:textSize="16sp"
                     android:inputType="date"/>
             </com.google.android.material.textfield.TextInputLayout>
+            <com.fangs.apar_app.utils.HelveticaCustomButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="SUBMIT"/>
         </LinearLayout>
-
-        <com.fangs.apar_app.utils.HelveticaCustomButton
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:layout_gravity="bottom"
-            android:text="SUBMIT"/>
     </FrameLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
