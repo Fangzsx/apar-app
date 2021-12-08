@@ -3,9 +3,13 @@ package com.fangs.apar_app.activities
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.fangs.apar_app.databinding.ActivityNewMemberBinding
+import com.fangs.apar_app.dataclass.Customer
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 class NewMemberActivity : BaseActivity() {
 
@@ -28,7 +32,19 @@ class NewMemberActivity : BaseActivity() {
         //validate
         binding.btnSubmitNewMember.setOnClickListener {
             hideKeyboard(currentFocus ?: View(this))
-            isValidCustomerInfo()
+            if(isValidCustomerInfo()){
+                val lastname = binding.etNewMemberLastname.text.toString()
+                val firstname = binding.etNewMemberFirstname.text.toString()
+                val middlename = binding.etNewMemberMiddlename.text.toString()
+                val houseSt = binding.etNewMemberHouseNoSt.text.toString()
+                val phaseSubd = binding.etNewMemberPhaseSubd.text.toString()
+                val city = binding.etNewMemberCity.text.toString()
+                val birthday = binding.etNewMemberBirthday.text.toString()
+
+                val customer = Customer(lastname, firstname, middlename, houseSt, phaseSubd, city, birthday, )
+
+
+            }
         }
 
 
@@ -43,6 +59,7 @@ class NewMemberActivity : BaseActivity() {
         val etHouseSt = binding.etNewMemberHouseNoSt.text.toString().trim()
         val etPhaseSubd = binding.etNewMemberPhaseSubd.text.toString().trim()
         val etCity = binding.etNewMemberCity.text.toString().trim()
+        val etContactNumber = binding.etNewMemberContactNumber.toString()
         val etBirthday = binding.etNewMemberBirthday.text.toString()
 
         return when{
@@ -60,19 +77,23 @@ class NewMemberActivity : BaseActivity() {
                 false
             }
             TextUtils.isEmpty(etHouseSt) ->{
-                showErrorSnackBar(binding.root, "Last name cannot be empty", true)
+                showErrorSnackBar(binding.root, "House# and Street cannot be empty", true)
                 false
             }
             TextUtils.isEmpty(etPhaseSubd) ->{
-                showErrorSnackBar(binding.root, "Last name cannot be empty", true)
+                showErrorSnackBar(binding.root, "Phase/Zone/Subdivision cannot be empty", true)
                 false
             }
             TextUtils.isEmpty(etCity) ->{
-                showErrorSnackBar(binding.root, "Last name cannot be empty", true)
+                showErrorSnackBar(binding.root, "City cannot be empty", true)
+                false
+            }
+            TextUtils.isEmpty(etContactNumber) ->{
+                showErrorSnackBar(binding.root, "Contact cannot be empty", true)
                 false
             }
             TextUtils.isEmpty(etBirthday) ->{
-                showErrorSnackBar(binding.root, "Last name cannot be empty", true)
+                showErrorSnackBar(binding.root, "Birthday cannot be empty", true)
                 false
             }
 

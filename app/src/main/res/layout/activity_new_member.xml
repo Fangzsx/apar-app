@@ -45,7 +45,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:boxBackgroundColor="@color/white"
-                android:hint="Last Name">
+                android:hint="Last Name (Extensions Jr, Sr)">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_new_member_lastname"
                     android:textColor="@color/black"
@@ -124,7 +124,22 @@
                     android:layout_height="match_parent"
                     android:textSize="16sp"
                     android:inputType="textPostalAddress"/>
-            </com.google.android.material.textfield.TextInputLayout><com.google.android.material.textfield.TextInputLayout
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/CustomOutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxBackgroundColor="@color/white"
+                android:hint="Contact Number">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_new_member_contact_number"
+                    android:textColor="@color/black"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="16sp"
+                    android:inputType="phone"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
                 style="@style/CustomOutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
