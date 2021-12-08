@@ -52,7 +52,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="16sp"
-                    android:inputType="text"/>
+                    android:inputType="textPersonName"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -66,7 +66,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="16sp"
-                    android:inputType="text"/>
+                    android:inputType="textPersonName"/>
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/CustomOutlinedBox"
@@ -79,7 +79,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="16sp"
-                    android:inputType="text"/>
+                    android:inputType="textPersonName"/>
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/CustomOutlinedBox"
@@ -105,7 +105,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="16sp"
-                    android:inputType="text"/>
+                    android:inputType="textPostalAddress"/>
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/CustomOutlinedBox"
@@ -118,28 +118,22 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="16sp"
-                    android:inputType="text"/>
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <LinearLayout
+                    android:inputType="textPostalAddress"/>
+            </com.google.android.material.textfield.TextInputLayout><com.google.android.material.textfield.TextInputLayout
+                style="@style/CustomOutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:weightSum="1"
-                android:orientation="horizontal">
-
-                <com.fangs.apar_app.utils.HelveticaNormalTextView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.30"
-                    android:layout_gravity="center"
+                app:boxBackgroundColor="@color/white"
+                android:hint="Birthday MM/DD/YYYY">
+                <com.google.android.material.textfield.TextInputEditText
                     android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:gravity="center"
-                    android:text="Birthdate: "/>
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="16sp"
+                    android:inputType="date"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
 
-            </LinearLayout>
         </LinearLayout>
 
         <com.fangs.apar_app.utils.HelveticaCustomButton
