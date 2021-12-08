@@ -62,6 +62,7 @@
                 app:boxBackgroundColor="@color/white"
                 android:hint="First Name">
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_new_member_firstname"
                     android:textColor="@color/black"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -75,6 +76,7 @@
                 app:boxBackgroundColor="@color/white"
                 android:hint="Middle Name">
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_new_member_middlename"
                     android:textColor="@color/black"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -88,6 +90,7 @@
                 app:boxBackgroundColor="@color/white"
                 android:hint="House# and Street">
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_new_member_house_no_st"
                     android:textColor="@color/black"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -101,6 +104,7 @@
                 app:boxBackgroundColor="@color/white"
                 android:hint="Phase/Zone/Subdivision">
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_new_member_phase_subd"
                     android:textColor="@color/black"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -114,6 +118,7 @@
                 app:boxBackgroundColor="@color/white"
                 android:hint="City">
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_new_member_city"
                     android:textColor="@color/black"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -132,8 +137,6 @@
                     android:textSize="16sp"
                     android:inputType="date"/>
             </com.google.android.material.textfield.TextInputLayout>
-
-
         </LinearLayout>
 
         <com.fangs.apar_app.utils.HelveticaCustomButton
