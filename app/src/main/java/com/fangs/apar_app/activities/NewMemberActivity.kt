@@ -3,6 +3,7 @@ package com.fangs.apar_app.activities
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.fangs.apar_app.databinding.ActivityNewMemberBinding
 
@@ -26,6 +27,7 @@ class NewMemberActivity : BaseActivity() {
 
         //validate
         binding.btnSubmitNewMember.setOnClickListener {
+            hideKeyboard(currentFocus ?: View(this))
             isValidCustomerInfo()
         }
 
