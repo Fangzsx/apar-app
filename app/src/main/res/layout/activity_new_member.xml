@@ -131,6 +131,7 @@
                 app:boxBackgroundColor="@color/white"
                 android:hint="Birthday MM/DD/YYYY">
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_new_member_birthday"
                     android:textColor="@color/black"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -138,6 +139,7 @@
                     android:inputType="date"/>
             </com.google.android.material.textfield.TextInputLayout>
             <com.fangs.apar_app.utils.HelveticaCustomButton
+                android:id="@+id/btn_submit_new_member"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
