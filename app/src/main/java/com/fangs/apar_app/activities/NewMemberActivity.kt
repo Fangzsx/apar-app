@@ -54,6 +54,9 @@ class NewMemberActivity : BaseActivity() {
 
                 //MAKE ORDER.
 
+
+
+
             }
         }
 
@@ -104,7 +107,10 @@ class NewMemberActivity : BaseActivity() {
                 false
             }
 
-            else -> true
+            else -> {
+
+                true
+            }
         }
 
     }
