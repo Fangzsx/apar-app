@@ -53,7 +53,6 @@ class NewMemberActivity : BaseActivity() {
                 val contactNumber = binding.etNewMemberContactNumber.text.toString()
                 val birthday = binding.etNewMemberBirthday.text.toString()
 
-                //MAKE ORDER.
                 val customerInfoDialog = Dialog(this)
                 customerInfoDialog.setContentView(R.layout.dialog_new_member_info)
                 val window: Window? = customerInfoDialog.window
@@ -62,6 +61,8 @@ class NewMemberActivity : BaseActivity() {
                     WindowManager.LayoutParams.WRAP_CONTENT
                 )
                 window?.setGravity(Gravity.CENTER)
+
+                //TODO: show member info inside dialog
 
 
                 customerInfoDialog.show()
