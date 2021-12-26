@@ -25,7 +25,6 @@ class NewMemberActivity : BaseActivity() {
 
     private lateinit var binding: ActivityNewMemberBinding
     private val userID = FirebaseAuth.getInstance().currentUser!!.uid
-    private val customersCollectionRef = Firebase.firestore.collection("users/$userID/customers")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
