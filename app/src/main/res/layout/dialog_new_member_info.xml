@@ -1,216 +1,213 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/dialog_bg_shape">
 
-    <com.fangs.apar_app.utils.HelveticaBoldTextView
-        android:id="@+id/tv_header"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:text="New Member's Information"
-        android:background="@drawable/main_bg"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:padding="10dp"/>
 
-    <FrameLayout
-        android:id="@+id/fl_info"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient_color_green"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <com.fangs.apar_app.utils.HelveticaBoldTextView
+            android:id="@+id/tv_product_found"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="Product Found!"
+            android:textSize="16sp"
+            android:textColor="@color/white"/>
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_check"
+            android:layout_marginStart="5dp"
+            android:layout_gravity="center_vertical"
+            android:scaleType="fitXY"/>
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tv_header"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:padding="10dp">
+        android:orientation="vertical"
+        android:padding="15dp">
+        <com.fangs.apar_app.utils.HelveticaBoldTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Make a purchase for member with the following data?"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="20sp"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
+            android:orientation="horizontal"
+            android:weightSum="1">
             <com.fangs.apar_app.utils.HelveticaBoldTextView
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Make a purchase for member with the following data?"
-                android:gravity="center"
+                android:layout_weight="0.30"
+                android:text="Last name: "
                 android:textColor="@color/black"
-                android:textSize="20sp"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
+                android:textSize="18sp"/>
+            <com.fangs.apar_app.utils.HelveticaNormalTextView
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="1">
-                <com.fangs.apar_app.utils.HelveticaBoldTextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.30"
-                    android:text="Last name: "
-                    android:textColor="@color/black"
-                    android:textSize="18sp"/>
-                <com.fangs.apar_app.utils.HelveticaNormalTextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:layout_weight="0.70"
-                    tools:text="LAST NAME"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="1">
-                <com.fangs.apar_app.utils.HelveticaBoldTextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.30"
-                    android:text="First name: "
-                    android:textColor="@color/black"
-                    android:textSize="18sp"/>
-                <com.fangs.apar_app.utils.HelveticaNormalTextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:layout_weight="0.70"
-                    tools:text="FIRST NAME"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="1">
-                <com.fangs.apar_app.utils.HelveticaBoldTextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.30"
-                    android:text="Middle name: "
-                    android:textColor="@color/black"
-                    android:textSize="18sp"/>
-                <com.fangs.apar_app.utils.HelveticaNormalTextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:layout_weight="0.70"
-                    tools:text="MIDDLE NAME"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="1">
-                <com.fangs.apar_app.utils.HelveticaBoldTextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.30"
-                    android:text="House# ST: "
-                    android:textColor="@color/black"
-                    android:textSize="18sp"/>
-                <com.fangs.apar_app.utils.HelveticaNormalTextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:layout_weight="0.70"
-                    tools:text="HOUSE# ST"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="1">
-                <com.fangs.apar_app.utils.HelveticaBoldTextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.30"
-                    android:text="Phase/Zone: "
-                    android:textColor="@color/black"
-                    android:textSize="18sp"/>
-                <com.fangs.apar_app.utils.HelveticaNormalTextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:layout_weight="0.70"
-                    tools:text="PHASE ZONE"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="1">
-                <com.fangs.apar_app.utils.HelveticaBoldTextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.30"
-                    android:text="City: "
-                    android:textColor="@color/black"
-                    android:textSize="18sp"/>
-                <com.fangs.apar_app.utils.HelveticaNormalTextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:layout_weight="0.70"
-                    tools:text="CITY"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="1">
-                <com.fangs.apar_app.utils.HelveticaBoldTextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.30"
-                    android:text="Contact: "
-                    android:textColor="@color/black"
-                    android:textSize="18sp"/>
-                <com.fangs.apar_app.utils.HelveticaNormalTextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:layout_weight="0.70"
-                    tools:text="CONTACT"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="1">
-                <com.fangs.apar_app.utils.HelveticaBoldTextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.30"
-                    android:text="Birthday: "
-                    android:textColor="@color/black"
-                    android:textSize="18sp"/>
-                <com.fangs.apar_app.utils.HelveticaNormalTextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:layout_weight="0.70"
-                    tools:text="BIRTHDAY"/>
-            </LinearLayout>
+                android:textSize="18sp"
+                android:layout_weight="0.70"
+                tools:text="LAST NAME"/>
         </LinearLayout>
-    </FrameLayout>
 
-    <com.fangs.apar_app.utils.HelveticaCustomButton
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/fl_info"
-        android:layout_margin="10dp"
-        android:text="Proceed to Order"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+            <com.fangs.apar_app.utils.HelveticaBoldTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.30"
+                android:text="First name: "
+                android:textColor="@color/black"
+                android:textSize="18sp"/>
+            <com.fangs.apar_app.utils.HelveticaNormalTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_weight="0.70"
+                tools:text="FIRST NAME"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+            <com.fangs.apar_app.utils.HelveticaBoldTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.30"
+                android:text="Middle name: "
+                android:textColor="@color/black"
+                android:textSize="18sp"/>
+            <com.fangs.apar_app.utils.HelveticaNormalTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_weight="0.70"
+                tools:text="MIDDLE NAME"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+            <com.fangs.apar_app.utils.HelveticaBoldTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.30"
+                android:text="House# St: "
+                android:textColor="@color/black"
+                android:textSize="18sp"/>
+            <com.fangs.apar_app.utils.HelveticaNormalTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_weight="0.70"
+                tools:text="HOUSE# ST"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+            <com.fangs.apar_app.utils.HelveticaBoldTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.30"
+                android:text="Phase/Zone: "
+                android:textColor="@color/black"
+                android:textSize="18sp"/>
+            <com.fangs.apar_app.utils.HelveticaNormalTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_weight="0.70"
+                tools:text="PHASE ZONE"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+            <com.fangs.apar_app.utils.HelveticaBoldTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.30"
+                android:text="City: "
+                android:textColor="@color/black"
+                android:textSize="18sp"/>
+            <com.fangs.apar_app.utils.HelveticaNormalTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_weight="0.70"
+                tools:text="CITY"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+            <com.fangs.apar_app.utils.HelveticaBoldTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.30"
+                android:text="Contact: "
+                android:textColor="@color/black"
+                android:textSize="18sp"/>
+            <com.fangs.apar_app.utils.HelveticaNormalTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_weight="0.70"
+                tools:text="CONTACT"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+            <com.fangs.apar_app.utils.HelveticaBoldTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.30"
+                android:text="Birthday: "
+                android:textColor="@color/black"
+                android:textSize="18sp"/>
+            <com.fangs.apar_app.utils.HelveticaNormalTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_weight="0.70"
+                tools:text="BIRTHDAY"/>
+        </LinearLayout>
 
 
 
+        </LinearLayout>
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>

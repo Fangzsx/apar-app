@@ -5,20 +5,20 @@ import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.view.View
-import android.widget.Toast
 import com.fangs.apar_app.R
 import com.fangs.apar_app.databinding.ActivityNewMemberBinding
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
-import com.google.type.DateTime
 import java.text.ParseException
 import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 import java.util.*
+import android.view.Gravity
+import android.view.Window
+
+import android.view.WindowManager
+
+
+
 
 
 class NewMemberActivity : BaseActivity() {
@@ -56,8 +56,16 @@ class NewMemberActivity : BaseActivity() {
                 //MAKE ORDER.
                 val customerInfoDialog = Dialog(this, R.style.CustomDialog)
                 customerInfoDialog.setContentView(R.layout.dialog_new_member_info)
+                val window: Window? = customerInfoDialog.window
+                window?.setLayout(
+                    WindowManager.LayoutParams.MATCH_PARENT,
+                    WindowManager.LayoutParams.WRAP_CONTENT
+                )
+                window?.setGravity(Gravity.CENTER)
+
 
                 customerInfoDialog.show()
+                
 
 
 
