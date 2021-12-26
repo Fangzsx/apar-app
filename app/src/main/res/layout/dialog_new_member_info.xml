@@ -16,18 +16,17 @@
         android:padding="10dp">
 
         <com.fangs.apar_app.utils.HelveticaBoldTextView
-            android:id="@+id/tv_product_found"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
-            android:text="Product Found!"
+            android:text="New Member Information"
             android:textSize="16sp"
             android:textColor="@color/white"/>
 
         <ImageView
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/ic_check"
+            android:src="@drawable/ic_users"
             android:layout_marginStart="5dp"
             android:layout_gravity="center_vertical"
             android:scaleType="fitXY"/>
@@ -204,10 +203,14 @@
                 android:textSize="18sp"
                 android:layout_weight="0.70"
                 tools:text="BIRTHDAY"/>
+            </LinearLayout>
         </LinearLayout>
 
+    <com.fangs.apar_app.utils.HelveticaCustomButton
+        android:id="@+id/btn_order"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Proceed to Order"
+        android:layout_margin="10dp"/>
 
-
-        </LinearLayout>
-
-    </LinearLayout>
+</LinearLayout>
