@@ -22,6 +22,13 @@ class UpdateItemActivity : BaseActivity() {
     private val documents = mutableListOf<DocumentSnapshot>()
     private lateinit var listener : ListenerRegistration
 
+    override fun onBackPressed() {
+        Intent(this, MainActivity::class.java).also {
+            finish()
+            startActivity(it)
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         supportActionBar?.hide()
         super.onCreate(savedInstanceState)

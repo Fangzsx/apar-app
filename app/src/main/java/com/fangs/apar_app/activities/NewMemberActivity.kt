@@ -1,12 +1,14 @@
 package com.fangs.apar_app.activities
 
 import android.annotation.SuppressLint
+import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import com.fangs.apar_app.R
 import com.fangs.apar_app.databinding.ActivityNewMemberBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
@@ -53,6 +55,10 @@ class NewMemberActivity : BaseActivity() {
                 val birthday = binding.etNewMemberBirthday.text.toString()
 
                 //MAKE ORDER.
+                val customerInfoDialog = Dialog(this, R.style.CustomDialog)
+                customerInfoDialog.setContentView(R.layout.dialog_new_member_info)
+
+                customerInfoDialog.show()
 
 
 

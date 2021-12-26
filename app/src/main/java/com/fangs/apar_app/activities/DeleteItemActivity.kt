@@ -20,6 +20,13 @@ class DeleteItemActivity : BaseActivity() {
     private var documents = mutableListOf<DocumentSnapshot>()
     private val productsCollectionRef = Firebase.firestore.collection("products")
 
+    override fun onBackPressed() {
+        Intent(this, MainActivity::class.java).also {
+            finish()
+            startActivity(it)
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         supportActionBar?.hide()
         super.onCreate(savedInstanceState)
