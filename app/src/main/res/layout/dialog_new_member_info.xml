@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             android:text="New Member Information"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:textColor="@color/white"/>
 
         <ImageView
@@ -58,6 +58,7 @@
                 android:textColor="@color/black"
                 android:textSize="18sp"/>
             <com.fangs.apar_app.utils.HelveticaNormalTextView
+                android:id="@+id/tv_lastname_new"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
@@ -78,6 +79,7 @@
                 android:textColor="@color/black"
                 android:textSize="18sp"/>
             <com.fangs.apar_app.utils.HelveticaNormalTextView
+                android:id="@+id/tv_firstname_new"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
@@ -98,9 +100,11 @@
                 android:textColor="@color/black"
                 android:textSize="18sp"/>
             <com.fangs.apar_app.utils.HelveticaNormalTextView
+                android:id="@+id/tv_middlename_new"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:textSize="18sp"
+                android:gravity="center_vertical"
                 android:layout_weight="0.70"
                 tools:text="MIDDLE NAME"/>
         </LinearLayout>
@@ -118,6 +122,7 @@
                 android:textColor="@color/black"
                 android:textSize="18sp"/>
             <com.fangs.apar_app.utils.HelveticaNormalTextView
+                android:id="@+id/tv_housest_new"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
@@ -138,6 +143,7 @@
                 android:textColor="@color/black"
                 android:textSize="18sp"/>
             <com.fangs.apar_app.utils.HelveticaNormalTextView
+                android:id="@+id/tv_phasezone_new"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
@@ -158,6 +164,7 @@
                 android:textColor="@color/black"
                 android:textSize="18sp"/>
             <com.fangs.apar_app.utils.HelveticaNormalTextView
+                android:id="@+id/tv_city_new"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
@@ -178,6 +185,7 @@
                 android:textColor="@color/black"
                 android:textSize="18sp"/>
             <com.fangs.apar_app.utils.HelveticaNormalTextView
+                android:id="@+id/tv_contact_new"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
@@ -198,6 +206,7 @@
                 android:textColor="@color/black"
                 android:textSize="18sp"/>
             <com.fangs.apar_app.utils.HelveticaNormalTextView
+                android:id="@+id/tv_birthday_new"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"

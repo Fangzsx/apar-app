@@ -16,9 +16,7 @@ import android.view.Gravity
 import android.view.Window
 
 import android.view.WindowManager
-
-
-
+import com.fangs.apar_app.utils.HelveticaNormalTextView
 
 
 class NewMemberActivity : BaseActivity() {
@@ -63,6 +61,28 @@ class NewMemberActivity : BaseActivity() {
                 window?.setGravity(Gravity.CENTER)
 
                 //TODO: show member info inside dialog
+                val tvLastname = customerInfoDialog.findViewById<HelveticaNormalTextView>(R.id.tv_lastname_new)
+                val tvFirstname = customerInfoDialog.findViewById<HelveticaNormalTextView>(R.id.tv_firstname_new)
+                val tvMiddlename = customerInfoDialog.findViewById<HelveticaNormalTextView>(R.id.tv_middlename_new)
+                val tvHouseSt = customerInfoDialog.findViewById<HelveticaNormalTextView>(R.id.tv_housest_new)
+                val tvPhaseZone = customerInfoDialog.findViewById<HelveticaNormalTextView>(R.id.tv_phasezone_new)
+                val tvCity = customerInfoDialog.findViewById<HelveticaNormalTextView>(R.id.tv_city_new)
+                val tvContact = customerInfoDialog.findViewById<HelveticaNormalTextView>(R.id.tv_contact_new)
+                val tvBirthday = customerInfoDialog.findViewById<HelveticaNormalTextView>(R.id.tv_birthday_new)
+
+                tvLastname.text = lastname.uppercase()
+                tvFirstname.text = firstname.uppercase()
+                if(middlename.isEmpty()){
+                    tvMiddlename.text = "N.A"
+                }else{
+                    tvMiddlename.text = middlename.uppercase()
+                }
+
+                tvHouseSt.text = houseSt.uppercase()
+                tvPhaseZone.text = phaseSubd
+                tvCity.text = city.uppercase()
+                tvContact.text = contactNumber
+                tvBirthday.text = birthday
 
 
                 customerInfoDialog.show()
