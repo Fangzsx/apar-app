@@ -41,17 +41,11 @@ class MainActivity : BaseActivity() {
     private val usersRef = Firebase.firestore.collection("users")
     private lateinit var userID : String
     private lateinit var listenerRegistration: ListenerRegistration
+    private lateinit var loadingDialog : LoadingDialog
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        supportActionBar?.hide()
         super.onCreate(savedInstanceState)
-
-        val loadingDialog = LoadingDialog(this@MainActivity)
-        loadingDialog.startLoading()
-        Handler().postDelayed({
-            loadingDialog.dismiss()
-        }, 1500) // 1000 is the delayed time in milliseconds.
-
 
 
 

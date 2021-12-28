@@ -12,10 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Aparapp">
         <activity
-            android:name=".activities.PurchaseActivity"
-            android:exported="false" />
-        <activity
             android:name=".activities.NewMemberActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".activities.MainActivity"
