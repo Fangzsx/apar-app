@@ -79,7 +79,7 @@ class NewMemberActivity : BaseActivity() {
                 }
 
                 tvHouseSt.text = houseSt.uppercase()
-                tvPhaseZone.text = phaseSubd
+                tvPhaseZone.text = phaseSubd.uppercase()
                 tvCity.text = city.uppercase()
                 tvContact.text = contactNumber
                 tvBirthday.text = birthday
