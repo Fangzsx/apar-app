@@ -22,9 +22,9 @@ import com.fangs.apar_app.utils.HelveticaNormalTextView
 class NewMemberActivity : BaseActivity() {
 
     private lateinit var binding: ActivityNewMemberBinding
-    private val userID = FirebaseAuth.getInstance().currentUser!!.uid
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        supportActionBar?.hide()
         super.onCreate(savedInstanceState)
         binding = ActivityNewMemberBinding.inflate(layoutInflater)
         setContentView(binding.root)
