@@ -84,13 +84,11 @@ class NewMemberActivity : BaseActivity() {
                 tvContact.text = contactNumber
                 tvBirthday.text = birthday
 
+                //pass value via intent
+
+                //button sends to purchase activity
 
                 customerInfoDialog.show()
-
-
-
-
-
             }
         }
 
