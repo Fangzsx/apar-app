@@ -12,6 +12,8 @@ import androidx.core.content.ContextCompat
 import com.fangs.apar_app.R
 import com.fangs.apar_app.databinding.ActivityAddNewItemBinding
 import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.ListenerRegistration
+import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.GlobalScope
@@ -26,7 +28,6 @@ class AddNewItemActivity : BaseActivity(){
 
     override fun onBackPressed() {
         Intent(this, MainActivity::class.java).also {
-
             startActivity(it)
             finish()
         }
@@ -89,8 +90,9 @@ class AddNewItemActivity : BaseActivity(){
 
             Intent(this, MainActivity::class.java).also {
                 startActivity(it)
+                finish()
             }
-            finish()
+
         }
 
     }
@@ -134,6 +136,7 @@ class AddNewItemActivity : BaseActivity(){
 
     private suspend fun getDocumentsOnFirestore() : List<DocumentSnapshot>{
         val snapshot = productsCollectionRef.get().await()
+        
         return snapshot.documents
     }
 

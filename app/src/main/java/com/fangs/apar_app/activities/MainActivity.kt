@@ -83,10 +83,9 @@ class MainActivity : BaseActivity() {
         //sign out
         binding.tvSignOut.setOnClickListener {
 
-            listenerRegistration.remove()
-            FirebaseAuth.getInstance().signOut()
-
             Intent(this, LoginActivity::class.java).also {
+                listenerRegistration.remove()
+                FirebaseAuth.getInstance().signOut()
                 startActivity(it)
                 finish()
             }
