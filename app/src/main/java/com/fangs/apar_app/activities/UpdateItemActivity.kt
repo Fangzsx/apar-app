@@ -24,6 +24,7 @@ class UpdateItemActivity : BaseActivity() {
 
     override fun onBackPressed() {
         Intent(this, MainActivity::class.java).also {
+            listener.remove()
             startActivity(it)
             finish()
         }

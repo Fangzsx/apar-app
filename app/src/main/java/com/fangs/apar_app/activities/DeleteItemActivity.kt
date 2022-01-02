@@ -22,7 +22,7 @@ class DeleteItemActivity : BaseActivity() {
 
     override fun onBackPressed() {
         Intent(this, MainActivity::class.java).also {
-
+            listener.remove()
             startActivity(it)
             finish()
         }
@@ -92,6 +92,7 @@ class DeleteItemActivity : BaseActivity() {
         //cancel
         binding.navBackDelete.setOnClickListener {
             Intent(this, MainActivity::class.java).also{
+                listener.remove()
                 startActivity(it)
                 finish()
             }

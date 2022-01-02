@@ -59,6 +59,7 @@ class AddNewItemActivity : BaseActivity(){
 
         }
     }
+
     private suspend fun addItemToFirebase(){
 
         if(validateProduct()){
@@ -93,9 +94,6 @@ class AddNewItemActivity : BaseActivity(){
         }
 
     }
-
-
-
 
     private suspend fun validateProduct() : Boolean{
 

@@ -41,7 +41,6 @@ class MainActivity : BaseActivity() {
     private val usersRef = Firebase.firestore.collection("users")
     private lateinit var userID : String
     private lateinit var listenerRegistration: ListenerRegistration
-    private lateinit var loadingDialog : LoadingDialog
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -230,8 +229,9 @@ class MainActivity : BaseActivity() {
                     Toast.makeText(this, "Product with name: ${dialogProdName.text.toString().uppercase()} was successfully deleted.", Toast.LENGTH_LONG).show()
                     productsCollectionRef.document(productID!!).delete()
                     deleteDialog.dismiss()
+                    listenerRegistration.remove()
                     finish()
-                    startActivity(intent)
+                    startActivity(intent)it 
                     overridePendingTransition(0, 0)
                 }
 
@@ -287,6 +287,7 @@ class MainActivity : BaseActivity() {
                         Toast.makeText(this, "Product updated!", Toast.LENGTH_SHORT).show()
 
                         updateDialog.dismiss()
+                        listenerRegistration.remove()
                         finish()
                         startActivity(intent)
                         overridePendingTransition(0, 0)
