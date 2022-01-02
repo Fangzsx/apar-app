@@ -1,7 +1,9 @@
 package com.fangs.apar_app.activities
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.app.Dialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -42,16 +44,28 @@ class MainActivity : BaseActivity() {
     private lateinit var userID : String
     private lateinit var listenerRegistration: ListenerRegistration
 
+    override fun onBackPressed() {
+        val alertDialog = AlertDialog.Builder(this)
+            .setCancelable(false)
+            .setTitle("Exit Application")
+            .setMessage("Are you sure you want to leave this application?")
+            .setPositiveButton("YES", DialogInterface.OnClickListener{ _, _
+                -> finish()
+        })
+            .setNegativeButton("NO", DialogInterface.OnClickListener { dialog, _
+                -> dialog.dismiss()
+            })
+
+        alertDialog.show()
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         getRealTimeUpdates()
-
 
         //get user ID
         userID = FirebaseAuth.getInstance().currentUser!!.uid
@@ -231,7 +245,7 @@ class MainActivity : BaseActivity() {
                     deleteDialog.dismiss()
                     listenerRegistration.remove()
                     finish()
-                    startActivity(intent)it 
+                    startActivity(intent)
                     overridePendingTransition(0, 0)
                 }
 
