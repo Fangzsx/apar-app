@@ -99,7 +99,7 @@ class MainActivity : BaseActivity() {
     private fun getRealTimeUpdates() {
         listenerRegistration = productsCollectionRef.addSnapshotListener { snapshot, error ->
             error?.let {
-                Toast.makeText(this, error.message, Toast.LENGTH_SHORT).show()
+                Log.e("collection ref error: ", error.message.toString())
                 return@addSnapshotListener
             }
 
