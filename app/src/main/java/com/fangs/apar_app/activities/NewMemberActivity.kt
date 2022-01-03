@@ -88,6 +88,13 @@ class NewMemberActivity : BaseActivity() {
                 //pass value via intent
 
                 //button sends to purchase activity
+                val btnOrder = customerInfoDialog.findViewById<HelveticaCustomButton>(R.id.btn_order)
+                btnOrder.setOnClickListener {
+                    Intent(this, PurchaseActivity::class.java).also {
+                        customerInfoDialog.dismiss()
+                        startActivity(it)
+                    }
+                }
 
                 customerInfoDialog.show()
             }

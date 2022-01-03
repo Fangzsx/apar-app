@@ -13,6 +13,7 @@
         android:theme="@style/Theme.Aparapp">
         <activity
             android:name=".activities.PurchaseActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".activities.NewMemberActivity"
