@@ -45,7 +45,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/old_member_48"/>
+                android:src="@drawable/new_member_48"/>
 
         </androidx.cardview.widget.CardView>
 
@@ -72,13 +72,7 @@
             android:text="NEW MEMBER"
             android:background="@drawable/cornered_red"
             tools:ignore="SmallSp"/>
-
-
-
-
-
-
-
+        
         <ImageView
             android:id="@+id/edit_customer_info"
             android:layout_width="24dp"
