@@ -12,9 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Aparapp">
         <activity
-            android:name=".activities.NewMemberActivity"
-            android:screenOrientation="portrait"
+            android:name=".activities.PurchaseActivity"
             android:exported="false" />
+        <activity
+            android:name=".activities.NewMemberActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.MainActivity"
             android:exported="true"
