@@ -50,6 +50,17 @@
         </androidx.cardview.widget.CardView>
 
         <com.fangs.apar_app.utils.HelveticaBoldTextView
+            android:id="@+id/tv_customer_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CUSTOMER NAME"
+            app:layout_constraintTop_toTopOf="@id/cv_customer_profile"
+            app:layout_constraintLeft_toLeftOf="@id/tv_customer_name"
+            android:textSize="10sp"
+            android:textColor="@color/white"
+            tools:ignore="SmallSp" />
+
+        <com.fangs.apar_app.utils.HelveticaBoldTextView
             android:id="@+id/tv_customer_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -57,7 +68,7 @@
             android:textColor="@color/white"
             android:textSize="20sp"
             app:layout_constraintLeft_toRightOf="@id/cv_customer_profile"
-            app:layout_constraintTop_toTopOf="@id/cv_customer_profile"
+            app:layout_constraintTop_toBottomOf="@id/tv_customer_text"
             android:layout_marginStart="10dp"/>
 
         <com.fangs.apar_app.utils.HelveticaNormalTextView
@@ -88,7 +99,8 @@
             android:src="@drawable/ic_baseline_shopping_cart_24"
             app:layout_constraintLeft_toRightOf="@id/edit_customer_info"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:tint="@color/goldStart" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <FrameLayout

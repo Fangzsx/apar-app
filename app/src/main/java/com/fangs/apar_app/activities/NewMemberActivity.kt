@@ -85,12 +85,16 @@ class NewMemberActivity : BaseActivity() {
                 tvContact.text = contactNumber
                 tvBirthday.text = birthday
 
-                //pass value via intent
+
 
                 //button sends to purchase activity
                 val btnOrder = customerInfoDialog.findViewById<HelveticaCustomButton>(R.id.btn_order)
                 btnOrder.setOnClickListener {
                     Intent(this, PurchaseActivity::class.java).also {
+                        //send data to purchase activity
+                        it.putExtra("LAST_NAME", tvLastname.text.toString())
+                        it.putExtra("FIRST_NAME", tvFirstname.text.toString())
+                        it.putExtra("MIDDLE_NAME", tvMiddlename.text.toString())
                         customerInfoDialog.dismiss()
                         startActivity(it)
                     }
