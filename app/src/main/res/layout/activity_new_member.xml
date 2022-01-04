@@ -151,7 +151,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:textSize="16sp"
-                    android:inputType="date"/>
+                    android:inputType="datetime"/>
             </com.google.android.material.textfield.TextInputLayout>
             <com.fangs.apar_app.utils.HelveticaCustomButton
                 android:id="@+id/btn_submit_new_member"
