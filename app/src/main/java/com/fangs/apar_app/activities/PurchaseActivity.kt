@@ -10,6 +10,10 @@ import com.fangs.apar_app.databinding.ActivityPurchaseBinding
 class PurchaseActivity : AppCompatActivity() {
     private lateinit var binding : ActivityPurchaseBinding
 
+    override fun onBackPressed() {
+        showAlertDialog()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         supportActionBar?.hide()
         super.onCreate(savedInstanceState)
@@ -38,20 +42,25 @@ class PurchaseActivity : AppCompatActivity() {
         //back navigation
         binding.sideBarPurchaseOrderBack.setOnClickListener {
 
-            val alertDialog = AlertDialog.Builder(this)
-                .setMessage("Are you sure you?")
-                .setTitle("Leave Purchase Order")
-                .setPositiveButton("YES", DialogInterface.OnClickListener{ _, _
-                    ->
-                    Intent(this, NewMemberActivity::class.java).also {
-                        startActivity(it)
-                    }
-                    finish()
-                })
-                .setNegativeButton("NO", DialogInterface.OnClickListener { dialog, _
-                    -> dialog.dismiss()
-                })
-            alertDialog.show()
+            showAlertDialog()
         }
+    }
+
+    private fun showAlertDialog() {
+        val alertDialog = AlertDialog.Builder(this)
+            .setMessage("Return to Dashboard?")
+            .setTitle("Leave Purchase Order")
+            .setPositiveButton("YES", DialogInterface.OnClickListener { _, _
+                ->
+                Intent(this, NewMemberActivity::class.java).also {
+                    startActivity(it)
+                }
+                finish()
+            })
+            .setNegativeButton("NO", DialogInterface.OnClickListener { dialog, _
+                ->
+                dialog.dismiss()
+            })
+        alertDialog.show()
     }
 }

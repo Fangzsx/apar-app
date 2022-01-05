@@ -103,6 +103,7 @@ class NewMemberActivity : BaseActivity() {
                         it.putExtra("CITY", tvCity.text.toString())
                         it.putExtra("BIRTHDAY", tvBirthday.text.toString())
                         customerInfoDialog.dismiss()
+                        finish()
                         startActivity(it)
                     }
                 }
@@ -114,9 +115,9 @@ class NewMemberActivity : BaseActivity() {
 
     private fun setDate() {
         val calendar = Calendar.getInstance()
-        val year = calendar.get(Calendar.YEAR)
-        val month = calendar.get(Calendar.MONTH)
-        val day = calendar.get(Calendar.DAY_OF_MONTH)
+        val currentYear = calendar.get(Calendar.YEAR)
+        val currentMonth = calendar.get(Calendar.MONTH)
+        val currentDay = calendar.get(Calendar.DAY_OF_MONTH)
 
         val datePickerDialog = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
             val returnDate = "${monthOfYear + 1} $dayOfMonth $year"
@@ -132,7 +133,7 @@ class NewMemberActivity : BaseActivity() {
                 finalDate!!))
             binding.etNewMemberBirthday.error = null
 
-        }, year-30, month, day)
+        }, currentYear-30, currentMonth, currentDay)
         datePickerDialog.show()
     }
 
