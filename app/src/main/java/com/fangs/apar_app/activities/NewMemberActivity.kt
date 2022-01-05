@@ -183,21 +183,4 @@ class NewMemberActivity : BaseActivity() {
         }
 
     }
-
-    @SuppressLint("SimpleDateFormat")
-    private fun isDateValid(date: String): Boolean {
-        val inputFormat = SimpleDateFormat("yyyy-MM-dd")
-        val outputFormat = SimpleDateFormat("yyyy-MM-dd")
-        return try{
-            val rawDate = inputFormat.parse(date)
-            outputFormat.format(rawDate!!)
-            false
-        }catch (e : ParseException){
-            true
-        }
-
-
-
-
-    }
 }
