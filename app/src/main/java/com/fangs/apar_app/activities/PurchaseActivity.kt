@@ -52,7 +52,7 @@ class PurchaseActivity : AppCompatActivity() {
             .setTitle("Leave Purchase Order")
             .setPositiveButton("YES", DialogInterface.OnClickListener { _, _
                 ->
-                Intent(this, NewMemberActivity::class.java).also {
+                Intent(this, MainActivity::class.java).also {
                     startActivity(it)
                 }
                 finish()
