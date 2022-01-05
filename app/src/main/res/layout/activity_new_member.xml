@@ -144,14 +144,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:boxBackgroundColor="@color/white"
-                android:hint="Birthday in YYYY-MM-DD format ">
+                android:hint="   Tap to select birthday">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_new_member_birthday"
                     android:textColor="@color/black"
                     android:layout_width="match_parent"
+                    android:drawableStart="@drawable/ic_calendar"
+                    android:drawableTint="@color/ThemeDarkGreen"
                     android:layout_height="match_parent"
-                    android:textSize="16sp"
-                    android:inputType="datetime"/>
+                    android:textSize="16sp"/>
             </com.google.android.material.textfield.TextInputLayout>
             <com.fangs.apar_app.utils.HelveticaCustomButton
                 android:id="@+id/btn_submit_new_member"
