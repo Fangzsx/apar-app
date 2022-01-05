@@ -98,6 +98,10 @@ class NewMemberActivity : BaseActivity() {
                         it.putExtra("LAST_NAME", tvLastname.text.toString())
                         it.putExtra("FIRST_NAME", tvFirstname.text.toString())
                         it.putExtra("MIDDLE_NAME", tvMiddlename.text.toString())
+                        it.putExtra("HOUSE_ST", tvHouseSt.text.toString())
+                        it.putExtra("PHASE_ZONE", tvPhaseZone.text.toString())
+                        it.putExtra("CITY", tvCity.text.toString())
+                        it.putExtra("BIRTHDAY", tvBirthday.text.toString())
                         customerInfoDialog.dismiss()
                         startActivity(it)
                     }

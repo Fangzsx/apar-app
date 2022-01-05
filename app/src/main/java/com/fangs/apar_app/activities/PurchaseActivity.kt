@@ -13,12 +13,13 @@ class PurchaseActivity : AppCompatActivity() {
         binding = ActivityPurchaseBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
+        
         val intent = intent
         val lastname = intent.getStringExtra("LAST_NAME")
         val firstname = intent.getStringExtra("FIRST_NAME")
         val middlename = intent.getStringExtra("MIDDLE_NAME")
-
         val fullname = "$lastname, $firstname $middlename"
+
         binding.tvCustomerName.text = fullname
 
 
