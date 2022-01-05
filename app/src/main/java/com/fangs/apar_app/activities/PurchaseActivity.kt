@@ -1,6 +1,9 @@
 package com.fangs.apar_app.activities
 
+import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.fangs.apar_app.databinding.ActivityPurchaseBinding
 
@@ -14,6 +17,7 @@ class PurchaseActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
+        //display customer data
         val intent = intent
         val lastname = intent.getStringExtra("LAST_NAME")
         val firstname = intent.getStringExtra("FIRST_NAME")
@@ -31,8 +35,23 @@ class PurchaseActivity : AppCompatActivity() {
         binding.tvCustomerAddress.text = fullAddress
         binding.tvCustomerBirthday.text = birthday
 
+        //back navigation
+        binding.sideBarPurchaseOrderBack.setOnClickListener {
 
-
-
+            val alertDialog = AlertDialog.Builder(this)
+                .setMessage("Are you sure you?")
+                .setTitle("Leave Purchase Order")
+                .setPositiveButton("YES", DialogInterface.OnClickListener{ _, _
+                    ->
+                    Intent(this, NewMemberActivity::class.java).also {
+                        startActivity(it)
+                    }
+                    finish()
+                })
+                .setNegativeButton("NO", DialogInterface.OnClickListener { dialog, _
+                    -> dialog.dismiss()
+                })
+            alertDialog.show()
+        }
     }
 }
