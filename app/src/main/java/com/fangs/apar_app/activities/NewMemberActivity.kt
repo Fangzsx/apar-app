@@ -1,6 +1,5 @@
 package com.fangs.apar_app.activities
 
-import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.app.Dialog
 import android.content.Intent
@@ -15,8 +14,6 @@ import com.fangs.apar_app.databinding.ActivityNewMemberBinding
 import com.fangs.apar_app.utils.DateParser
 import com.fangs.apar_app.utils.HelveticaCustomButton
 import com.fangs.apar_app.utils.HelveticaNormalTextView
-import java.text.ParseException
-import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -109,8 +106,6 @@ class NewMemberActivity : BaseActivity() {
                 customerInfoDialog.show()
             }
         }
-
-
     }
 
     private fun setDate() {
