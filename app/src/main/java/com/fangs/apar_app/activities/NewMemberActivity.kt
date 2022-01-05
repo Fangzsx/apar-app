@@ -6,20 +6,18 @@ import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.view.Gravity
 import android.view.View
+import android.view.Window
+import android.view.WindowManager
 import com.fangs.apar_app.R
 import com.fangs.apar_app.databinding.ActivityNewMemberBinding
-import com.google.firebase.auth.FirebaseAuth
-import java.text.ParseException
-import java.text.SimpleDateFormat
-import java.util.*
-import android.view.Gravity
-import android.view.Window
-
-import android.view.WindowManager
 import com.fangs.apar_app.utils.DateParser
 import com.fangs.apar_app.utils.HelveticaCustomButton
 import com.fangs.apar_app.utils.HelveticaNormalTextView
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class NewMemberActivity : BaseActivity() {
@@ -121,10 +119,22 @@ class NewMemberActivity : BaseActivity() {
         val month = calendar.get(Calendar.MONTH)
         val day = calendar.get(Calendar.DAY_OF_MONTH)
 
-        val datePickerDialog = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, i2, i3 ->
+        val datePickerDialog = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { _, year, monthOfYear, dayOfMonth ->
+            val returnDate = "${monthOfYear + 1} $dayOfMonth $year"
+            val finalDate = DateParser.parse(
+                "MM dd yyyy",
+                "MM/dd/yyyy",
+                returnDate
+            )
 
+            binding.etNewMemberBirthday.setText(DateParser.parse(
+                "MM/dd/yyyy",
+                "MMM dd yyyy",
+                finalDate!!))
+            binding.etNewMemberBirthday.error = null
 
         }, year-30, month, day)
+        datePickerDialog.show()
     }
 
     private fun isValidCustomerInfo(): Boolean {

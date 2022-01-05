@@ -149,6 +149,7 @@
                     android:id="@+id/et_new_member_birthday"
                     android:textColor="@color/black"
                     android:layout_width="match_parent"
+                    android:focusable="false"
                     android:drawableStart="@drawable/ic_calendar"
                     android:drawableTint="@color/ThemeDarkGreen"
                     android:layout_height="match_parent"
