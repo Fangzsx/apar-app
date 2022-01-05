@@ -1,6 +1,7 @@
 package com.fangs.apar_app.activities
 
 import android.annotation.SuppressLint
+import android.app.DatePickerDialog
 import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
@@ -16,6 +17,7 @@ import android.view.Gravity
 import android.view.Window
 
 import android.view.WindowManager
+import com.fangs.apar_app.utils.DateParser
 import com.fangs.apar_app.utils.HelveticaCustomButton
 import com.fangs.apar_app.utils.HelveticaNormalTextView
 
@@ -29,6 +31,12 @@ class NewMemberActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityNewMemberBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+        //set date
+        binding.etNewMemberBirthday.setOnClickListener {
+            setDate()
+        }
 
 
         //back navigation
@@ -107,6 +115,18 @@ class NewMemberActivity : BaseActivity() {
 
     }
 
+    private fun setDate() {
+        val calendar = Calendar.getInstance()
+        val year = calendar.get(Calendar.YEAR)
+        val month = calendar.get(Calendar.MONTH)
+        val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+        val datePickerDialog = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, i2, i3 ->
+
+
+        }, year-30, month, day)
+    }
+
     private fun isValidCustomerInfo(): Boolean {
         val etLastName = binding.etNewMemberLastname.text.toString().trim()
         val etFirstName = binding.etNewMemberFirstname.text.toString().trim()
@@ -114,7 +134,6 @@ class NewMemberActivity : BaseActivity() {
         val etPhaseSubd = binding.etNewMemberPhaseSubd.text.toString().trim()
         val etCity = binding.etNewMemberCity.text.toString().trim()
         val etContactNumber = binding.etNewMemberContactNumber.toString()
-        val etBirthday = binding.etNewMemberBirthday.text.toString()
 
         return when {
             TextUtils.isEmpty(etLastName) -> {
@@ -144,10 +163,6 @@ class NewMemberActivity : BaseActivity() {
             }
             TextUtils.isEmpty(etContactNumber) -> {
                 showErrorSnackBar(binding.root, "Contact cannot be empty", true)
-                false
-            }
-            TextUtils.isEmpty(etBirthday) || isDateValid(etBirthday) -> {
-                showErrorSnackBar(binding.root, "Please input a valid date.", true)
                 false
             }
 
