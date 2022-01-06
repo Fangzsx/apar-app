@@ -96,8 +96,7 @@ class PurchaseActivity : AppCompatActivity() {
         val dialog = Dialog(this)
         dialog.setContentView(R.layout.dialog_product)
         //set text and icon
-        val titleLayout = dialog.findViewById<LinearLayout>(R.id.ll_product_label)
-        val titleText = titleLayout.findViewById<HelveticaBoldTextView>(R.id.tv_category_click)
+        val titleText = dialog.findViewById<HelveticaBoldTextView>(R.id.tv_product_selected)
 
         //get text of button, set to titleText
         titleText.text = button.text.toString().uppercase()
