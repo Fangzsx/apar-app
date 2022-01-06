@@ -104,38 +104,29 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/tv_customer_address"
             app:layout_constraintLeft_toLeftOf="@id/tv_customer_address"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:textSize="8sp"
             android:text="MMM DD YYYY"
             android:textColor="@color/white"
             tools:ignore="SmallSp" />
-
-        <ImageView
-            android:id="@+id/edit_customer_info"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/ic_baseline_edit_24"
-            android:layout_marginEnd="10dp"
-            app:layout_constraintBottom_toTopOf="@id/tv_edit"
-            app:layout_constraintRight_toLeftOf="@id/customer_cart"/>
-        <com.fangs.apar_app.utils.HelveticaBoldTextView
-            android:id="@+id/tv_edit"
+        <com.fangs.apar_app.utils.HelveticaNormalTextView
+            android:id="@+id/tv_customer_contact"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@id/tv_customer_birthday"
-            app:layout_constraintLeft_toLeftOf="@id/edit_customer_info"
-            app:layout_constraintRight_toRightOf="@id/edit_customer_info"
-            android:text="Edit"
-            android:textSize="10sp"
-            android:textColor="@color/white"/>
+            android:textSize="8sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@id/tv_customer_text"
+            android:textColor="@color/white"
+            android:text="9999999"
+            app:layout_constraintTop_toBottomOf="@id/tv_customer_birthday"/>
+
 
         <ImageView
             android:id="@+id/customer_cart"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:src="@drawable/ic_baseline_shopping_cart_24"
-            app:layout_constraintLeft_toRightOf="@id/edit_customer_info"
             app:layout_constraintBottom_toTopOf="@id/tv_cart"
+            app:layout_constraintTop_toBottomOf="@id/tv_cornered_new_member"
             app:layout_constraintEnd_toEndOf="parent"/>
 
         <com.fangs.apar_app.utils.HelveticaBoldTextView
@@ -146,7 +137,7 @@
             android:textColor="@color/white"
             android:textSize="10sp"
             app:layout_constraintLeft_toLeftOf="@id/customer_cart"
-            app:layout_constraintBottom_toBottomOf="@id/tv_edit"
+            app:layout_constraintTop_toBottomOf="@id/customer_cart"
             app:layout_constraintRight_toRightOf="@id/customer_cart"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 

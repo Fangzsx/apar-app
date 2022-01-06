@@ -102,6 +102,7 @@ class NewMemberActivity : BaseActivity() {
                         it.putExtra("PHASE_ZONE", tvPhaseZone.text.toString())
                         it.putExtra("CITY", tvCity.text.toString())
                         it.putExtra("BIRTHDAY", tvBirthday.text.toString())
+                        it.putExtra("CONTACT", tvContact.text.toString())
                         customerInfoDialog.dismiss()
                         finish()
                         startActivity(it)
@@ -143,7 +144,8 @@ class NewMemberActivity : BaseActivity() {
         val etHouseSt = binding.etNewMemberHouseNoSt.text.toString().trim()
         val etPhaseSubd = binding.etNewMemberPhaseSubd.text.toString().trim()
         val etCity = binding.etNewMemberCity.text.toString().trim()
-        val etContactNumber = binding.etNewMemberContactNumber.toString()
+        val etContactNumber = binding.etNewMemberContactNumber.text.toString()
+        val etBirthday = binding.etNewMemberBirthday.text.toString()
 
         return when {
             TextUtils.isEmpty(etLastName) -> {
@@ -173,6 +175,10 @@ class NewMemberActivity : BaseActivity() {
             }
             TextUtils.isEmpty(etContactNumber) -> {
                 showErrorSnackBar(binding.root, "Contact cannot be empty", true)
+                false
+            }
+            TextUtils.isEmpty(etBirthday) -> {
+                showErrorSnackBar(binding.root, "Set birthday", true)
                 false
             }
 

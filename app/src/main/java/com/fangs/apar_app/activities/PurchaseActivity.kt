@@ -7,6 +7,7 @@ import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.annotation.DimenRes
@@ -18,7 +19,7 @@ import com.fangs.apar_app.R
 import com.fangs.apar_app.databinding.ActivityPurchaseBinding
 import com.fangs.apar_app.utils.HelveticaBoldTextView
 
-class PurchaseActivity : AppCompatActivity() {
+class PurchaseActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding : ActivityPurchaseBinding
 
     override fun onBackPressed() {
@@ -33,20 +34,31 @@ class PurchaseActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         showCustomerData()
+        setButtonClick()
+
+    }
+
+    private fun setButtonClick() {
         //back navigation
         binding.sideBarPurchaseOrderBack.setOnClickListener {
 
             showAlertDialog()
         }
 
-        binding.btnAmaxLoad.setOnClickListener {
-            showProductDialog(it as Button)
-        }
-
-        binding.btnBisquits.setOnClickListener {
-            showProductDialog(it as Button)
-        }
-
+        binding.btnAmaxLoad.setOnClickListener(this)
+        binding.btnBeverages.setOnClickListener(this)
+        binding.btnCannedGoods.setOnClickListener(this)
+        binding.btnCigarettesMed.setOnClickListener(this)
+        binding.btnCondiments.setOnClickListener(this)
+        binding.btnDetergent.setOnClickListener(this)
+        binding.btnDiapers.setOnClickListener(this)
+        binding.btnHousehold.setOnClickListener(this)
+        binding.btnNoodles.setOnClickListener(this)
+        binding.btnPowderedMilk.setOnClickListener(this)
+        binding.btnShampooConditioner.setOnClickListener(this)
+        binding.btnSoapHygiene.setOnClickListener(this)
+        binding.btnSugar.setOnClickListener(this)
+        binding.btnBisquits.setOnClickListener(this)
 
 
     }
@@ -65,10 +77,12 @@ class PurchaseActivity : AppCompatActivity() {
         val fullAddress = "$houseST, $phaseZone $city"
 
         val birthday = intent.getStringExtra("BIRTHDAY")
+        val contact = intent.getStringExtra("CONTACT")
 
         binding.tvCustomerName.text = fullname
         binding.tvCustomerAddress.text = fullAddress
         binding.tvCustomerBirthday.text = birthday
+        binding.tvCustomerContact.text = contact
     }
 
     private fun showAlertDialog() {
@@ -106,5 +120,9 @@ class PurchaseActivity : AppCompatActivity() {
 
 
         dialog.show()
+    }
+
+    override fun onClick(p0: View?) {
+        showProductDialog(p0 as Button)
     }
 }
