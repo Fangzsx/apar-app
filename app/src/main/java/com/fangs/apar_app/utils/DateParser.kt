@@ -7,14 +7,15 @@ import java.text.SimpleDateFormat
 
 object DateParser{
     @SuppressLint("SimpleDateFormat")
-    fun parse (inputFormat : String, outputFormat : String, date: String) : String?{
+    fun parse (inputFormat : String, outputFormat : String, inputDate: String) : String?{
 
         var output : String? = null
         val inFormat = SimpleDateFormat(inputFormat)
         val outFormat = SimpleDateFormat(outputFormat)
         try{
-            val date = inFormat.parse(date)
-            output = outFormat.format(date)
+            val date = inFormat.parse(inputDate)
+            output = outFormat.format(date!!)
+
 
         }catch (e : ParseException){
             Log.e("Date ParseException", e.message.toString())
