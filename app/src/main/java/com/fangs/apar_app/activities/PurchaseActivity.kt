@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -35,6 +36,10 @@ class PurchaseActivity : AppCompatActivity() {
         }
 
         binding.btnAmaxLoad.setOnClickListener {
+            showProductDialog(it as Button)
+        }
+
+        binding.btnBisquits.setOnClickListener {
             showProductDialog(it as Button)
         }
 
@@ -92,8 +97,9 @@ class PurchaseActivity : AppCompatActivity() {
         val titleIcon = titleLayout.findViewById<ImageView>(R.id.iv_product_icon)
 
         titleText.text = button.text.toString()
-        val image = button.compoundDrawables[1]
+        val image = button.compoundDrawables[0]
         titleIcon.setImageDrawable(image)
+        Log.e("images", image.toString())
         dialog.show()
 
 
