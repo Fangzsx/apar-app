@@ -98,16 +98,11 @@ class PurchaseActivity : AppCompatActivity() {
         //set text and icon
         val titleLayout = dialog.findViewById<LinearLayout>(R.id.ll_product_label)
         val titleText = titleLayout.findViewById<HelveticaBoldTextView>(R.id.tv_category_click)
-        val titleIcon = titleLayout.findViewById<ImageView>(R.id.iv_product_icon)
 
         //get text of button, set to titleText
         titleText.text = button.text.toString().uppercase()
 
 
-        //extract drawableTop of Button then
-        //set image for titleIcon = drawable in Button
-        val drawables = button.compoundDrawables
-        val icon = drawables[0]
 
 
 
