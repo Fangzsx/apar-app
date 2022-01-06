@@ -1,15 +1,19 @@
 package com.fangs.apar_app.activities
 
+import android.app.ActionBar
 import android.app.Dialog
 import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.LinearLayout
+import android.view.ViewGroup
+import android.widget.*
+import androidx.annotation.DimenRes
+import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.fangs.apar_app.R
 import com.fangs.apar_app.databinding.ActivityPurchaseBinding
 import com.fangs.apar_app.utils.HelveticaBoldTextView
@@ -96,13 +100,17 @@ class PurchaseActivity : AppCompatActivity() {
         val titleText = titleLayout.findViewById<HelveticaBoldTextView>(R.id.tv_category_click)
         val titleIcon = titleLayout.findViewById<ImageView>(R.id.iv_product_icon)
 
-        titleText.text = button.text.toString()
-        val image = button.compoundDrawables[0]
-        titleIcon.setImageDrawable(image)
-        Log.e("images", image.toString())
+        //get text of button, set to titleText
+        titleText.text = button.text.toString().uppercase()
+
+
+        //extract drawableTop of Button then
+        //set image for titleIcon = drawable in Button
+        val drawables = button.compoundDrawables
+        val icon = drawables[0]
+
+
+
         dialog.show()
-
-
-
     }
 }
