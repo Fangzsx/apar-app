@@ -40,18 +40,18 @@
         <com.fangs.apar_app.utils.HelveticaBoldTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Make a purchase for member with the following data?"
+            android:text="Select from the following Products"
             android:gravity="center"
             android:textColor="@color/black"
             android:textSize="20sp"/>
-        
+
         </LinearLayout>
 
     <com.fangs.apar_app.utils.HelveticaCustomButton
-        android:id="@+id/btn_order"
+        android:id="@+id/btn_return_product_categories"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Proceed to Order"
+        android:text="Return to Product Categories"
         android:layout_margin="10dp"/>
 
 </LinearLayout>
