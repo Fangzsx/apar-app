@@ -18,9 +18,12 @@ import androidx.core.content.ContextCompat
 import com.fangs.apar_app.R
 import com.fangs.apar_app.databinding.ActivityPurchaseBinding
 import com.fangs.apar_app.utils.HelveticaBoldTextView
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class PurchaseActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding : ActivityPurchaseBinding
+    private val productCollectionRef = Firebase.firestore.collection("products")
 
     override fun onBackPressed() {
         showAlertDialog()
@@ -111,9 +114,22 @@ class PurchaseActivity : AppCompatActivity(), View.OnClickListener {
         dialog.setContentView(R.layout.dialog_product)
         //set text and icon
         val titleText = dialog.findViewById<HelveticaBoldTextView>(R.id.tv_product_selected)
+        val category = button.text.toString()
 
         //get text of button, set to titleText
-        titleText.text = button.text.toString().uppercase()
+        titleText.text = category.uppercase()
+
+        productCollectionRef.whereEqualTo("category", category.lowercase())
+            .get()
+            .addOnSuccessListener { documents ->
+                Log.i("productSize", "No. Of Products: ${documents.size()}")
+                for(document in documents){
+                    Log.i("product", "${document.id} => ${document.data}")
+                }
+            }
+            .addOnFailureListener { error ->
+                Log.e("query error", error.message.toString())
+            }
 
 
 
