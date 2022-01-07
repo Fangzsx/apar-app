@@ -18,12 +18,14 @@ import androidx.core.content.ContextCompat
 import com.fangs.apar_app.R
 import com.fangs.apar_app.databinding.ActivityPurchaseBinding
 import com.fangs.apar_app.utils.HelveticaBoldTextView
+import com.google.firebase.firestore.QueryDocumentSnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 class PurchaseActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding : ActivityPurchaseBinding
     private val productCollectionRef = Firebase.firestore.collection("products")
+    private var productList = mutableListOf<QueryDocumentSnapshot>()
 
     override fun onBackPressed() {
         showAlertDialog()
@@ -118,18 +120,9 @@ class PurchaseActivity : AppCompatActivity(), View.OnClickListener {
 
         //get text of button, set to titleText
         titleText.text = category.uppercase()
-
-        productCollectionRef.whereEqualTo("category", category.lowercase())
-            .get()
-            .addOnSuccessListener { documents ->
-                Log.i("productSize", "No. Of Products: ${documents.size()}")
-                for(document in documents){
-                    Log.i("product", "${document.id} => ${document.data}")
-                }
-            }
-            .addOnFailureListener { error ->
-                Log.e("query error", error.message.toString())
-            }
+        //get all products within the category clicked
+        retrieveProducts(category.lowercase())
+        Log.e("list", productList.toString())
 
 
 
@@ -137,6 +130,22 @@ class PurchaseActivity : AppCompatActivity(), View.OnClickListener {
 
         dialog.show()
     }
+
+    private fun retrieveProducts(category: String) {
+        productCollectionRef.whereEqualTo("category", category.lowercase())
+            .get()
+            .addOnSuccessListener { documents ->
+                Log.i("productSize", "No. Of Products: ${documents.size()}")
+                for (document in documents) {
+                    Log.i("product", "${document.id} => ${document.data}")
+                    productList.add(document)
+                }
+            }
+            .addOnFailureListener { error ->
+                Log.e("query error", error.message.toString())
+            }
+    }
+
 
     override fun onClick(p0: View?) {
         showProductDialog(p0 as Button)
