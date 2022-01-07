@@ -125,9 +125,6 @@ class PurchaseActivity : AppCompatActivity(), View.OnClickListener {
         Log.e("list", productList.toString())
 
 
-
-
-
         dialog.show()
     }
 
