@@ -8,6 +8,7 @@
     android:weightSum="1">
 
     <com.fangs.apar_app.utils.HelveticaBoldTextView
+        android:id="@+id/tv_product_name_search"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         tools:text="product name"

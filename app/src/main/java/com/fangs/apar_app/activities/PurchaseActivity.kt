@@ -15,7 +15,10 @@ import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.fangs.apar_app.R
+import com.fangs.apar_app.adapter.ProductAdapter
 import com.fangs.apar_app.databinding.ActivityPurchaseBinding
 import com.fangs.apar_app.utils.HelveticaBoldTextView
 import com.google.firebase.firestore.QueryDocumentSnapshot
@@ -125,6 +128,12 @@ class PurchaseActivity : AppCompatActivity(), View.OnClickListener {
         Log.e("list", productList.toString())
 
 
+        val recyclerView = dialog.findViewById<RecyclerView>(R.id.rv_products)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        val adapter = ProductAdapter(productList)
+        recyclerView.adapter = adapter
+
+
         dialog.show()
     }
 
@@ -146,5 +155,6 @@ class PurchaseActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(p0: View?) {
         showProductDialog(p0 as Button)
+
     }
 }
