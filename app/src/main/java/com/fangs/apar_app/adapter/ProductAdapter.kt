@@ -26,7 +26,7 @@ class ProductAdapter(private val dataSet : MutableList<QueryDocumentSnapshot>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        holder.productName.text = dataSet[position]["name"].toString()
+        holder.productName.text = dataSet[position] ["name"].toString()
 
     }
 
