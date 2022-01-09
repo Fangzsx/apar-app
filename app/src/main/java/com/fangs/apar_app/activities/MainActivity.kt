@@ -139,8 +139,6 @@ class MainActivity : BaseActivity() {
 
         GlobalScope.launch {
             val userDoc = getUserData()
-
-            Log.i("doc", userDoc.data.toString())
             runOnUiThread(Runnable{
 
                 tvAPARname.text = "${userDoc["lastname"]}, ${userDoc["firstname"]} ${userDoc["middlename"]}".uppercase()

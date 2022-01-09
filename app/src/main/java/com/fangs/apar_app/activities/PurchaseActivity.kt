@@ -27,6 +27,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.tasks.await
 
 class PurchaseActivity : AppCompatActivity(), View.OnClickListener {
@@ -42,6 +43,9 @@ class PurchaseActivity : AppCompatActivity(), View.OnClickListener {
         supportActionBar?.hide()
         super.onCreate(savedInstanceState)
         binding = ActivityPurchaseBinding.inflate(layoutInflater)
+
+
+
 
         setContentView(binding.root)
         showCustomerData()
@@ -119,8 +123,6 @@ class PurchaseActivity : AppCompatActivity(), View.OnClickListener {
     private fun showProductDialog(button : Button){
         //extract product info selected from button
         var productList : MutableList<QueryDocumentSnapshot>? = null
-
-
 
         //show dialog
         val dialog = Dialog(this)
