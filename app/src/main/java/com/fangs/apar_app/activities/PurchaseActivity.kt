@@ -22,13 +22,17 @@ import com.fangs.apar_app.adapter.ProductAdapter
 import com.fangs.apar_app.databinding.ActivityPurchaseBinding
 import com.fangs.apar_app.utils.HelveticaBoldTextView
 import com.google.firebase.firestore.QueryDocumentSnapshot
+import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 
 class PurchaseActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding : ActivityPurchaseBinding
     private val productCollectionRef = Firebase.firestore.collection("products")
-    private var productList = mutableListOf<QueryDocumentSnapshot>()
+    private val productList = mutableListOf<QueryDocumentSnapshot>()
 
     override fun onBackPressed() {
         showAlertDialog()
@@ -40,9 +44,10 @@ class PurchaseActivity : AppCompatActivity(), View.OnClickListener {
         binding = ActivityPurchaseBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
-
         showCustomerData()
         setButtonClick()
+
+
 
     }
 
@@ -113,6 +118,9 @@ class PurchaseActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun showProductDialog(button : Button){
         //extract product info selected from button
+        var productList : MutableList<QueryDocumentSnapshot>? = null
+
+
 
         //show dialog
         val dialog = Dialog(this)
@@ -121,36 +129,22 @@ class PurchaseActivity : AppCompatActivity(), View.OnClickListener {
         val titleText = dialog.findViewById<HelveticaBoldTextView>(R.id.tv_product_selected)
         val category = button.text.toString()
 
+
         //get text of button, set to titleText
         titleText.text = category.uppercase()
         //get all products within the category clicked
-        retrieveProducts(category.lowercase())
-        Log.e("list", productList.toString())
 
 
         val recyclerView = dialog.findViewById<RecyclerView>(R.id.rv_products)
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        val adapter = ProductAdapter(productList)
-        recyclerView.adapter = adapter
+        //recyclerView.layoutManager = LinearLayoutManager(this)
+        //val adapter = ProductAdapter(filteredList)
+        //recyclerView.adapter = adapter
 
 
         dialog.show()
     }
 
-    private fun retrieveProducts(category: String) {
-        productCollectionRef.whereEqualTo("category", category.lowercase())
-            .get()
-            .addOnSuccessListener { documents ->
-                Log.i("productSize", "No. Of Products: ${documents.size()}")
-                for (document in documents) {
-                    Log.i("product", "${document.id} => ${document.data}")
-                    productList.add(document)
-                }
-            }
-            .addOnFailureListener { error ->
-                Log.e("query error", error.message.toString())
-            }
-    }
+
 
 
     override fun onClick(p0: View?) {
