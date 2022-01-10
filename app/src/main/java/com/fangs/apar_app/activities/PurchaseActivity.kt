@@ -9,16 +9,25 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.fangs.apar_app.R
+import com.fangs.apar_app.adapter.ProductAdapter
 import com.fangs.apar_app.databinding.ActivityPurchaseBinding
 import com.fangs.apar_app.utils.HelveticaBoldTextView
 import com.fangs.apar_app.utils.HelveticaCustomButton
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.ListenerRegistration
 import com.google.firebase.firestore.QueryDocumentSnapshot
 import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withContext
+import java.lang.Exception
 
 class PurchaseActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding : ActivityPurchaseBinding
@@ -38,14 +47,8 @@ class PurchaseActivity : AppCompatActivity(), View.OnClickListener {
         showCustomerData()
         setButtonClick()
 
-
-
     }
-
-
-    private suspend fun fetchProductDocuments(): QuerySnapshot? {
-        return productCollectionRef.get().await()
-    }
+    
 
     private fun setButtonClick() {
         //back navigation
@@ -92,6 +95,8 @@ class PurchaseActivity : AppCompatActivity(), View.OnClickListener {
         binding.tvCustomerAddress.text = fullAddress
         binding.tvCustomerBirthday.text = birthday
         binding.tvCustomerContact.text = contact
+
+
     }
 
     private fun showAlertDialog() {
@@ -135,16 +140,30 @@ class PurchaseActivity : AppCompatActivity(), View.OnClickListener {
         titleText.text = category.uppercase()
         //get all products within the category clicked
 
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val querySnapshot = productCollectionRef.get().await()
+                withContext(Dispatchers.Main){
+                    val list = mutableListOf<DocumentSnapshot>()
+                    for(document in querySnapshot.documents){
+                        if(document["category"] == category.lowercase()){
+                            list.add(document)
+                        }
+                    }
+                    val recyclerView = dialog.findViewById<RecyclerView>(R.id.rv_products)
+                    recyclerView.layoutManager = LinearLayoutManager(applicationContext)
+                    val adapter = ProductAdapter(list)
+                    recyclerView.adapter = adapter
 
+                }
 
-        //val recyclerView = dialog.findViewById<RecyclerView>(R.id.rv_products)
-        //recyclerView.layoutManager = LinearLayoutManager(this)
-        //val adapter = ProductAdapter(filteredList)
-        //recyclerView.adapter = adapter
+            }catch (e : Exception){
+                withContext(Dispatchers.Main){
+                    Toast.makeText(this@PurchaseActivity, e.message, Toast.LENGTH_LONG).show()
+                }
+            }
 
-
-
-
+        }
         dialog.show()
     }
 
