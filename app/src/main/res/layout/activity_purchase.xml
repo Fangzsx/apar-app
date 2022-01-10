@@ -172,7 +172,7 @@
                     android:drawableLeft="@drawable/milk"
                     android:textSize="10sp"
                     android:layout_marginEnd="5dp"
-                    android:text="Powdered Milk, Coffee, Juice"
+                    android:text="Powdered Milk, Juice, Coffee"
                     style="?android:attr/buttonBarButtonStyle"
                     tools:ignore="NestedWeights,RtlHardcoded,SmallSp" />
                 <Button
