@@ -4,11 +4,11 @@ import android.app.Dialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.fangs.apar_app.R
@@ -16,10 +16,8 @@ import com.fangs.apar_app.adapter.ProductAdapter
 import com.fangs.apar_app.databinding.ActivityPurchaseBinding
 import com.fangs.apar_app.utils.HelveticaBoldTextView
 import com.fangs.apar_app.utils.HelveticaCustomButton
+import com.fangs.apar_app.utils.HelveticaNormalTextView
 import com.google.firebase.firestore.DocumentSnapshot
-import com.google.firebase.firestore.ListenerRegistration
-import com.google.firebase.firestore.QueryDocumentSnapshot
-import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.CoroutineScope
@@ -27,7 +25,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
-import java.lang.Exception
 
 class PurchaseActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding : ActivityPurchaseBinding
@@ -135,6 +132,7 @@ class PurchaseActivity : AppCompatActivity(), View.OnClickListener {
         val titleText = dialog.findViewById<HelveticaBoldTextView>(R.id.tv_product_selected)
         val category = button.text.toString()
 
+        val tvEmptyList = dialog.findViewById<HelveticaNormalTextView>(R.id.tv_list_empty)
 
         //get text of button, set to titleText
         titleText.text = category.uppercase()
@@ -151,9 +149,17 @@ class PurchaseActivity : AppCompatActivity(), View.OnClickListener {
                         }
                     }
                     val recyclerView = dialog.findViewById<RecyclerView>(R.id.rv_products)
-                    recyclerView.layoutManager = LinearLayoutManager(applicationContext)
-                    val adapter = ProductAdapter(list)
-                    recyclerView.adapter = adapter
+                    if(list.isEmpty()){
+                        recyclerView.isVisible = false
+                        tvEmptyList.isVisible = true
+                    }else{
+                        recyclerView.layoutManager = LinearLayoutManager(applicationContext)
+                        val adapter = ProductAdapter(list)
+                        recyclerView.adapter = adapter
+                    }
+
+
+
 
                 }
 
