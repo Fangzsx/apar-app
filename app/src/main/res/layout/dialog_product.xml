@@ -51,6 +51,7 @@
                 android:layout_margin="10dp"/>
 
             <com.fangs.apar_app.utils.HelveticaCustomButton
+                android:id="@+id/btn_return"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"

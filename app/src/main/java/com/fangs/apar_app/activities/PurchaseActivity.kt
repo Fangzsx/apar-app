@@ -1,39 +1,29 @@
 package com.fangs.apar_app.activities
 
-import android.app.ActionBar
 import android.app.Dialog
 import android.content.DialogInterface
 import android.content.Intent
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.view.ViewGroup
 import android.widget.*
-import androidx.annotation.DimenRes
-import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.fangs.apar_app.R
-import com.fangs.apar_app.adapter.ProductAdapter
 import com.fangs.apar_app.databinding.ActivityPurchaseBinding
 import com.fangs.apar_app.utils.HelveticaBoldTextView
+import com.fangs.apar_app.utils.HelveticaCustomButton
+import com.google.firebase.firestore.ListenerRegistration
 import com.google.firebase.firestore.QueryDocumentSnapshot
 import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.tasks.await
 
 class PurchaseActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding : ActivityPurchaseBinding
     private val productCollectionRef = Firebase.firestore.collection("products")
-    private val productList = mutableListOf<QueryDocumentSnapshot>()
+
 
     override fun onBackPressed() {
         showAlertDialog()
@@ -44,15 +34,17 @@ class PurchaseActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         binding = ActivityPurchaseBinding.inflate(layoutInflater)
 
-
-
-
         setContentView(binding.root)
         showCustomerData()
         setButtonClick()
 
 
 
+    }
+
+
+    private suspend fun fetchProductDocuments(): QuerySnapshot? {
+        return productCollectionRef.get().await()
     }
 
     private fun setButtonClick() {
@@ -122,11 +114,18 @@ class PurchaseActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun showProductDialog(button : Button){
         //extract product info selected from button
-        var productList : MutableList<QueryDocumentSnapshot>? = null
 
         //show dialog
         val dialog = Dialog(this)
         dialog.setContentView(R.layout.dialog_product)
+        dialog.setCancelable(false)
+        //to dismiss
+        val btnReturn = dialog.findViewById<HelveticaCustomButton>(R.id.btn_return)
+        btnReturn.setOnClickListener{
+            dialog.dismiss()
+        }
+
+
         //set text and icon
         val titleText = dialog.findViewById<HelveticaBoldTextView>(R.id.tv_product_selected)
         val category = button.text.toString()
@@ -137,10 +136,13 @@ class PurchaseActivity : AppCompatActivity(), View.OnClickListener {
         //get all products within the category clicked
 
 
-        val recyclerView = dialog.findViewById<RecyclerView>(R.id.rv_products)
+
+        //val recyclerView = dialog.findViewById<RecyclerView>(R.id.rv_products)
         //recyclerView.layoutManager = LinearLayoutManager(this)
         //val adapter = ProductAdapter(filteredList)
         //recyclerView.adapter = adapter
+
+
 
 
         dialog.show()

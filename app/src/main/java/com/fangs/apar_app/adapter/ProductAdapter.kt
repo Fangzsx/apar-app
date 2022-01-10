@@ -6,9 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.fangs.apar_app.R
 import com.fangs.apar_app.utils.HelveticaBoldTextView
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.QueryDocumentSnapshot
 
-class ProductAdapter(private val dataSet : MutableList<QueryDocumentSnapshot>) : RecyclerView.Adapter<ProductAdapter.ViewHolder>(){
+class ProductAdapter(private val dataSet : MutableList<DocumentSnapshot>) : RecyclerView.Adapter<ProductAdapter.ViewHolder>(){
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val productName : HelveticaBoldTextView
