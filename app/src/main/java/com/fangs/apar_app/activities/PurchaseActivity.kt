@@ -48,7 +48,7 @@ class PurchaseActivity : AppCompatActivity(), View.OnClickListener {
         setButtonClick()
 
     }
-    
+
 
     private fun setButtonClick() {
         //back navigation
@@ -138,8 +138,8 @@ class PurchaseActivity : AppCompatActivity(), View.OnClickListener {
 
         //get text of button, set to titleText
         titleText.text = category.uppercase()
-        //get all products within the category clicked
 
+        //get all products within the category clicked
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val querySnapshot = productCollectionRef.get().await()
