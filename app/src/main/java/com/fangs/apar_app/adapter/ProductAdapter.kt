@@ -21,7 +21,7 @@ class ProductAdapter(private val dataSet : MutableList<DocumentSnapshot>) : Recy
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from().inflate(R.layout.product_row,parent,false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.product_row,parent,false)
         return ViewHolder(view)
 
     }

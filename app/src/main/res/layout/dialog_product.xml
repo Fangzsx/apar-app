@@ -44,14 +44,11 @@
                 android:iconifiedByDefault="false"
                 android:layout_margin="10dp"/>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="200dp">
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_products"
                     android:background="@color/red"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="200dp"
                     android:layout_margin="10dp"/>
                 <com.fangs.apar_app.utils.HelveticaNormalTextView
                     android:id="@+id/tv_list_empty"
@@ -65,10 +62,6 @@
                     android:visibility="gone"
                     android:textColor="@color/black"
                     android:gravity="center"/>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 
             <com.fangs.apar_app.utils.HelveticaCustomButton
                 android:id="@+id/btn_return"
