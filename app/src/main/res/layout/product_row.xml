@@ -1,88 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="7dp"
-    android:weightSum="1">
+    android:background="@color/blue"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="2dp">
 
-    <LinearLayout
-        android:layout_width="0dp"
+    <com.fangs.apar_app.utils.HelveticaNormalTextView
+        android:id="@+id/tv_product_label"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="0.50"
-        android:orientation="horizontal">
-        <com.fangs.apar_app.utils.HelveticaBoldTextView
-            android:id="@+id/tv_product_name_search"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            tools:text="product name"
-            android:textSize="10sp"
-            android:layout_weight="0.50"/>
+        android:text="Product Name:"
+        android:textSize="10sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"/>
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="0dp"
+    <com.fangs.apar_app.utils.HelveticaNormalTextView
+        android:id="@+id/tv_product_name_search"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="0.50"
-        android:weightSum="1"
-        android:orientation="horizontal">
+        tools:text="THIS IS A PRODUCT NAME"
+        app:layout_constraintTop_toBottomOf="@id/tv_product_label"
+        android:textSize="12sp"
+        app:layout_constraintLeft_toLeftOf="@id/tv_product_label"/>
+    <com.fangs.apar_app.utils.HelveticaNormalTextView
+        android:id="@+id/tv_product_price_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10sp"
+        android:text="Price"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/tv_product_name_search"
+        app:layout_constraintLeft_toLeftOf="@id/tv_product_label"/>
 
+    <com.fangs.apar_app.utils.HelveticaNormalTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1995.12"
+        app:layout_constraintLeft_toRightOf="@+id/tv_product_price_label"
+        app:layout_constraintTop_toBottomOf="@id/tv_product_name_search"
+        app:layout_constraintBottom_toBottomOf="@id/tv_product_price_label"
+        android:textSize="10sp"
+        android:layout_marginStart="10dp"/>
 
-        <com.fangs.apar_app.utils.HelveticaBoldTextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginStart="10dp"
-            android:layout_weight="0.60"
-            android:text="1050.95"
-            android:gravity="center"
-            android:textSize="10sp" />
-
-        <com.fangs.apar_app.utils.HelveticaBoldTextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="+"
-            android:textSize="10sp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:textColor="@color/ThemeDarkGreen"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:layout_weight="0.10"/>
-
-        <com.fangs.apar_app.utils.HelveticaBoldTextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="0.10"
-            android:text="0"
-            android:textSize="10sp"
-            android:gravity="center"/>
-
-        <com.fangs.apar_app.utils.HelveticaBoldTextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="-"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:textSize="10sp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:textColor="@color/red"
-            android:layout_weight="0.10"/>
-
-
-        <com.fangs.apar_app.utils.HelveticaBoldTextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="ADD"
-            android:textColor="#FF5722"
-            android:layout_weight="0.10"
-            android:textSize="10sp"/>
-    </LinearLayout>
-
-
-
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,13 +6,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.fangs.apar_app.R
 import com.fangs.apar_app.utils.HelveticaBoldTextView
+import com.fangs.apar_app.utils.HelveticaNormalTextView
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.QueryDocumentSnapshot
 
 class ProductAdapter(private val dataSet : MutableList<DocumentSnapshot>) : RecyclerView.Adapter<ProductAdapter.ViewHolder>(){
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val productName : HelveticaBoldTextView
+        val productName : HelveticaNormalTextView
         init {
             productName = itemView.findViewById(R.id.tv_product_name_search)
         }
@@ -20,7 +21,7 @@ class ProductAdapter(private val dataSet : MutableList<DocumentSnapshot>) : Recy
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.product_row,parent,false)
+        val view = LayoutInflater.from().inflate(R.layout.product_row,parent,false)
         return ViewHolder(view)
 
     }
