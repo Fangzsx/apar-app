@@ -22,6 +22,7 @@ class ProductAdapter(private val dataSet : MutableList<DocumentSnapshot>) : Recy
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.product_row,parent,false)
+        view.layoutParams.width = parent.width
         return ViewHolder(view)
 
     }
