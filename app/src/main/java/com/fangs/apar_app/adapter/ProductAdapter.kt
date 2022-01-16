@@ -48,7 +48,9 @@ class ProductAdapter(private val dataSet : MutableList<DocumentSnapshot>) : Recy
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        if(position %2 == 0){
+        if(position % 2 == 0){
+            holder.cardBg.setCardBackgroundColor(Color.WHITE)
+        }else{
             holder.cardBg.setCardBackgroundColor(Color.GRAY)
         }
 
