@@ -158,9 +158,6 @@ class PurchaseActivity : AppCompatActivity(), View.OnClickListener {
                         recyclerView.adapter = adapter
                     }
 
-
-
-
                 }
 
             }catch (e : Exception){

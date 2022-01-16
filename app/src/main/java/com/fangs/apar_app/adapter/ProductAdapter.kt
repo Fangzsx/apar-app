@@ -1,8 +1,10 @@
 package com.fangs.apar_app.adapter
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.fangs.apar_app.R
 import com.fangs.apar_app.utils.HelveticaBoldTextView
@@ -14,8 +16,13 @@ class ProductAdapter(private val dataSet : MutableList<DocumentSnapshot>) : Recy
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val productName : HelveticaNormalTextView
+        val productPrice : HelveticaNormalTextView
+        val cardBg : CardView
+
         init {
             productName = itemView.findViewById(R.id.tv_product_name_search)
+            productPrice = itemView.findViewById(R.id.tv_item_product_price)
+            cardBg = itemView.findViewById(R.id.card_item)
         }
 
     }
@@ -28,8 +35,13 @@ class ProductAdapter(private val dataSet : MutableList<DocumentSnapshot>) : Recy
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        //change card bg alternately
+        if(position%2 == 0){
+            holder.cardBg.setCardBackgroundColor(Color.GRAY)
+        }
 
         holder.productName.text = dataSet[position] ["name"].toString()
+        holder.productPrice.text = dataSet[position] ["price"].toString()
 
     }
 
