@@ -94,7 +94,7 @@
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/shopping_cart"
+                    android:src="@drawable/ic_baseline_shopping_cart_24"
                     android:layout_marginStart="30dp"
                     app:tint="@color/black" />
 
