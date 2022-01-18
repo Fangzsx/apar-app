@@ -20,7 +20,7 @@
             android:id="@+id/tv_product_label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Product Name:"
+            android:text="Product Name"
             android:textSize="10sp"
             android:textColor="@color/black"/>
 
@@ -48,13 +48,15 @@
                     android:layout_height="wrap_content"
                     android:textSize="10sp"
                     android:text="Price"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    tools:ignore="SmallSp" />
                 <com.fangs.apar_app.utils.HelveticaNormalTextView
                     android:id="@+id/tv_item_product_price"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="1995.12"
-                    android:textSize="10sp"/>
+                    tools:text="1995.12"
+                    android:textSize="10sp"
+                    tools:ignore="SmallSp" />
             </LinearLayout>
 
 
