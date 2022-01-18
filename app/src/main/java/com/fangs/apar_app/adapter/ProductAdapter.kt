@@ -105,6 +105,8 @@ class ProductAdapter(private val context : Context, private val dataSet : Mutabl
             holder.tvQuantity.text = 0.toString()
             Toast.makeText(context, "$productName added to list", Toast.LENGTH_SHORT).show()
 
+            //TODO: extract category of the product to Order data class
+
         }
         
 
