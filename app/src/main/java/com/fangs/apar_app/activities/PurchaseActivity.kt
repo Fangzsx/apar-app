@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.fangs.apar_app.R
 import com.fangs.apar_app.adapter.ProductAdapter
 import com.fangs.apar_app.databinding.ActivityPurchaseBinding
+import com.fangs.apar_app.model.Cart
 import com.fangs.apar_app.utils.HelveticaBoldTextView
 import com.fangs.apar_app.utils.HelveticaCustomButton
 import com.fangs.apar_app.utils.HelveticaNormalTextView
@@ -43,6 +44,10 @@ class PurchaseActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(binding.root)
         showCustomerData()
         setButtonClick()
+        
+        binding.customerCart.setOnClickListener{
+            Toast.makeText(this, "${Cart.get().size}", Toast.LENGTH_SHORT).show()
+        }
 
     }
 
@@ -172,9 +177,7 @@ class PurchaseActivity : AppCompatActivity(), View.OnClickListener {
         dialog.show()
     }
 
-
-
-
+    
     override fun onClick(p0: View?) {
         showProductDialog(p0 as Button)
 
