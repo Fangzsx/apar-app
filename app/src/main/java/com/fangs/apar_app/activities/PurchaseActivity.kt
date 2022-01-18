@@ -154,8 +154,10 @@ class PurchaseActivity : AppCompatActivity(), View.OnClickListener {
                         tvEmptyList.isVisible = true
                     }else{
                         recyclerView.layoutManager = LinearLayoutManager(this@PurchaseActivity)
-                        val adapter = ProductAdapter(list)
+                        val adapter = ProductAdapter(this@PurchaseActivity, list)
                         recyclerView.adapter = adapter
+
+
                     }
 
                 }
