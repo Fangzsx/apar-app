@@ -2,10 +2,7 @@ package com.fangs.apar_app.adapter
 
 import android.content.Context
 import android.graphics.Color
-import android.view.Gravity
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
@@ -14,7 +11,7 @@ import androidx.core.view.marginStart
 import androidx.recyclerview.widget.RecyclerView
 import com.fangs.apar_app.R
 import com.fangs.apar_app.model.Cart
-import com.fangs.apar_app.model.Order
+import com.fangs.apar_app.model.Product
 import com.fangs.apar_app.utils.HelveticaBoldTextView
 import com.fangs.apar_app.utils.HelveticaNormalTextView
 import com.google.firebase.firestore.DocumentSnapshot
@@ -30,9 +27,6 @@ class ProductAdapter(private val context : Context, private val dataSet : Mutabl
         val tvSubtract : HelveticaBoldTextView
         val ivCart : ImageView
 
-
-
-
         init {
             productName = itemView.findViewById(R.id.tv_product_name_search)
             productPrice = itemView.findViewById(R.id.tv_item_product_price)
@@ -41,7 +35,6 @@ class ProductAdapter(private val context : Context, private val dataSet : Mutabl
             tvQuantity = itemView.findViewById(R.id.tv_quantity)
             tvSubtract = itemView.findViewById(R.id.tv_subtract_quantity)
             ivCart = itemView.findViewById(R.id.iv_add_to_cart)
-
         }
 
     }
@@ -97,9 +90,11 @@ class ProductAdapter(private val context : Context, private val dataSet : Mutabl
             val pcs = holder.tvQuantity.text.toString().toInt()
             val price = holder.productPrice.text.toString().toDouble()
             val finalPrice = pcs * price
+            
+            
 
-            val order  =  Order(name, pcs, finalPrice)
-            Cart.add(order)
+            val product  =  Product(name, pcs, finalPrice)
+            Cart.add(product)
 
             //set quantity of item selected = 0
             holder.tvQuantity.text = 0.toString()

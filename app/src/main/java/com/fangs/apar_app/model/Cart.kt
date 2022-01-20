@@ -1,12 +1,12 @@
 package com.fangs.apar_app.model
 
 object Cart {
-    private val list = mutableListOf<Order>()
+    private val list = mutableListOf<Product>()
 
-    fun add(order: Order) {
-        list.add(order)
+    fun add(product: Product) {
+        list.add(product)
     }
 
-    fun get() : MutableList<Order> = list
+    fun get() : MutableList<Product> = list
 
 }
