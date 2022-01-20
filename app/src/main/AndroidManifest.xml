@@ -12,9 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Aparapp">
         <activity
-            android:name=".activities.PurchaseActivity"
-            android:screenOrientation="portrait"
+            android:name=".activities.CartActivity"
             android:exported="false" />
+        <activity
+            android:name=".activities.PurchaseActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.NewMemberActivity"
             android:exported="false"

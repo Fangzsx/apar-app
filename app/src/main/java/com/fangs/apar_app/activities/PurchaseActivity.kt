@@ -164,8 +164,6 @@ class PurchaseActivity : AppCompatActivity(), View.OnClickListener {
                         recyclerView.layoutManager = LinearLayoutManager(this@PurchaseActivity)
                         val adapter = ProductAdapter(this@PurchaseActivity, list, category)
                         recyclerView.adapter = adapter
-
-
                     }
 
                 }
@@ -175,7 +173,6 @@ class PurchaseActivity : AppCompatActivity(), View.OnClickListener {
                     Toast.makeText(this@PurchaseActivity, e.message, Toast.LENGTH_LONG).show()
                 }
             }
-
         }
         dialog.show()
     }
