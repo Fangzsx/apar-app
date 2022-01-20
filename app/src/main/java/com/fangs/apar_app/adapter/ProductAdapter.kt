@@ -16,7 +16,7 @@ import com.fangs.apar_app.utils.HelveticaBoldTextView
 import com.fangs.apar_app.utils.HelveticaNormalTextView
 import com.google.firebase.firestore.DocumentSnapshot
 
-class ProductAdapter(private val context : Context, private val dataSet : MutableList<DocumentSnapshot>) : RecyclerView.Adapter<ProductAdapter.ViewHolder>(){
+class ProductAdapter(private val context : Context, private val dataSet : MutableList<DocumentSnapshot>, private val category : String) : RecyclerView.Adapter<ProductAdapter.ViewHolder>(){
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val productName : HelveticaNormalTextView
@@ -93,7 +93,7 @@ class ProductAdapter(private val context : Context, private val dataSet : Mutabl
             
             
 
-            val product  =  Product(name, pcs, finalPrice)
+            val product  =  Product(name, category,  pcs, finalPrice)
             Cart.add(product)
 
             //set quantity of item selected = 0

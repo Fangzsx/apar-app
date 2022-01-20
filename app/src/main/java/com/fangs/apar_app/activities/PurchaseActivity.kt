@@ -46,7 +46,10 @@ class PurchaseActivity : AppCompatActivity(), View.OnClickListener {
         setButtonClick()
         
         binding.customerCart.setOnClickListener{
-            Toast.makeText(this, "${Cart.get().size}", Toast.LENGTH_SHORT).show()
+            val list = Cart.get()
+            for(product in list){
+                Toast.makeText(this@PurchaseActivity, "${product.productName} ${product.productCategory} ${product.productQuantity} ${product.productPrice}", Toast.LENGTH_LONG).show()
+            }
         }
 
     }
@@ -159,7 +162,7 @@ class PurchaseActivity : AppCompatActivity(), View.OnClickListener {
                         tvEmptyList.isVisible = true
                     }else{
                         recyclerView.layoutManager = LinearLayoutManager(this@PurchaseActivity)
-                        val adapter = ProductAdapter(this@PurchaseActivity, list)
+                        val adapter = ProductAdapter(this@PurchaseActivity, list, category)
                         recyclerView.adapter = adapter
 
 
