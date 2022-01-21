@@ -15,6 +15,7 @@ import com.fangs.apar_app.R
 import com.fangs.apar_app.adapter.ProductAdapter
 import com.fangs.apar_app.databinding.ActivityPurchaseBinding
 import com.fangs.apar_app.model.Cart
+import com.fangs.apar_app.model.NewMember
 import com.fangs.apar_app.utils.HelveticaBoldTextView
 import com.fangs.apar_app.utils.HelveticaCustomButton
 import com.fangs.apar_app.utils.HelveticaNormalTextView
@@ -62,7 +63,6 @@ class PurchaseActivity : AppCompatActivity(), View.OnClickListener {
     private fun setButtonClick() {
         //back navigation
         binding.sideBarPurchaseOrderBack.setOnClickListener {
-
             showAlertDialog()
         }
 
@@ -86,24 +86,24 @@ class PurchaseActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun showCustomerData() {
         //display customer data
-        val intent = intent
-        val lastname = intent.getStringExtra("LAST_NAME")
-        val firstname = intent.getStringExtra("FIRST_NAME")
-        val middlename = intent.getStringExtra("MIDDLE_NAME")
-        val fullname = "$lastname, $firstname $middlename"
+//        val intent = intent
+//        val lastname = intent.getStringExtra("LAST_NAME")
+//        val firstname = intent.getStringExtra("FIRST_NAME")
+//        val middlename = intent.getStringExtra("MIDDLE_NAME")
+//        val fullname = "$lastname, $firstname $middlename"
+//
+//        val houseST = intent.getStringExtra("HOUSE_ST")
+//        val phaseZone = intent.getStringExtra("PHASE_ZONE")
+//        val city = intent.getStringExtra("CITY")
+//        val fullAddress = "$houseST, $phaseZone $city"
+//
+//        val birthday = intent.getStringExtra("BIRTHDAY")
+//        val contact = intent.getStringExtra("CONTACT")
 
-        val houseST = intent.getStringExtra("HOUSE_ST")
-        val phaseZone = intent.getStringExtra("PHASE_ZONE")
-        val city = intent.getStringExtra("CITY")
-        val fullAddress = "$houseST, $phaseZone $city"
-
-        val birthday = intent.getStringExtra("BIRTHDAY")
-        val contact = intent.getStringExtra("CONTACT")
-
-        binding.tvCustomerName.text = fullname
-        binding.tvCustomerAddress.text = fullAddress
-        binding.tvCustomerBirthday.text = birthday
-        binding.tvCustomerContact.text = contact
+        binding.tvCustomerName.text = "${NewMember.lastName}, ${NewMember.firstName} ${NewMember.middleName}"
+        binding.tvCustomerAddress.text = NewMember.address
+        binding.tvCustomerBirthday.text = NewMember.birthday
+        binding.tvCustomerContact.text = NewMember.contactNumber
 
 
     }

@@ -11,6 +11,7 @@ import android.view.Window
 import android.view.WindowManager
 import com.fangs.apar_app.R
 import com.fangs.apar_app.databinding.ActivityNewMemberBinding
+import com.fangs.apar_app.model.NewMember
 import com.fangs.apar_app.utils.DateParser
 import com.fangs.apar_app.utils.HelveticaCustomButton
 import com.fangs.apar_app.utils.HelveticaNormalTextView
@@ -94,15 +95,22 @@ class NewMemberActivity : BaseActivity() {
                 val btnOrder = customerInfoDialog.findViewById<HelveticaCustomButton>(R.id.btn_order)
                 btnOrder.setOnClickListener {
                     Intent(this, PurchaseActivity::class.java).also {
-                        //send data to purchase activity
-                        it.putExtra("LAST_NAME", tvLastname.text.toString())
-                        it.putExtra("FIRST_NAME", tvFirstname.text.toString())
-                        it.putExtra("MIDDLE_NAME", tvMiddlename.text.toString())
-                        it.putExtra("HOUSE_ST", tvHouseSt.text.toString())
-                        it.putExtra("PHASE_ZONE", tvPhaseZone.text.toString())
-                        it.putExtra("CITY", tvCity.text.toString())
-                        it.putExtra("BIRTHDAY", tvBirthday.text.toString())
-                        it.putExtra("CONTACT", tvContact.text.toString())
+//                        //send data to purchase activity
+//                        it.putExtra("LAST_NAME", tvLastname.text.toString())
+//                        it.putExtra("FIRST_NAME", tvFirstname.text.toString())
+//                        it.putExtra("MIDDLE_NAME", tvMiddlename.text.toString())
+//                        it.putExtra("HOUSE_ST", tvHouseSt.text.toString())
+//                        it.putExtra("PHASE_ZONE", tvPhaseZone.text.toString())
+//                        it.putExtra("CITY", tvCity.text.toString())
+//                        it.putExtra("BIRTHDAY", tvBirthday.text.toString())
+//                        it.putExtra("CONTACT", tvContact.text.toString())
+                        NewMember.lastName = tvLastname.text.toString()
+                        NewMember.firstName = tvFirstname.text.toString()
+                        NewMember.middleName = tvMiddlename.text.toString()
+                        NewMember.address = "${tvHouseSt.text}, ${tvPhaseZone.text}, ${tvCity.text}"
+                        NewMember.birthday = tvBirthday.text.toString()
+                        NewMember.contactNumber = tvContact.text.toString()
+
                         customerInfoDialog.dismiss()
                         finish()
                         startActivity(it)

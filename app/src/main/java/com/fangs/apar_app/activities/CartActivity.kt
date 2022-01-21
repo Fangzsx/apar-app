@@ -8,6 +8,7 @@ import android.widget.Toast
 
 import android.content.Intent
 import com.fangs.apar_app.model.Cart
+import com.fangs.apar_app.model.NewMember
 import java.lang.StringBuilder
 
 
@@ -25,9 +26,26 @@ class CartActivity : AppCompatActivity() {
             list.sortBy { it.productCategory }
 
             val sb = StringBuilder()
+            //input customer info
+            sb.append(
+                "Customer name: ${NewMember.lastName}, ${NewMember.firstName} ${NewMember.middleName}\n\n" +
+                "Customer address: ${NewMember.address}\n\n"+
+                "Contact number: ${NewMember.contactNumber}\n\n" +
+                "Birthday: ${NewMember.birthday}\n\n" +
+                "Purchase Order: \n"
+
+            )
+
             for(product in list){
-                sb.append("${product.productName} ${product.productCategory} ${product.productQuantity} ${product.productPrice}\n\n")
+                sb.append(
+                        "Item no: ${list.indexOf(product) + 1}\n" +
+                        "Product name: ${product.productName}\n" +
+                        "Category: ${product.productCategory}\n" +
+                        "Quantity: ${product.productQuantity}\n" +
+                        "Amount: ${product.productPrice}\n\n")
             }
+
+            sb.append("---NOTHING FOLLOWS---")
 
 
             val sendIntent = Intent()
