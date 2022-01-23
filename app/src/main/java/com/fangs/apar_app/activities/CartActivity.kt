@@ -25,7 +25,6 @@ class CartActivity : AppCompatActivity() {
         val list = Cart.get()
         //sort list
         list.sortBy { it.productCategory }
-
         val recyclerView = binding.rvCartedItems
         recyclerView.layoutManager = LinearLayoutManager(this)
         val adapter = CartAdapter(list)
@@ -48,8 +47,7 @@ class CartActivity : AppCompatActivity() {
                         "Item no: ${list.indexOf(product) + 1}\n" +
                         "Product name: ${product.productName}\n" +
                         "Category: ${product.productCategory}\n" +
-                        "Quantity: ${product.productQuantity}\n" +
-                        "Amount: ${product.productPrice}\n\n")
+                        "Quantity: ${product.productQuantity}\n")
             }
 
             sb.append("---NOTHING FOLLOWS---")
