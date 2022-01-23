@@ -45,9 +45,9 @@ class CartAdapter(private val orderList : MutableList<Product>) : RecyclerView.A
 
         //change bg of card
         if (position % 2 == 0){
-            holder.card.setCardBackgroundColor(Color.GRAY)
+            holder.card.setCardBackgroundColor(Color.WHITE)
         }else{
-            holder.card.setBackgroundColor(Color.WHITE)
+            holder.card.setBackgroundColor(Color.GRAY)
         }
 
 
