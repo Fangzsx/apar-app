@@ -90,17 +90,16 @@ class ProductAdapter(private val context : Context, private val dataSet : Mutabl
             val pcs = holder.tvQuantity.text.toString().toInt()
             val price = holder.productPrice.text.toString().toDouble()
 
-            
+            if(pcs > 0){
+                val product  =  Product(name, category,  pcs, price)
+                Cart.add(product)
 
-            val product  =  Product(name, category,  pcs, price)
-            Cart.add(product)
-
-            //set quantity of item selected = 0
-            holder.tvQuantity.text = 0.toString()
-            Toast.makeText(context, "$productName added to list", Toast.LENGTH_SHORT).show()
-
-            //TODO: extract category of the product to Order data class
-
+                //set quantity of item selected = 0
+                holder.tvQuantity.text = 0.toString()
+                Toast.makeText(context, "$productName added to list", Toast.LENGTH_SHORT).show()
+            }else{
+                Toast.makeText(context, "Invalid Quantity", Toast.LENGTH_LONG).show()
+            }
         }
         
 
