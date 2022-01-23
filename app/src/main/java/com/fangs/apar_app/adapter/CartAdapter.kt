@@ -1,11 +1,14 @@
 package com.fangs.apar_app.adapter
 
 import android.graphics.Color
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import androidx.cardview.widget.CardView
+import androidx.core.view.marginStart
 import androidx.recyclerview.widget.RecyclerView
 import com.fangs.apar_app.R
 import com.fangs.apar_app.model.Product
@@ -47,7 +50,7 @@ class CartAdapter(private val orderList : MutableList<Product>) : RecyclerView.A
         if (position % 2 == 0){
             holder.card.setCardBackgroundColor(Color.WHITE)
         }else{
-            holder.card.setBackgroundColor(Color.GRAY)
+            holder.card.setCardBackgroundColor(Color.GRAY)
         }
 
 

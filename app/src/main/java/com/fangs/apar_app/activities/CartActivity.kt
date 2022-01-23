@@ -47,7 +47,7 @@ class CartActivity : AppCompatActivity() {
                         "Item no: ${list.indexOf(product) + 1}\n" +
                         "Product name: ${product.productName}\n" +
                         "Category: ${product.productCategory}\n" +
-                        "Quantity: ${product.productQuantity}\n")
+                        "Quantity: ${product.productQuantity}\n\n")
             }
 
             sb.append("---NOTHING FOLLOWS---")

@@ -50,11 +50,6 @@ class PurchaseActivity : AppCompatActivity(), View.OnClickListener {
             Intent(this, CartActivity::class.java).also {
                 startActivity(it)
             }
-
-            val list = Cart.get()
-            for(product in list){
-                Toast.makeText(this@PurchaseActivity, "${product.productName} ${product.productCategory} ${product.productQuantity} ${product.productPrice}", Toast.LENGTH_LONG).show()
-            }
         }
 
     }
