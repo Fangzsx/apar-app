@@ -89,11 +89,10 @@ class ProductAdapter(private val context : Context, private val dataSet : Mutabl
             val name = holder.productName.text.toString()
             val pcs = holder.tvQuantity.text.toString().toInt()
             val price = holder.productPrice.text.toString().toDouble()
-            val finalPrice = pcs * price
-            
+
             
 
-            val product  =  Product(name, category,  pcs, finalPrice)
+            val product  =  Product(name, category,  pcs, price)
             Cart.add(product)
 
             //set quantity of item selected = 0

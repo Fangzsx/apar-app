@@ -7,6 +7,8 @@ import com.fangs.apar_app.databinding.ActivityCartBinding
 import android.widget.Toast
 
 import android.content.Intent
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.fangs.apar_app.adapter.CartAdapter
 import com.fangs.apar_app.model.Cart
 import com.fangs.apar_app.model.NewMember
 import java.lang.StringBuilder
@@ -20,10 +22,16 @@ class CartActivity : AppCompatActivity() {
         binding = ActivityCartBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val list = Cart.get()
+        //sort list
+        list.sortBy { it.productCategory }
+
+        val recyclerView = binding.rvCartedItems
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        val adapter = CartAdapter(list)
+        recyclerView.adapter = adapter
+
         binding.btnSend.setOnClickListener {
-            val list = Cart.get()
-            //sort list
-            list.sortBy { it.productCategory }
 
             val sb = StringBuilder()
             //input customer info
@@ -33,7 +41,6 @@ class CartActivity : AppCompatActivity() {
                 "Contact number: ${NewMember.contactNumber}\n\n" +
                 "Birthday: ${NewMember.birthday}\n\n" +
                 "Purchase Order: \n"
-
             )
 
             for(product in list){

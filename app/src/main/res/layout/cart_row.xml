@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/card_item"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/dialog_bg_shape"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="5dp"
+    android:layout_margin="6dp"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="5dp">
+        <com.fangs.apar_app.utils.HelveticaNormalTextView
+            android:id="@+id/tv_product_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Product Name"
+            android:textSize="10sp"
+            android:textColor="@color/black"/>
+
+        <com.fangs.apar_app.utils.HelveticaNormalTextView
+            android:id="@+id/tv_product_name_cart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="THIS IS A PRODUCT NAME"
+            android:textSize="12sp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <com.fangs.apar_app.utils.HelveticaNormalTextView
+                android:id="@+id/tv_product_price_label"
+                android:layout_width="0dp"
+                android:layout_weight="0.10"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:layout_gravity="center"
+                android:text="Price: "
+                android:textColor="@color/black"/>
+            <com.fangs.apar_app.utils.HelveticaNormalTextView
+                android:id="@+id/tv_item_product_price_cart"
+                android:layout_width="0dp"
+                android:layout_weight="0.15"
+                android:layout_height="wrap_content"
+                tools:text="1995.12"
+                android:layout_gravity="center"
+                android:textSize="12sp"/>
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.75"
+                android:orientation="horizontal"
+                android:gravity="center_vertical|end">
+                <com.fangs.apar_app.utils.HelveticaBoldTextView
+                    android:id="@+id/tv_add_quantity_cart"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:text="+"
+                    android:gravity="center"
+                    android:background="@drawable/dialog_bg_shape"
+                    android:backgroundTint="@color/ThemeDarkGreen"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"/>
+                <com.fangs.apar_app.utils.HelveticaBoldTextView
+                    android:id="@+id/tv_quantity_cart"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:text="0"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:gravity="center"
+                    android:textSize="15sp"/>
+                <com.fangs.apar_app.utils.HelveticaBoldTextView
+                    android:id="@+id/tv_subtract_quantity_cart"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:backgroundTint="@color/red"
+                    android:text="-"
+                    android:background="@drawable/dialog_bg_shape"
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:textSize="15sp"/>
+
+                <ImageView
+                    android:id="@+id/iv_remove"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_delete_green"
+                    android:layout_marginStart="30dp"
+                    app:tint="@color/black" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <com.fangs.apar_app.utils.HelveticaBoldTextView
+            android:id="@+id/tv_amount_cart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Total Amount: "
+            android:textColor="@color/black"/>
+
+    </LinearLayout>
+
+
+
+</androidx.cardview.widget.CardView>
