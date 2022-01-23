@@ -36,13 +36,29 @@
         app:cardBackgroundColor="@color/ThemeDarkGreen"
         app:cardElevation="10dp">
 
-        <com.fangs.apar_app.utils.HelveticaBoldTextView
-            android:id="@+id/tv_header"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:text="Verify all items added to cart"
-            android:textSize="18sp"/>
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="1">
+            <com.fangs.apar_app.utils.HelveticaNormalTextView
+                android:id="@+id/tv_header"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="Verify all items added to cart"
+                android:layout_weight="0.60"
+                android:textSize="16sp"/>
+
+            <com.fangs.apar_app.utils.HelveticaBoldTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.40"
+                android:text="Total: "
+                android:textColor="@color/white"/>
+        </LinearLayout>
+
+
     </androidx.cardview.widget.CardView>
 
     <androidx.recyclerview.widget.RecyclerView
