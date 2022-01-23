@@ -1,9 +1,11 @@
 package com.fangs.apar_app.adapter
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.fangs.apar_app.R
 import com.fangs.apar_app.model.Product
@@ -20,6 +22,7 @@ class CartAdapter(private val orderList : MutableList<Product>) : RecyclerView.A
         val btnRemove : ImageView
         val btnAdd : HelveticaBoldTextView
         val btnSubtract : HelveticaBoldTextView
+        val card : CardView
 
         init {
             productName = itemView.findViewById(R.id.tv_product_name_cart)
@@ -29,6 +32,7 @@ class CartAdapter(private val orderList : MutableList<Product>) : RecyclerView.A
             btnRemove = itemView.findViewById(R.id.iv_remove)
             btnAdd = itemView.findViewById(R.id.tv_add_quantity_cart)
             btnSubtract = itemView.findViewById(R.id.tv_subtract_quantity_cart)
+            card = itemView.findViewById(R.id.card_cart_item)
         }
     }
 
@@ -38,6 +42,15 @@ class CartAdapter(private val orderList : MutableList<Product>) : RecyclerView.A
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
+        //change bg of card
+        if (position % 2 == 0){
+            holder.card.setCardBackgroundColor(Color.GRAY)
+        }else{
+            holder.card.setBackgroundColor(Color.WHITE)
+        }
+
+
         val name = orderList[position].productName
         val price = orderList[position].productPrice
         val quantity = orderList[position].productQuantity
