@@ -67,17 +67,30 @@ class CartAdapter(private val context : Context, private val orderList : Mutable
 
         //controls
         holder.btnAdd.setOnClickListener {
-            if(quantity <= 99){
+            //get current quantity
+            val currentQuantity = holder.quantity.text.toString().toInt()
+
+            if(currentQuantity <= 99){
                 currentProduct.productQuantity++
                 //update value of quantity
-                holder.quantity.text = currentProduct.productQuantity.toString()
-                holder.amount.text = "Total: ${roundOffDecimal(currentProduct.productQuantity * price)}"
+                updateViews(holder, currentProduct, price)
+            }else{
+                Toast.makeText(context, "Quantity must be 1-99 only", Toast.LENGTH_SHORT).show()
             }
 
         }
 
         holder.btnSubtract.setOnClickListener {
-            Toast.makeText(context, "subtract clicked", Toast.LENGTH_SHORT).show()
+            //get current quantity
+            val currentQuantity = holder.quantity.text.toString().toInt()
+
+            if(currentQuantity > 1){
+                currentProduct.productQuantity--
+                //update value of quantity
+                updateViews(holder, currentProduct, price)
+            }else{
+                Toast.makeText(context, "Quantity must be 1-99 only", Toast.LENGTH_SHORT).show()
+            }
         }
 
         holder.btnRemove.setOnClickListener {
@@ -87,6 +100,15 @@ class CartAdapter(private val context : Context, private val orderList : Mutable
             Toast.makeText(context, "delete clicked.", Toast.LENGTH_SHORT).show()
         }
 
+    }
+
+    private fun updateViews(
+        holder: ViewHolder,
+        currentProduct: Product,
+        price: Double
+    ) {
+        holder.quantity.text = currentProduct.productQuantity.toString()
+        holder.amount.text = "Total: ${roundOffDecimal(currentProduct.productQuantity * price)}"
     }
 
     override fun getItemCount(): Int = orderList.size
