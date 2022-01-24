@@ -67,12 +67,18 @@ class CartAdapter(private val context : Context, private val orderList : Mutable
         holder.quantity.text = quantity.toString()
         holder.amount.text = "Total: ${roundOffDecimal(price * quantity)}"
 
+
+        //controls
         holder.btnAdd.setOnClickListener {
             Toast.makeText(context, "add clicked", Toast.LENGTH_SHORT).show()
         }
 
         holder.btnSubtract.setOnClickListener {
             Toast.makeText(context, "subtract clicked", Toast.LENGTH_SHORT).show()
+        }
+
+        holder.btnRemove.setOnClickListener {
+            Toast.makeText(context, "delete clicked.", Toast.LENGTH_SHORT).show()
         }
 
     }
