@@ -23,9 +23,12 @@ class CartActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val list = Cart.getList()
+
         //sort list
         list.sortBy { it.productCategory }
         binding.tvTotalCart.text = "Total: P ${Cart.getTotal()}"
+
+
 
         val recyclerView = binding.rvCartedItems
         recyclerView.layoutManager = LinearLayoutManager(this)

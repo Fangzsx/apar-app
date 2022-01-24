@@ -2,23 +2,20 @@ package com.fangs.apar_app.adapter
 
 import android.content.Context
 import android.graphics.Color
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.cardview.widget.CardView
-import androidx.core.view.marginStart
 import androidx.recyclerview.widget.RecyclerView
 import com.fangs.apar_app.R
+import com.fangs.apar_app.model.Cart
 import com.fangs.apar_app.model.Product
 import com.fangs.apar_app.utils.HelveticaBoldTextView
 import com.fangs.apar_app.utils.HelveticaNormalTextView
 import java.math.RoundingMode
 import java.text.DecimalFormat
-import kotlin.math.roundToInt
 
 class CartAdapter(private val context : Context, private val orderList : MutableList<Product>) : RecyclerView.Adapter<CartAdapter.ViewHolder>(){
 
@@ -57,10 +54,10 @@ class CartAdapter(private val context : Context, private val orderList : Mutable
         }else{
             holder.card.setCardBackgroundColor(Color.GRAY)
         }
-        val product = orderList[position]
-        val name = product.productName
-        val price = product.productPrice
-        val quantity = product.productQuantity
+        val currentProduct = orderList[position]
+        val name = currentProduct.productName
+        val price = currentProduct.productPrice
+        val quantity = currentProduct.productQuantity
 
         holder.productName.text = name
         holder.productPrice.text = price.toString()
@@ -70,7 +67,13 @@ class CartAdapter(private val context : Context, private val orderList : Mutable
 
         //controls
         holder.btnAdd.setOnClickListener {
-            Toast.makeText(context, "add clicked", Toast.LENGTH_SHORT).show()
+            if(quantity <= 99){
+                currentProduct.productQuantity++
+                //update value of quantity
+                holder.quantity.text = currentProduct.productQuantity.toString()
+                Toast.makeText(context, "quantity: ${currentProduct.productQuantity}", Toast.LENGTH_SHORT).show()
+            }
+
         }
 
         holder.btnSubtract.setOnClickListener {
@@ -78,6 +81,9 @@ class CartAdapter(private val context : Context, private val orderList : Mutable
         }
 
         holder.btnRemove.setOnClickListener {
+            val list = Cart.getList()
+            list.remove(currentProduct)
+            notifyItemRemoved(position)
             Toast.makeText(context, "delete clicked.", Toast.LENGTH_SHORT).show()
         }
 
