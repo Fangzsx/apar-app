@@ -14,7 +14,7 @@ import com.fangs.apar_app.model.NewMember
 import java.lang.StringBuilder
 
 
-class CartActivity : AppCompatActivity() {
+class CartActivity : BaseActivity() {
     private lateinit var binding : ActivityCartBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,56 +23,67 @@ class CartActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val list = Cart.getList()
+        //get total from cart
+        binding.tvTotalCart.text = "Total: P ${Cart.getTotal()}"
 
         //sort list
         list.sortBy { it.productCategory }
-        binding.tvTotalCart.text = "Total: P ${Cart.getTotal()}"
-
 
 
         val recyclerView = binding.rvCartedItems
         recyclerView.layoutManager = LinearLayoutManager(this)
-        val adapter = CartAdapter(this@CartActivity, list)
+        val adapter = CartAdapter(this@CartActivity, list, object : CartAdapter.OnItemClickListener{
+            override fun onItemClick(total: Double) {
+                binding.tvTotalCart.text = "Total: P $total"
+            }
+
+        })
         recyclerView.adapter = adapter
 
         binding.btnSend.setOnClickListener {
 
-            val sb = StringBuilder()
-            //input customer info
-            sb.append(
-                "Customer name: ${NewMember.lastName}, ${NewMember.firstName} ${NewMember.middleName}\n\n" +
-                "Customer address: ${NewMember.address}\n\n"+
-                "Contact number: ${NewMember.contactNumber}\n\n" +
-                "Birthday: ${NewMember.birthday}\n\n" +
-                "Purchase Order: \n"
-            )
-
-            for(product in list){
+            if(list.isNotEmpty()){
+                val sb = StringBuilder()
+                //input customer info
                 sb.append(
-                        "Item no: ${list.indexOf(product) + 1}\n" +
-                        "Product name: ${product.productName}\n" +
-                        "Category: ${product.productCategory}\n" +
-                        "Quantity: ${product.productQuantity}\n\n")
-            }
-
-            sb.append("---NOTHING FOLLOWS---")
-
-
-            val sendIntent = Intent()
-            sendIntent.action = Intent.ACTION_SEND
-            sendIntent
-                .putExtra(
-                    Intent.EXTRA_TEXT,
-                    sb.toString()
+                    "Customer name: ${NewMember.lastName}, ${NewMember.firstName} ${NewMember.middleName}\n\n" +
+                            "Customer address: ${NewMember.address}\n\n"+
+                            "Contact number: ${NewMember.contactNumber}\n\n" +
+                            "Birthday: ${NewMember.birthday}\n\n" +
+                            "Purchase Order: \n"
                 )
-            sendIntent.type = "text/plain"
-            sendIntent.setPackage("com.facebook.orca")
-            try {
-                startActivity(sendIntent)
-            } catch (ex: ActivityNotFoundException) {
-                Toast.makeText(this, "Please Install Facebook Messenger", Toast.LENGTH_LONG)
-                    .show()
+
+                for(product in list){
+                    sb.append(
+                        "Item no: ${list.indexOf(product) + 1}\n" +
+                                "Product name: ${product.productName}\n" +
+                                "Category: ${product.productCategory}\n" +
+                                "Quantity: ${product.productQuantity}\n\n")
+                }
+
+                sb.append("---NOTHING FOLLOWS---")
+
+
+                val sendIntent = Intent()
+                sendIntent.action = Intent.ACTION_SEND
+                sendIntent
+                    .putExtra(
+                        Intent.EXTRA_TEXT,
+                        sb.toString()
+                    )
+                sendIntent.type = "text/plain"
+                sendIntent.setPackage("com.facebook.orca")
+                try {
+                    startActivity(sendIntent)
+                } catch (ex: ActivityNotFoundException) {
+                    Toast.makeText(this, "Please Install Facebook Messenger", Toast.LENGTH_LONG)
+                        .show()
+                }
+            }else{
+                showErrorSnackBar(binding.root, "Cart cannot be empty.", true)
             }
+
+
         }
 
 

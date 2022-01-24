@@ -17,7 +17,11 @@ import com.fangs.apar_app.utils.HelveticaNormalTextView
 import java.math.RoundingMode
 import java.text.DecimalFormat
 
-class CartAdapter(private val context : Context, private val orderList : MutableList<Product>) : RecyclerView.Adapter<CartAdapter.ViewHolder>(){
+class CartAdapter(private val context : Context, private val orderList : MutableList<Product>, private var itemClickListener: OnItemClickListener) : RecyclerView.Adapter<CartAdapter.ViewHolder>(){
+
+    interface OnItemClickListener {
+        fun onItemClick(total: Double)
+    }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val productName : HelveticaNormalTextView
@@ -39,6 +43,7 @@ class CartAdapter(private val context : Context, private val orderList : Mutable
             btnSubtract = itemView.findViewById(R.id.tv_subtract_quantity_cart)
             card = itemView.findViewById(R.id.card_cart_item)
         }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -74,9 +79,12 @@ class CartAdapter(private val context : Context, private val orderList : Mutable
                 currentProduct.productQuantity++
                 //update value of quantity
                 updateViews(holder, currentProduct, price)
+
             }else{
                 Toast.makeText(context, "Quantity must be 1-99 only", Toast.LENGTH_SHORT).show()
             }
+
+
 
         }
 
@@ -98,6 +106,7 @@ class CartAdapter(private val context : Context, private val orderList : Mutable
             list.remove(currentProduct)
             notifyItemRemoved(position)
             Toast.makeText(context, "delete clicked.", Toast.LENGTH_SHORT).show()
+            updateViews(holder, currentProduct, price)
         }
 
     }
@@ -109,15 +118,17 @@ class CartAdapter(private val context : Context, private val orderList : Mutable
     ) {
         holder.quantity.text = currentProduct.productQuantity.toString()
         holder.amount.text = "Total: ${roundOffDecimal(currentProduct.productQuantity * price)}"
+        //update total
+        itemClickListener.onItemClick(roundOffDecimal(Cart.getTotal()))
     }
 
     override fun getItemCount(): Int = orderList.size
 
-    private fun roundOffDecimal(number: Double): Double? {
+    private fun roundOffDecimal(number: Double): Double {
         val df = DecimalFormat("#.##")
         df.roundingMode = RoundingMode.FLOOR
         return df.format(number).toDouble()
     }
-
-
 }
+
+
