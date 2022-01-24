@@ -71,7 +71,7 @@ class CartAdapter(private val context : Context, private val orderList : Mutable
                 currentProduct.productQuantity++
                 //update value of quantity
                 holder.quantity.text = currentProduct.productQuantity.toString()
-                Toast.makeText(context, "quantity: ${currentProduct.productQuantity}", Toast.LENGTH_SHORT).show()
+                holder.amount.text = "Total: ${roundOffDecimal(currentProduct.productQuantity * price)}"
             }
 
         }
