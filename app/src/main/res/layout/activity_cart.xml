@@ -31,7 +31,6 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_margin="10dp"
-        app:contentPadding="10dp"
         app:cardCornerRadius="10dp"
         app:cardBackgroundColor="@color/ThemeDarkGreen"
         app:cardElevation="10dp">
@@ -48,15 +47,18 @@
                 android:textColor="@color/white"
                 android:text="Verify all items added to cart"
                 android:layout_weight="0.60"
+                android:padding="10dp"
                 android:textSize="16sp"/>
 
             <com.fangs.apar_app.utils.HelveticaBoldTextView
                 android:id="@+id/tv_total_cart"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="0.40"
                 android:text="Total: "
+                android:background="@color/goldStart"
                 android:textSize="16sp"
+                android:padding="10dp"
                 android:textColor="@color/white"/>
         </LinearLayout>
 
