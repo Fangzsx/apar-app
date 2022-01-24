@@ -14,6 +14,9 @@ import com.fangs.apar_app.R
 import com.fangs.apar_app.model.Product
 import com.fangs.apar_app.utils.HelveticaBoldTextView
 import com.fangs.apar_app.utils.HelveticaNormalTextView
+import java.math.RoundingMode
+import java.text.DecimalFormat
+import kotlin.math.roundToInt
 
 class CartAdapter(private val orderList : MutableList<Product>) : RecyclerView.Adapter<CartAdapter.ViewHolder>(){
 
@@ -61,11 +64,17 @@ class CartAdapter(private val orderList : MutableList<Product>) : RecyclerView.A
         holder.productName.text = name
         holder.productPrice.text = price.toString()
         holder.quantity.text = quantity.toString()
-        holder.amount.text = "Total: ${price * quantity}"
+        holder.amount.text = "Total: ${roundOffDecimal(price * quantity)}"
 
     }
 
     override fun getItemCount(): Int = orderList.size
+
+    private fun roundOffDecimal(number: Double): Double? {
+        val df = DecimalFormat("#.##")
+        df.roundingMode = RoundingMode.FLOOR
+        return df.format(number).toDouble()
+    }
 
 
 }

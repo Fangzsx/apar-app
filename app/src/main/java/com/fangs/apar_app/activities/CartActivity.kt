@@ -22,7 +22,7 @@ class CartActivity : AppCompatActivity() {
         binding = ActivityCartBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val list = Cart.get()
+        val list = Cart.getList()
         //sort list
         list.sortBy { it.productCategory }
         val recyclerView = binding.rvCartedItems

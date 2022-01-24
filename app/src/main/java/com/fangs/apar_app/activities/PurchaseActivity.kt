@@ -112,7 +112,7 @@ class PurchaseActivity : AppCompatActivity(), View.OnClickListener {
                 Intent(this, MainActivity::class.java).also {
                     startActivity(it)
                 }
-                Cart.get().clear()
+                Cart.getList().clear()
                 finish()
             })
             .setNegativeButton("NO", DialogInterface.OnClickListener { dialog, _
