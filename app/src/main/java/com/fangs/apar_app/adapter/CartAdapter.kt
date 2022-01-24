@@ -1,5 +1,6 @@
 package com.fangs.apar_app.adapter
 
+import android.content.Context
 import android.graphics.Color
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -7,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.core.view.marginStart
 import androidx.recyclerview.widget.RecyclerView
@@ -18,7 +20,7 @@ import java.math.RoundingMode
 import java.text.DecimalFormat
 import kotlin.math.roundToInt
 
-class CartAdapter(private val orderList : MutableList<Product>) : RecyclerView.Adapter<CartAdapter.ViewHolder>(){
+class CartAdapter(private val context : Context, private val orderList : MutableList<Product>) : RecyclerView.Adapter<CartAdapter.ViewHolder>(){
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val productName : HelveticaNormalTextView
@@ -55,16 +57,23 @@ class CartAdapter(private val orderList : MutableList<Product>) : RecyclerView.A
         }else{
             holder.card.setCardBackgroundColor(Color.GRAY)
         }
-
-
-        val name = orderList[position].productName
-        val price = orderList[position].productPrice
-        val quantity = orderList[position].productQuantity
+        val product = orderList[position]
+        val name = product.productName
+        val price = product.productPrice
+        val quantity = product.productQuantity
 
         holder.productName.text = name
         holder.productPrice.text = price.toString()
         holder.quantity.text = quantity.toString()
         holder.amount.text = "Total: ${roundOffDecimal(price * quantity)}"
+
+        holder.btnAdd.setOnClickListener {
+            Toast.makeText(context, "add clicked", Toast.LENGTH_SHORT).show()
+        }
+
+        holder.btnSubtract.setOnClickListener {
+            Toast.makeText(context, "subtract clicked", Toast.LENGTH_SHORT).show()
+        }
 
     }
 

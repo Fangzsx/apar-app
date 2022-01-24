@@ -29,7 +29,7 @@ class CartActivity : AppCompatActivity() {
 
         val recyclerView = binding.rvCartedItems
         recyclerView.layoutManager = LinearLayoutManager(this)
-        val adapter = CartAdapter(list)
+        val adapter = CartAdapter(this@CartActivity, list)
         recyclerView.adapter = adapter
 
         binding.btnSend.setOnClickListener {
