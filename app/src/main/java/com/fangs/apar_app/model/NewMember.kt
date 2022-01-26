@@ -1,7 +1,5 @@
 package com.fangs.apar_app.model
 
-import java.util.*
-
 object NewMember {
     var lastName : String = ""
     var firstName : String = ""
