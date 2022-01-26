@@ -84,8 +84,6 @@ class CartAdapter(private val context : Context, private val orderList : Mutable
                 Toast.makeText(context, "Quantity must be 1-99 only", Toast.LENGTH_SHORT).show()
             }
 
-
-
         }
 
         holder.btnSubtract.setOnClickListener {
@@ -105,7 +103,6 @@ class CartAdapter(private val context : Context, private val orderList : Mutable
             val list = Cart.getList()
             list.remove(currentProduct)
             notifyItemRemoved(position)
-            Toast.makeText(context, "delete clicked.", Toast.LENGTH_SHORT).show()
             updateViews(holder, currentProduct, price)
         }
 
