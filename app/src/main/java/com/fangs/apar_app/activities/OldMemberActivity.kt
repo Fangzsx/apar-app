@@ -9,6 +9,7 @@ import android.widget.Button
 import com.fangs.apar_app.R
 import com.fangs.apar_app.databinding.ActivityOldMemberBinding
 import com.fangs.apar_app.model.OldMember
+import com.fangs.apar_app.utils.HelveticaNormalTextView
 
 class OldMemberActivity : BaseActivity() {
     private lateinit var binding : ActivityOldMemberBinding
@@ -27,6 +28,12 @@ class OldMemberActivity : BaseActivity() {
                 val dialog = Dialog(this)
                 dialog.setContentView(R.layout.dialog_old_member_info)
                 dialog.setCancelable(true)
+
+                val dialogLastName = dialog.findViewById<HelveticaNormalTextView>(R.id.tv_lastname_old)
+                val dialogFirstName = dialog.findViewById<HelveticaNormalTextView>(R.id.tv_firstname_old)
+
+                dialogLastName.text = lastname
+                dialogFirstName.text = firstname
 
                 val btnOrder = dialog.findViewById<Button>(R.id.btn_order)
                 btnOrder.setOnClickListener {

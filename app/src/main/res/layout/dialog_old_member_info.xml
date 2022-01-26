@@ -53,7 +53,7 @@
             <com.fangs.apar_app.utils.HelveticaBoldTextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.30"
+                android:layout_weight="0.50"
                 android:text="Last name: "
                 android:textColor="@color/black"
                 android:textSize="18sp"/>
@@ -62,7 +62,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
-                android:layout_weight="0.70"
+                android:layout_weight="0.50"
                 tools:text="LAST NAME"/>
         </LinearLayout>
 
@@ -74,7 +74,7 @@
             <com.fangs.apar_app.utils.HelveticaBoldTextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.30"
+                android:layout_weight="0.50"
                 android:text="First name: "
                 android:textColor="@color/black"
                 android:textSize="18sp"/>
@@ -83,7 +83,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
-                android:layout_weight="0.70"
+                android:layout_weight="0.50"
                 tools:text="FIRST NAME"/>
         </LinearLayout>
 
