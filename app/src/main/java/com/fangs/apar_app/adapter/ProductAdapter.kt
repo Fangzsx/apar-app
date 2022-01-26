@@ -1,5 +1,6 @@
 package com.fangs.apar_app.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
 import android.view.*
@@ -16,7 +17,7 @@ import com.fangs.apar_app.utils.HelveticaBoldTextView
 import com.fangs.apar_app.utils.HelveticaNormalTextView
 import com.google.firebase.firestore.DocumentSnapshot
 
-class ProductAdapter(private val context : Context, private val dataSet : MutableList<DocumentSnapshot>, private val category : String) : RecyclerView.Adapter<ProductAdapter.ViewHolder>(){
+class ProductAdapter(private val context : Context, private var dataSet : MutableList<DocumentSnapshot>, private val category : String) : RecyclerView.Adapter<ProductAdapter.ViewHolder>(){
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val productName : HelveticaNormalTextView
@@ -107,6 +108,12 @@ class ProductAdapter(private val context : Context, private val dataSet : Mutabl
 
     override fun getItemCount(): Int {
         return dataSet.size
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateList(list: MutableList<DocumentSnapshot>){
+        dataSet = list
+        notifyDataSetChanged()
     }
 
 

@@ -3,12 +3,14 @@ package com.fangs.apar_app.activities
 import android.app.Dialog
 import android.content.DialogInterface
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -20,6 +22,8 @@ import com.fangs.apar_app.model.OldMember
 import com.fangs.apar_app.utils.HelveticaBoldTextView
 import com.fangs.apar_app.utils.HelveticaCustomButton
 import com.fangs.apar_app.utils.HelveticaNormalTextView
+import com.google.android.gms.common.data.DataHolder
+import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -28,6 +32,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
+
 
 class OldMemberPurchaseActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding : ActivityOldMemberPurchaseBinding
@@ -144,6 +149,35 @@ class OldMemberPurchaseActivity : AppCompatActivity(), View.OnClickListener {
                         recyclerView.layoutManager = LinearLayoutManager(this@OldMemberPurchaseActivity)
                         val adapter = ProductAdapter(this@OldMemberPurchaseActivity, list, category)
                         recyclerView.adapter = adapter
+
+                        //search
+                        val etSearch = dialog.findViewById<TextInputEditText>(R.id.et_search)
+                        etSearch.addTextChangedListener(object : TextWatcher {
+                            override fun beforeTextChanged(
+                                p0: CharSequence?,
+                                p1: Int,
+                                p2: Int,
+                                p3: Int
+                            ) {
+
+                            }
+
+                            override fun onTextChanged(
+                                p0: CharSequence?,
+                                p1: Int,
+                                p2: Int,
+                                p3: Int
+                            ) {
+
+                            }
+
+                            override fun afterTextChanged(p0: Editable?) {
+
+                                filter(list, p0, adapter)
+                            }
+
+                        })
+
                     }
 
                 }
@@ -155,6 +189,23 @@ class OldMemberPurchaseActivity : AppCompatActivity(), View.OnClickListener {
             }
         }
         dialog.show()
+    }
+
+    private fun filter(
+        list: MutableList<DocumentSnapshot>,
+        p0: Editable?,
+        adapter: ProductAdapter
+    ) {
+        val temp = mutableListOf<DocumentSnapshot>()
+        for (item in list) {
+            //or use .equal(text) with you want equal match
+            //use .toLowerCase() for better matches
+            if (item["name"].toString().contains(p0.toString().lowercase())) {
+                temp.add(item)
+            }
+        }
+        //update recyclerview
+        adapter.updateList(temp)
     }
 
 

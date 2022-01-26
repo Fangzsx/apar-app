@@ -150,6 +150,8 @@ class NewMemberPurchaseActivity : AppCompatActivity(), View.OnClickListener {
                         recyclerView.layoutManager = LinearLayoutManager(this@NewMemberPurchaseActivity)
                         val adapter = ProductAdapter(this@NewMemberPurchaseActivity, list, category)
                         recyclerView.adapter = adapter
+
+
                     }
 
                 }
