@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.fangs.apar_app.activities.NewMemberActivity
+import com.fangs.apar_app.activities.OldMemberActivity
 import com.fangs.apar_app.databinding.FragmentPurchaseBinding
 
 class PurchaseFragment : Fragment() {
@@ -26,6 +27,12 @@ class PurchaseFragment : Fragment() {
 
         binding.btnNewMember.setOnClickListener {
             Intent(context, NewMemberActivity::class.java).also {
+                startActivity(it)
+            }
+        }
+
+        binding.btnOldMember.setOnClickListener {
+            Intent(context, OldMemberActivity::class.java).also {
                 startActivity(it)
             }
         }

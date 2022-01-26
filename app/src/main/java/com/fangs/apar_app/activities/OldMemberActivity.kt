@@ -1,9 +1,12 @@
 package com.fangs.apar_app.activities
 
 import android.app.AlertDialog
+import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.widget.Button
+import com.fangs.apar_app.R
 import com.fangs.apar_app.databinding.ActivityOldMemberBinding
 import com.fangs.apar_app.model.OldMember
 
@@ -21,16 +24,21 @@ class OldMemberActivity : BaseActivity() {
                 val firstname = binding.etOldMemberFirstname.text.toString().uppercase()
 
                 //show dialog
-                val alertDialog = AlertDialog.Builder(this)
-                alertDialog.setTitle("Old Member")
+                val dialog = Dialog(this)
+                dialog.setContentView(R.layout.dialog_old_member_info)
+                dialog.setCancelable(true)
 
+                val btnOrder = dialog.findViewById<Button>(R.id.btn_order)
+                btnOrder.setOnClickListener {
+                    OldMember.lastName = lastname
+                    OldMember.firstName = firstname
 
-                OldMember.lastName = lastname
-                OldMember.firstName = firstname
-
-                Intent(this, OldMemberPurchaseActivity::class.java).also {
-                    startActivity(it)
+                    Intent(this, OldMemberPurchaseActivity::class.java).also {
+                        startActivity(it)
+                        dialog.dismiss()
+                    }
                 }
+                dialog.show()
             }
         }
 
