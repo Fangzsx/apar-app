@@ -37,6 +37,12 @@ class OldMemberCartActivity : BaseActivity() {
         })
         recyclerView.adapter = adapter
 
+        binding.sideBarCartBack.setOnClickListener {
+            Intent(this, OldMemberPurchaseActivity::class.java).also {
+                startActivity(it)
+            }
+        }
+
         binding.btnSend.setOnClickListener {
 
             if(list.isNotEmpty()){

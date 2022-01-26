@@ -38,6 +38,12 @@ class NewMemberCartActivity : BaseActivity() {
         })
         recyclerView.adapter = adapter
 
+        binding.sideBarCartBack.setOnClickListener {
+            Intent(this, NewMemberPurchaseActivity::class.java).also {
+                startActivity(it)
+            }
+        }
+
         binding.btnSend.setOnClickListener {
 
             if(list.isNotEmpty()){
