@@ -80,20 +80,6 @@ class NewMemberPurchaseActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun showCustomerData() {
-        //display customer data
-//        val intent = intent
-//        val lastname = intent.getStringExtra("LAST_NAME")
-//        val firstname = intent.getStringExtra("FIRST_NAME")
-//        val middlename = intent.getStringExtra("MIDDLE_NAME")
-//        val fullname = "$lastname, $firstname $middlename"
-//
-//        val houseST = intent.getStringExtra("HOUSE_ST")
-//        val phaseZone = intent.getStringExtra("PHASE_ZONE")
-//        val city = intent.getStringExtra("CITY")
-//        val fullAddress = "$houseST, $phaseZone $city"
-//
-//        val birthday = intent.getStringExtra("BIRTHDAY")
-//        val contact = intent.getStringExtra("CONTACT")
 
         binding.tvCustomerName.text = "${NewMember.lastName}, ${NewMember.firstName} ${NewMember.middleName}"
         binding.tvCustomerAddress.text = NewMember.address
