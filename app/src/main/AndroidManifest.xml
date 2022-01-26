@@ -12,10 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Aparapp">
         <activity
+            android:name=".activities.OldMemberActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.CartActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.PurchaseActivity"
+            android:name=".activities.NewMemberPurchaseActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity

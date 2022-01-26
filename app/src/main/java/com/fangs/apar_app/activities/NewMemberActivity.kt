@@ -94,7 +94,7 @@ class NewMemberActivity : BaseActivity() {
                 //button sends to purchase activity
                 val btnOrder = customerInfoDialog.findViewById<HelveticaCustomButton>(R.id.btn_order)
                 btnOrder.setOnClickListener {
-                    Intent(this, PurchaseActivity::class.java).also {
+                    Intent(this, NewMemberPurchaseActivity::class.java).also {
 //                        //send data to purchase activity
 //                        it.putExtra("LAST_NAME", tvLastname.text.toString())
 //                        it.putExtra("FIRST_NAME", tvFirstname.text.toString())

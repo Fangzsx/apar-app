@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.fangs.apar_app.R
 import com.fangs.apar_app.adapter.ProductAdapter
-import com.fangs.apar_app.databinding.ActivityPurchaseBinding
+import com.fangs.apar_app.databinding.ActivityPurchaseNewMemberBinding
 import com.fangs.apar_app.model.Cart
 import com.fangs.apar_app.model.NewMember
 import com.fangs.apar_app.utils.HelveticaBoldTextView
@@ -28,8 +28,8 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 
-class PurchaseActivity : AppCompatActivity(), View.OnClickListener {
-    private lateinit var binding : ActivityPurchaseBinding
+class NewMemberPurchaseActivity : AppCompatActivity(), View.OnClickListener {
+    private lateinit var binding : ActivityPurchaseNewMemberBinding
     private val productCollectionRef = Firebase.firestore.collection("products")
 
 
@@ -40,7 +40,7 @@ class PurchaseActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         supportActionBar?.hide()
         super.onCreate(savedInstanceState)
-        binding = ActivityPurchaseBinding.inflate(layoutInflater)
+        binding = ActivityPurchaseNewMemberBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
         showCustomerData()
@@ -161,8 +161,8 @@ class PurchaseActivity : AppCompatActivity(), View.OnClickListener {
                         recyclerView.isVisible = false
                         tvEmptyList.isVisible = true
                     }else{
-                        recyclerView.layoutManager = LinearLayoutManager(this@PurchaseActivity)
-                        val adapter = ProductAdapter(this@PurchaseActivity, list, category)
+                        recyclerView.layoutManager = LinearLayoutManager(this@NewMemberPurchaseActivity)
+                        val adapter = ProductAdapter(this@NewMemberPurchaseActivity, list, category)
                         recyclerView.adapter = adapter
                     }
 
@@ -170,7 +170,7 @@ class PurchaseActivity : AppCompatActivity(), View.OnClickListener {
 
             }catch (e : Exception){
                 withContext(Dispatchers.Main){
-                    Toast.makeText(this@PurchaseActivity, e.message, Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@NewMemberPurchaseActivity, e.message, Toast.LENGTH_LONG).show()
                 }
             }
         }
