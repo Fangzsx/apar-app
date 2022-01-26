@@ -1,25 +1,22 @@
 package com.fangs.apar_app.activities
 
 import android.content.ActivityNotFoundException
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import com.fangs.apar_app.databinding.ActivityCartBinding
-import android.widget.Toast
-
 import android.content.Intent
+import android.os.Bundle
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fangs.apar_app.adapter.CartAdapter
+import com.fangs.apar_app.databinding.ActivityOldMemberCartBinding
 import com.fangs.apar_app.model.Cart
-import com.fangs.apar_app.model.NewMember
-import java.lang.StringBuilder
+import com.fangs.apar_app.model.OldMember
 
 
-class CartActivity : BaseActivity() {
-    private lateinit var binding : ActivityCartBinding
+class OldMemberCartActivity : BaseActivity() {
+    private lateinit var binding : ActivityOldMemberCartBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityCartBinding.inflate(layoutInflater)
+        binding = ActivityOldMemberCartBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val list = Cart.getList()
@@ -32,7 +29,7 @@ class CartActivity : BaseActivity() {
 
         val recyclerView = binding.rvCartedItems
         recyclerView.layoutManager = LinearLayoutManager(this)
-        val adapter = CartAdapter(this@CartActivity, list, object : CartAdapter.OnItemClickListener{
+        val adapter = CartAdapter(this@OldMemberCartActivity, list, object : CartAdapter.OnItemClickListener{
             override fun onItemClick(total: Double) {
                 binding.tvTotalCart.text = "Total: P $total"
             }
@@ -46,12 +43,7 @@ class CartActivity : BaseActivity() {
                 val sb = StringBuilder()
                 //input customer info
                 sb.append(
-                    "Customer name: ${NewMember.lastName}, ${NewMember.firstName} ${NewMember.middleName}\n\n" +
-                            "Customer address: ${NewMember.address}\n\n"+
-                            "Contact number: ${NewMember.contactNumber}\n\n" +
-                            "Birthday: ${NewMember.birthday}\n\n" +
-                            "Purchase Order: \n"
-                )
+                    "Customer name: ${OldMember.lastName}, ${OldMember.firstName}")
 
                 for(product in list){
                     sb.append(

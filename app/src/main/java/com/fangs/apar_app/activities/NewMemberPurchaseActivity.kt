@@ -47,7 +47,7 @@ class NewMemberPurchaseActivity : AppCompatActivity(), View.OnClickListener {
         setButtonClick()
         
         binding.customerCart.setOnClickListener{
-            Intent(this, CartActivity::class.java).also {
+            Intent(this, NewMemberCartActivity::class.java).also {
                 startActivity(it)
             }
         }
