@@ -13,12 +13,15 @@
         android:theme="@style/Theme.Aparapp">
         <activity
             android:name=".activities.OldMemberPurchaseActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".activities.OldMemberActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".activities.NewMemberCartActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".activities.NewMemberPurchaseActivity"
