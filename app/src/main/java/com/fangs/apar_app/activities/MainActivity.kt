@@ -356,12 +356,12 @@ class MainActivity : BaseActivity() {
     private fun manageImageSlider(){
         val slider = binding.imageSlider
         val imageList = ArrayList<SlideModel>()
-        imageList.add(SlideModel("https://drive.google.com/uc?id=1gcFa1RUFLSsfdcd9puiskL70SHCLrvr5&export=download",ScaleTypes.CENTER_CROP))
-        imageList.add(SlideModel("https://static.vecteezy.com/system/resources/previews/000/177/011/original/vector-stylish-sale-banner-with-colorful-background.jpg",ScaleTypes.CENTER_CROP))
+        imageList.add(SlideModel("https://static.vecteezy.com/system/resources/previews/000/177/333/original/vector-promotional-advertising-banner-poster-template-with-offer-detail.jpg",ScaleTypes.CENTER_CROP))
         imageList.add(SlideModel("https://images.vexels.com/media/users/3/152066/raw/cfa8213abe1afe20ccc88e935918db23-super-sale-online-shopping-banner.jpg",ScaleTypes.CENTER_CROP))
         imageList.add(SlideModel("https://static.vecteezy.com/system/resources/previews/001/183/360/original/summer-sale-banner-with-pool-vector.jpg",ScaleTypes.CENTER_CROP))
         imageList.add(SlideModel("https://static.vecteezy.com/system/resources/previews/000/176/887/original/creative-sale-banner-in-purple-and-yellow-color-with-offer-and-d-vector.jpg",ScaleTypes.CENTER_CROP))
-
+        imageList.add(SlideModel("https://drive.google.com/uc?id=1gcFa1RUFLSsfdcd9puiskL70SHCLrvr5&export=download",ScaleTypes.CENTER_CROP))
+        imageList.add(SlideModel("https://static.vecteezy.com/system/resources/previews/000/185/424/original/discount-voucher-poster-template-design-in-premium-style-vector.jpg",ScaleTypes.CENTER_CROP))
         slider.setImageList(imageList)
 
     }
