@@ -61,7 +61,7 @@
         <entry key="..\:/Users/jygrz/apar-app/app/src/main/res/layout/activity_new_member.xml" value="0.25" />
         <entry key="..\:/Users/jygrz/apar-app/app/src/main/res/layout/activity_old_member.xml" value="0.2" />
         <entry key="..\:/Users/jygrz/apar-app/app/src/main/res/layout/activity_old_member_cart.xml" value="0.1859375" />
-        <entry key="..\:/Users/jygrz/apar-app/app/src/main/res/layout/activity_old_member_purchase.xml" value="0.5" />
+        <entry key="..\:/Users/jygrz/apar-app/app/src/main/res/layout/activity_old_member_purchase.xml" value="0.4942084942084942" />
         <entry key="..\:/Users/jygrz/apar-app/app/src/main/res/layout/activity_purchase.xml" value="0.33127317676143386" />
         <entry key="..\:/Users/jygrz/apar-app/app/src/main/res/layout/activity_purchase_new_member.xml" value="0.75" />
         <entry key="..\:/Users/jygrz/apar-app/app/src/main/res/layout/activity_splash.xml" value="0.2" />
@@ -76,13 +76,15 @@
         <entry key="..\:/Users/jygrz/apar-app/app/src/main/res/layout/dialog_search.xml" value="0.2" />
         <entry key="..\:/Users/jygrz/apar-app/app/src/main/res/layout/dialog_update.xml" value="0.22" />
         <entry key="..\:/Users/jygrz/apar-app/app/src/main/res/layout/fragment_purchase.xml" value="0.2" />
-        <entry key="..\:/Users/jygrz/apar-app/app/src/main/res/layout/nav_header.xml" value="0.45063694267515925" />
+        <entry key="..\:/Users/jygrz/apar-app/app/src/main/res/layout/nav_header.xml" value="0.43004115226337447" />
         <entry key="..\:/Users/jygrz/apar-app/app/src/main/res/layout/order.xml" value="0.2" />
         <entry key="..\:/Users/jygrz/apar-app/app/src/main/res/layout/product_row.xml" value="0.33" />
         <entry key="..\:/Users/jygrz/apar-app/app/src/main/res/layout/spinner_layout.xml" value="0.2" />
         <entry key="..\:/Users/jygrz/apar-app/app/src/main/res/menu/bottom_app_bar.xml" value="0.2" />
         <entry key="..\:/Users/jygrz/apar-app/app/src/main/res/menu/nav_side_bar.xml" value="0.2" />
         <entry key="..\:/Users/jygrz/apar-app/app/src/main/res/menu/top_app_bar.xml" value="0.2" />
+        <entry key="..\:/Users/jygrz/apar-app/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.14" />
+        <entry key="..\:/Users/jygrz/apar-app/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1275" />
       </map>
     </option>
   </component>
