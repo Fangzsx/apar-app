@@ -38,7 +38,6 @@
             android:orientation="vertical">
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/CustomOutlinedBox"
-                android:id="@+id/ti_old_member_last_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:boxBackgroundColor="@color/white"
@@ -68,6 +67,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
+                android:id="@+id/btn_purchase_old"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Proceed to Order"
