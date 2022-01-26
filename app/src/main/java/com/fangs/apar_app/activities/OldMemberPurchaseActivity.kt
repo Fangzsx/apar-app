@@ -172,7 +172,6 @@ class OldMemberPurchaseActivity : AppCompatActivity(), View.OnClickListener {
                             }
 
                             override fun afterTextChanged(p0: Editable?) {
-
                                 filter(list, p0, adapter)
                             }
 
@@ -211,7 +210,6 @@ class OldMemberPurchaseActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(p0: View?) {
         showProductDialog(p0 as Button)
-
     }
 
 }
