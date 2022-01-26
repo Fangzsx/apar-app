@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Aparapp">
         <activity
+            android:name=".activities.OldMemberPurchaseActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.OldMemberActivity"
             android:exported="false" />
         <activity

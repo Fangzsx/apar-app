@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/ab_purchase_order"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/side_bar_purchase_order_back"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/main_bg"
+            android:theme="@style/CustomSearchView"
+            app:title="Purchase Order"
+            app:titleTextColor="@color/white"
+            app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
+            style="@style/MaterialToolbar"/>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ll_customer_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        app:layout_constraintTop_toBottomOf="@id/ab_purchase_order"
+        android:background="@color/ThemeDarkGreen"
+        android:weightSum="1"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_customer_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/red"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="6dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_customer_text">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/old_member_48" />
+
+        </androidx.cardview.widget.CardView>
+
+        <com.fangs.apar_app.utils.HelveticaBoldTextView
+            android:id="@+id/tv_customer_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CUSTOMER INFO"
+            app:layout_constraintTop_toTopOf="@id/cv_customer_profile"
+            app:layout_constraintLeft_toLeftOf="@id/tv_customer_name_old"
+            android:textSize="10sp"
+            android:textColor="@color/white"
+            tools:ignore="SmallSp" />
+
+        <com.fangs.apar_app.utils.HelveticaBoldTextView
+            android:id="@+id/tv_customer_name_old"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="DELACRUZ, JUANA"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toRightOf="@id/cv_customer_profile"
+            app:layout_constraintTop_toBottomOf="@id/tv_customer_text"
+            android:layout_marginStart="10dp"/>
+
+        <com.fangs.apar_app.utils.HelveticaNormalTextView
+            android:id="@+id/tv_cornered_new_member"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tv_customer_name_old"
+            app:layout_constraintLeft_toLeftOf="@id/tv_customer_name_old"
+            android:textColor="@color/white"
+            android:textSize="8sp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:text="OLD MEMBER"
+            android:background="@drawable/cornered_violet"
+            tools:ignore="SmallSp"/>
+
+
+        <ImageView
+            android:id="@+id/customer_cart"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_baseline_shopping_cart_24"
+            app:layout_constraintTop_toTopOf="@id/tv_customer_name_old"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <com.fangs.apar_app.utils.HelveticaBoldTextView
+            android:id="@+id/tv_cart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cart"
+            android:textColor="@color/white"
+            android:textSize="10sp"
+            app:layout_constraintLeft_toLeftOf="@id/customer_cart"
+            app:layout_constraintTop_toBottomOf="@id/customer_cart"
+            app:layout_constraintRight_toRightOf="@id/customer_cart"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <FrameLayout
+        android:id="@+id/form_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/gray"
+        android:padding="10dp"
+        app:layout_constraintTop_toBottomOf="@id/ll_customer_info"
+        app:layout_constraintBottom_toBottomOf="parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="7"
+            android:orientation="vertical"
+            tools:ignore="UselessParent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:weightSum="1"
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
+                <Button
+                    android:id="@+id/btn_powdered_milk"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.50"
+                    android:backgroundTint="@color/ThemeDarkGreen"
+                    android:textColor="@color/white"
+                    android:drawableLeft="@drawable/milk"
+                    android:textSize="10sp"
+                    android:layout_marginEnd="5dp"
+                    android:text="Powdered Milk, Juice, Coffee"
+                    style="?android:attr/buttonBarButtonStyle"
+                    tools:ignore="NestedWeights,RtlHardcoded,SmallSp" />
+                <Button
+                    android:id="@+id/btn_bisquits"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.50"
+                    android:backgroundTint="@color/ThemeDarkGreen"
+                    android:textColor="@color/white"
+                    android:drawableLeft="@drawable/snack"
+                    android:textSize="10sp"
+                    android:layout_marginEnd="5dp"
+                    android:text="Snacks, Biscuits, Candies"
+                    style="?android:attr/buttonBarButtonStyle"
+                    tools:ignore="NestedWeights,RtlHardcoded,SmallSp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:weightSum="1"
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
+                <Button
+                    android:id="@+id/btn_condiments"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.50"
+                    android:backgroundTint="@color/ThemeDarkGreen"
+                    android:textColor="@color/white"
+                    android:drawableLeft="@drawable/condiments"
+                    android:textSize="10sp"
+                    android:layout_marginEnd="5dp"
+                    android:text="Condiments, Seasoning, Oils"
+                    style="?android:attr/buttonBarButtonStyle"
+                    tools:ignore="NestedWeights,RtlHardcoded,SmallSp" />
+                <Button
+                    android:id="@+id/btn_noodles"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.50"
+                    android:backgroundTint="@color/ThemeDarkGreen"
+                    android:textColor="@color/white"
+                    android:drawableLeft="@drawable/noodles"
+                    android:textSize="10sp"
+                    android:layout_marginEnd="5dp"
+                    android:text="Noodles, Pasta, Rice"
+                    style="?android:attr/buttonBarButtonStyle"
+                    tools:ignore="NestedWeights,RtlHardcoded,SmallSp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:weightSum="1"
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
+                <Button
+                    android:id="@+id/btn_sugar"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.50"
+                    android:backgroundTint="@color/ThemeDarkGreen"
+                    android:textColor="@color/white"
+                    android:drawableLeft="@drawable/sugar"
+                    android:textSize="10sp"
+                    android:layout_marginEnd="5dp"
+                    android:text="Sugar"
+                    style="?android:attr/buttonBarButtonStyle"
+                    tools:ignore="NestedWeights,RtlHardcoded,SmallSp" />
+                <Button
+                    android:id="@+id/btn_beverages"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.50"
+                    android:backgroundTint="@color/ThemeDarkGreen"
+                    android:textColor="@color/white"
+                    android:drawableLeft="@drawable/beverages"
+                    android:textSize="10sp"
+                    android:layout_marginEnd="5dp"
+                    android:text="RTD, Beverages, Liquor"
+                    style="?android:attr/buttonBarButtonStyle"
+                    tools:ignore="NestedWeights,RtlHardcoded,SmallSp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:weightSum="1"
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
+                <Button
+                    android:id="@+id/btn_canned_goods"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.50"
+                    android:backgroundTint="@color/ThemeDarkGreen"
+                    android:textColor="@color/white"
+                    android:drawableLeft="@drawable/canned_goods"
+                    android:textSize="10sp"
+                    android:layout_marginEnd="5dp"
+                    android:text="Canned Goods, juice, milk"
+                    style="?android:attr/buttonBarButtonStyle"
+                    tools:ignore="NestedWeights,RtlHardcoded,SmallSp" />
+                <Button
+                    android:id="@+id/btn_shampoo_conditioner"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.50"
+                    android:backgroundTint="@color/ThemeDarkGreen"
+                    android:textColor="@color/white"
+                    android:drawableLeft="@drawable/shampoo"
+                    android:textSize="10sp"
+                    android:layout_marginEnd="5dp"
+                    android:text="Shampoo, Conditioner"
+                    style="?android:attr/buttonBarButtonStyle"
+                    tools:ignore="NestedWeights,RtlHardcoded,SmallSp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:weightSum="1"
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
+                <Button
+                    android:id="@+id/btn_soap_hygiene"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.50"
+                    android:backgroundTint="@color/ThemeDarkGreen"
+                    android:textColor="@color/white"
+                    android:drawableLeft="@drawable/toiletries"
+                    android:textSize="10sp"
+                    android:layout_marginEnd="5dp"
+                    android:text="Soap, Hygiene, Dental Care"
+                    style="?android:attr/buttonBarButtonStyle"
+                    tools:ignore="NestedWeights,RtlHardcoded,SmallSp" />
+                <Button
+                    android:id="@+id/btn_detergent"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.50"
+                    android:backgroundTint="@color/ThemeDarkGreen"
+                    android:textColor="@color/white"
+                    android:drawableLeft="@drawable/detergent"
+                    android:textSize="10sp"
+                    android:layout_marginEnd="5dp"
+                    android:text="Detergent, Fabcon, Bleach"
+                    style="?android:attr/buttonBarButtonStyle"
+                    tools:ignore="NestedWeights,RtlHardcoded,SmallSp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:weightSum="1"
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
+                <Button
+                    android:id="@+id/btn_diapers"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.50"
+                    android:backgroundTint="@color/ThemeDarkGreen"
+                    android:textColor="@color/white"
+                    android:drawableLeft="@drawable/diapers"
+                    android:textSize="10sp"
+                    android:layout_marginEnd="5dp"
+                    android:text="Diapers, Napkin, Tissue"
+                    style="?android:attr/buttonBarButtonStyle"
+                    tools:ignore="NestedWeights,RtlHardcoded,SmallSp" />
+                <Button
+                    android:id="@+id/btn_household"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.50"
+                    android:backgroundTint="@color/ThemeDarkGreen"
+                    android:textColor="@color/white"
+                    android:drawableLeft="@drawable/household"
+                    android:textSize="10sp"
+                    android:layout_marginEnd="5dp"
+                    android:text="Household"
+                    style="?android:attr/buttonBarButtonStyle"
+                    tools:ignore="NestedWeights,RtlHardcoded,SmallSp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:weightSum="1"
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
+                <Button
+                    android:id="@+id/btn_cigarettes_med"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.50"
+                    android:backgroundTint="@color/ThemeDarkGreen"
+                    android:textColor="@color/white"
+                    android:drawableLeft="@drawable/cigarettesmed"
+                    android:textSize="10sp"
+                    android:layout_marginEnd="5dp"
+                    android:text="Cigarettes, Medicine"
+                    style="?android:attr/buttonBarButtonStyle"
+                    tools:ignore="NestedWeights,RtlHardcoded,SmallSp" />
+
+                <Button
+                    android:id="@+id/btn_amax_load"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.50"
+                    android:backgroundTint="@color/ThemeDarkGreen"
+                    android:textColor="@color/white"
+                    android:drawableLeft="@drawable/amax"
+                    android:textSize="10sp"
+                    android:layout_marginEnd="5dp"
+                    android:text="AMAX Load"
+                    style="?android:attr/buttonBarButtonStyle"
+                    tools:ignore="NestedWeights,RtlHardcoded,SmallSp" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+
+    </FrameLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
