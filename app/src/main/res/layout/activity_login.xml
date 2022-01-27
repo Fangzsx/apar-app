@@ -105,6 +105,7 @@
                     android:textSize="16sp"
                     android:text="Doesn't have an account?"/>
                 <com.fangs.apar_app.utils.HelveticaBoldTextView
+                    android:id="@+id/tv_send_request"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="2.5dp"
