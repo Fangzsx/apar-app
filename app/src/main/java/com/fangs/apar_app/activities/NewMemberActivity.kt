@@ -65,7 +65,7 @@ class NewMemberActivity : BaseActivity() {
                 )
                 window?.setGravity(Gravity.CENTER)
 
-                //TODO: show member info inside dialog
+                //show member info inside dialog
                 val tvLastname = customerInfoDialog.findViewById<HelveticaNormalTextView>(R.id.tv_lastname_new)
                 val tvFirstname = customerInfoDialog.findViewById<HelveticaNormalTextView>(R.id.tv_firstname_new)
                 val tvMiddlename = customerInfoDialog.findViewById<HelveticaNormalTextView>(R.id.tv_middlename_new)

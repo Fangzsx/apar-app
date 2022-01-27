@@ -21,8 +21,8 @@ class OldMemberActivity : BaseActivity() {
 
         binding.btnPurchaseOld.setOnClickListener {
             if(validateName()){
-                val lastname = binding.etOldMemberLastname.text.toString().uppercase()
-                val firstname = binding.etOldMemberFirstname.text.toString().uppercase()
+                val lastname = binding.etOldMemberLastname.text.toString()
+                val firstname = binding.etOldMemberFirstname.text.toString()
 
                 //show dialog
                 val dialog = Dialog(this)
@@ -32,17 +32,18 @@ class OldMemberActivity : BaseActivity() {
                 val dialogLastName = dialog.findViewById<HelveticaNormalTextView>(R.id.tv_lastname_old)
                 val dialogFirstName = dialog.findViewById<HelveticaNormalTextView>(R.id.tv_firstname_old)
 
-                dialogLastName.text = lastname
-                dialogFirstName.text = firstname
+                dialogLastName.text = lastname.uppercase()
+                dialogFirstName.text = firstname.uppercase()
 
                 val btnOrder = dialog.findViewById<Button>(R.id.btn_order)
                 btnOrder.setOnClickListener {
-                    OldMember.lastName = lastname
-                    OldMember.firstName = firstname
 
                     Intent(this, OldMemberPurchaseActivity::class.java).also {
-                        startActivity(it)
+                        OldMember.lastName = dialogLastName.text.toString()
+                        OldMember.firstName = dialogFirstName.text.toString()
                         dialog.dismiss()
+                        finish()
+                        startActivity(it)
                     }
                 }
                 dialog.show()
@@ -52,8 +53,8 @@ class OldMemberActivity : BaseActivity() {
     }
 
     private fun validateName() : Boolean {
-        val etLastName = binding.etOldMemberLastname.text?.trim()
-        val etFirstName = binding.etOldMemberFirstname.text?.trim()
+        val etLastName = binding.etOldMemberLastname.text?.toString()?.trim()
+        val etFirstName = binding.etOldMemberFirstname.text?.toString()?.trim()
 
         return when{
             TextUtils.isEmpty(etLastName) ->{

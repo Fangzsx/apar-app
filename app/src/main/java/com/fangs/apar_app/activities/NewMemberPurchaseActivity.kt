@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.fangs.apar_app.R
 import com.fangs.apar_app.adapter.ProductAdapter
-import com.fangs.apar_app.databinding.ActivityPurchaseNewMemberBinding
+import com.fangs.apar_app.databinding.ActivityNewMemberPurchaseBinding
 import com.fangs.apar_app.model.Cart
 import com.fangs.apar_app.model.NewMember
 import com.fangs.apar_app.utils.HelveticaBoldTextView
@@ -32,7 +32,7 @@ import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 
 class NewMemberPurchaseActivity : AppCompatActivity(), View.OnClickListener {
-    private lateinit var binding : ActivityPurchaseNewMemberBinding
+    private lateinit var binding : ActivityNewMemberPurchaseBinding
     private val productCollectionRef = Firebase.firestore.collection("products")
 
 
@@ -43,7 +43,7 @@ class NewMemberPurchaseActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         supportActionBar?.hide()
         super.onCreate(savedInstanceState)
-        binding = ActivityPurchaseNewMemberBinding.inflate(layoutInflater)
+        binding = ActivityNewMemberPurchaseBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
         showCustomerData()
@@ -99,10 +99,11 @@ class NewMemberPurchaseActivity : AppCompatActivity(), View.OnClickListener {
             .setPositiveButton("YES", DialogInterface.OnClickListener { _, _
                 ->
                 Intent(this, MainActivity::class.java).also {
+                    Cart.getList().clear()
+                    finish()
                     startActivity(it)
                 }
-                Cart.getList().clear()
-                finish()
+
             })
             .setNegativeButton("NO", DialogInterface.OnClickListener { dialog, _
                 ->

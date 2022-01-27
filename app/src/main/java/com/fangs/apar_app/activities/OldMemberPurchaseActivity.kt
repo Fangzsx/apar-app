@@ -52,8 +52,8 @@ class OldMemberPurchaseActivity : AppCompatActivity(), View.OnClickListener {
         showCustomerData()
         setButtonClick()
 
-        binding.customerCart.setOnClickListener{
-            Intent(this, NewMemberCartActivity::class.java).also {
+        binding.customerCartOld.setOnClickListener{
+            Intent(this@OldMemberPurchaseActivity, OldMemberCartActivity::class.java).also {
                 startActivity(it)
             }
         }
@@ -61,7 +61,7 @@ class OldMemberPurchaseActivity : AppCompatActivity(), View.OnClickListener {
     }
     private fun setButtonClick() {
         //back navigation
-        binding.sideBarPurchaseOrderBack.setOnClickListener {
+        binding.sideBarPurchaseOrderBackOld.setOnClickListener {
             showAlertDialog()
         }
 

@@ -14,6 +14,8 @@ import com.fangs.apar_app.model.OldMember
 class OldMemberCartActivity : BaseActivity() {
     private lateinit var binding : ActivityOldMemberCartBinding
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityOldMemberCartBinding.inflate(layoutInflater)
@@ -37,26 +39,26 @@ class OldMemberCartActivity : BaseActivity() {
         })
         recyclerView.adapter = adapter
 
-        binding.sideBarCartBack.setOnClickListener {
+        binding.sideBarCartBackOld.setOnClickListener {
             Intent(this, OldMemberPurchaseActivity::class.java).also {
                 startActivity(it)
             }
         }
 
-        binding.btnSend.setOnClickListener {
+        binding.btnSendOld.setOnClickListener {
 
             if(list.isNotEmpty()){
                 val sb = StringBuilder()
                 //input customer info
                 sb.append(
-                    "Customer name: ${OldMember.lastName}, ${OldMember.firstName}")
+                    "Customer name: ${OldMember.lastName}, ${OldMember.firstName}"+
+                    "Purchase Order: \n"
+                )
 
                 for(product in list){
                     sb.append(
-                        "Item no: ${list.indexOf(product) + 1}\n" +
-                                "Product name: ${product.productName}\n" +
-                                "Category: ${product.productCategory}\n" +
-                                "Quantity: ${product.productQuantity}\n\n")
+                        "Product name: ${product.productName}\n" +
+                        "Quantity: ${product.productQuantity}\n\n")
                 }
 
                 sb.append("---NOTHING FOLLOWS---")
