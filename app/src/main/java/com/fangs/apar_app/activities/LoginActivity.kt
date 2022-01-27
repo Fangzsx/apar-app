@@ -4,7 +4,6 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import com.fangs.apar_app.databinding.ActivityLoginBinding
 import com.google.firebase.auth.FirebaseAuth
 
@@ -26,7 +25,7 @@ class LoginActivity : BaseActivity() {
         }
 
         binding.tvSendRequest.setOnClickListener {
-            composeEmail("someemail@gmail.com", "REQUEST ACCOUNT")
+            composeEmail()
         }
 
         binding.btnLogin.setOnClickListener {
@@ -69,15 +68,24 @@ class LoginActivity : BaseActivity() {
         }
     }
 
-    private fun composeEmail(addresses : String, subject: String) {
-        val myEmail = "jygrzn@gmail.com"
-        val intent = Intent(Intent.ACTION_SENDTO);
-        intent.data = Uri.parse("mailto:" + myEmail); // only email apps should handle this
-        intent.putExtra(Intent.EXTRA_EMAIL, addresses);
-        intent.putExtra(Intent.EXTRA_SUBJECT, subject)
+    private fun composeEmail() {
+        val to = "jygrzn@gmail.com"
+        val subject = "[APAR APP]Request Access"
+        val body =
+                "I am sending you an email to request for an access for the APAR which I have installed.\n\n" +
+                "Kindly fill-out the following: \n" +
+                "Last Name: \n First Name: \n Middle Name: \n\n" +
+                "APAR no: \n"+
+                "Store Code: \n" +
+                "Region: SOUTH GMA\n" +
+                "Cluster number: \n\n" +
+                "Thank you!"
 
-        if (intent.resolveActivity(packageManager) != null) {
-            startActivity(intent);
-        }
+        val mailTo = "mailto:" + to +
+                "?&subject=" + Uri.encode(subject) +
+                "&body=" + Uri.encode(body)
+        val emailIntent = Intent(Intent.ACTION_VIEW)
+        emailIntent.data = Uri.parse(mailTo)
+        startActivity(emailIntent)
     }
 }
