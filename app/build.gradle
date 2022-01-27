@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    compileSdk 30
+    compileSdk 29
 
     defaultConfig {
         applicationId "com.fangs.apar_app"
