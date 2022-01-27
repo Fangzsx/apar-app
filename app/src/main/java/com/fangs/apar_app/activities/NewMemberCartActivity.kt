@@ -50,19 +50,18 @@ class NewMemberCartActivity : BaseActivity() {
                 val sb = StringBuilder()
                 //input customer info
                 sb.append(
+                    "NEW MEMBER/LAPSED\n" +
                     "Customer name: ${NewMember.lastName}, ${NewMember.firstName} ${NewMember.middleName}\n\n" +
-                            "Customer address: ${NewMember.address}\n\n"+
-                            "Contact number: ${NewMember.contactNumber}\n\n" +
-                            "Birthday: ${NewMember.birthday}\n\n" +
-                            "Purchase Order: \n"
+                    "Address: ${NewMember.address}\n\n"+
+                    "Contact number: ${NewMember.contactNumber}\n\n" +
+                    "Birthday: ${NewMember.birthday}\n\n" +
+                    "Purchase Order: \n"
                 )
 
                 for(product in list){
                     sb.append(
-                        "Item no: ${list.indexOf(product) + 1}\n" +
-                                "Product name: ${product.productName}\n" +
-                                "Category: ${product.productCategory}\n" +
-                                "Quantity: ${product.productQuantity}\n\n")
+                            "Product name: ${product.productName}\n" +
+                            "Quantity: ${product.productQuantity}\n\n")
                 }
 
                 sb.append("---NOTHING FOLLOWS---")

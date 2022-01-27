@@ -51,7 +51,8 @@ class OldMemberCartActivity : BaseActivity() {
                 val sb = StringBuilder()
                 //input customer info
                 sb.append(
-                    "Customer name: ${OldMember.lastName}, ${OldMember.firstName}"+
+                    "OLD MEMBER\n" +
+                    "Customer name: ${OldMember.lastName}, ${OldMember.firstName}\n\n"+
                     "Purchase Order: \n"
                 )
 
