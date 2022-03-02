@@ -32,4 +32,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_purchase_orders" />
 
+    <com.fangs.apar_app.utils.HelveticaBoldTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/rv_orders"
+        app:layout_constraintBottom_toBottomOf="@id/rv_orders"
+        app:layout_constraintStart_toStartOf="@id/rv_orders"
+        app:layout_constraintEnd_toEndOf="@id/rv_orders"
+        android:text="COMING SOON"
+        android:textSize="25sp"
+        android:textColor="@color/black"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
