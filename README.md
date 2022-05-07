@@ -25,6 +25,11 @@ This app was designed to innovate our process of order taking. The problem that 
 ## My Project Experience
 If I would choose between all my projects, this has to be one of my best one. This was primarily dedicated for my co-workers. For this project, I used the free version of Firebase Firestore for storing user and product informations. I also used Firebase Auth for account creation. Since firebase was working and synching data offline, it it just works perfectly. It took a large amount of time for me to create this app because I was a working student that time and only have limited time to finish this app completely.
 
+## Tech Stack
+Kotlin
+Firebase Firestore
+Firebase Auth
+
 ## Run Locally
 1. Open Android Studio
 2. Click File -> New -> Project from Version Control 
