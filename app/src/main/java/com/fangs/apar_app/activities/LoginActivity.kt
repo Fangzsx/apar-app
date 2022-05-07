@@ -79,6 +79,7 @@ class LoginActivity : BaseActivity() {
                 "Store Code: \n" +
                 "Region: SOUTH GMA\n" +
                 "Cluster number: \n\n" +
+                "For DEMO, just leave all spaces blank. This is to limit the access to avoid Firebase charges. "+
                 "Thank you!"
 
         val mailTo = "mailto:" + to +
