@@ -27,7 +27,9 @@ If I would choose between all my projects, this has to be one of my best one. Th
 
 ## Tech Stack
 Kotlin
+
 Firebase Firestore
+
 Firebase Auth
 
 ## Run Locally
