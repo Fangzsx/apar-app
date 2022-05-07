@@ -20,8 +20,8 @@ Users can then create a purchase order based on the products that were added and
 6. Creating Orders for Old Member and New Member- Total amount can also be seen and informed to the customer right away
 
 ## Run Locally
-Open Android Studio
-Click File -> New -> Project from Version Control 
-In the URL field, paste this: https://github.com/Fangzsx/apar-app.git
-Set directory of the project
-Click Clone
+1. Open Android Studio
+2. Click File -> New -> Project from Version Control 
+3. In the URL field, paste this: https://github.com/Fangzsx/apar-app.git
+4. Set directory of the project
+5. Click Clone
