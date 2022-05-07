@@ -1,5 +1,5 @@
 # apar-app
-An online ordering app where APAR can create, update, and delete products and save them to a Firebase Firestore database.
+An online ordering app where APAR can create, update, and delete products and save them to a Firebase Firestore.
 Users can then create a purchase order based on the products that were added and send it online. 
 
 ## Screenshots
