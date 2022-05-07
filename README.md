@@ -36,3 +36,6 @@ Firebase Auth
 3. In the URL field, paste this: https://github.com/Fangzsx/apar-app.git
 4. Set directory of the project
 5. Click Clone
+
+## Request Account
+To avoid Firebase charges, I only limit access on this project and you can freely ask for demo account by clicking the "Send Request" in Login Activity.
