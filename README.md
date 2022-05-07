@@ -26,15 +26,11 @@ This app was designed to innovate our process of order taking. The problem that 
 5. Display existing promos in the dashboard - To help APAR in upselling
 6. Creating Orders for Old Member and New Member- Total amount can also be seen and informed to the customer right away
 
-## My Project Experience
+## Project Experience
 If I would choose between all my projects, this has to be one of my best one. This was primarily dedicated for my co-workers. For this project, I used the free version of Firebase Firestore for storing user and product informations. I also used Firebase Auth for account creation. Since firebase was working and synching data offline, it it just works perfectly. It took a large amount of time for me to create this app because I was a working student that time and only have limited time to finish this app completely.
 
 ## Tech Stack
-Kotlin
-
-Firebase Firestore
-
-Firebase Auth
+<img src="https://github.com/Fangzsx/apar-app/blob/master/app/src/main/assets/android-studio.png?raw=true" width="48" height="48" title ="Android Studio">  <img src="https://github.com/Fangzsx/apar-app/blob/master/app/src/main/assets/kotlin.png?raw=true" width="48" height="48" title ="Kotlin">  <img src="https://github.com/Fangzsx/apar-app/blob/master/app/src/main/assets/firebase.png?raw=true" width="48" height="48" title ="Android Studio">
 
 ## Run Locally
 1. Open Android Studio
