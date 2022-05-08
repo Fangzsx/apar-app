@@ -16,7 +16,7 @@ Users can then create a purchase order based on the products that were added and
 3. New Member- Those newly signed up members.
 
 ## Difficulties and Inspiration
-This app was designed to innovate our process of order taking. The problem that we had was we took orders manually and rely on our memory when the customer ask for checking of the price as well as the total amount purchased. This problem was such a pain so I decided to create an app where we can process the orders using our mobile phones and allow customers to provide their total purchase at the end of our transaction.
+This app was designed to innovate our process of order taking. The problem that we had was we took orders manually and rely on our memory when the customer ask for checking of the price and the total amount purchased by them. This problem was such a pain so I decided to create an app where we can process the orders using our mobile phones and allow customers to provide their total purchase at the end of our transaction.
 
 ## Features and Functionality
 1. Create Product - The user can create a product and set its properties such as its name, category, and price
@@ -28,7 +28,7 @@ This app was designed to innovate our process of order taking. The problem that 
 7. Creating Orders for Old Member and New Member- Total amount can also be seen and informed to the customer right away
 
 ## Project Experience
-If I would choose between all my projects, this has to be one of my best one. This was primarily dedicated for my co-workers. For this project, I used the free version of Firebase Firestore for storing user and product informations. I also used Firebase Auth for account creation. Since firebase was working and synching data offline, it it just works perfectly. It took a large amount of time for me to create this app because I was a working student that time and only have limited time to finish this app.
+If I would choose between all my projects, this has to be one of my best one. This was primarily dedicated for my co-workers. For this project, I used the free version of Firebase Firestore for storing user and product informations. I also used Firebase Auth for account creation. Since firebase was working and synching data offline, it it just works perfectly. It took a large amount of time for me to create this app because I was a working student that time and only have limited time to finish this app. MVVM architechture was not implemented in this project because when I was developing this app, I have no idea what MVVM was.
 
 ## Tech Stack
 <img src="https://github.com/Fangzsx/apar-app/blob/master/app/src/main/assets/android-studio.png?raw=true" width="48" height="48" title ="Android Studio">  <img src="https://github.com/Fangzsx/apar-app/blob/master/app/src/main/assets/kotlin.png?raw=true" width="48" height="48" title ="Kotlin">  <img src="https://github.com/Fangzsx/apar-app/blob/master/app/src/main/assets/firebase.png?raw=true" width="48" height="48" title ="Android Studio">
