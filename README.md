@@ -6,7 +6,7 @@ Users can then create a purchase order based on the products that were added and
 <img src="https://github.com/Fangzsx/apar-app/blob/master/app/src/main/assets/Screenshot_20220507-183428_APAR.png?raw=true" width="150" height="280"> <img src="https://github.com/Fangzsx/apar-app/blob/master/app/src/main/assets/Screenshot_20220507-183436_APAR.png?raw=true?" width="150" height="280"> <img src="https://github.com/Fangzsx/apar-app/blob/master/app/src/main/assets/Screenshot_20220507-183440_APAR.png?raw=true" width="150" height="280"> <img src="https://github.com/Fangzsx/apar-app/blob/master/app/src/main/assets/Screenshot_20220507-183451_APAR.png?raw=true" width="150" height="280"> <img src="https://github.com/Fangzsx/apar-app/blob/master/app/src/main/assets/Screenshot_20220507-183543_APAR.png?raw=true" width="150" height="280"> <img src="https://github.com/Fangzsx/apar-app/blob/master/app/src/main/assets/Screenshot_20220507-183611_APAR.png?raw=true" width="150" height="280">
 
 ## Download APK
-[Click Me!](https://github.com/Fangzsx/apar-app/raw/master/app/release/release/app-release.apk)
+[Click me!](https://github.com/Fangzsx/apar-app/raw/master/app/release/release/app-release.apk)
 
 
 
