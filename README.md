@@ -1,4 +1,4 @@
-# apar-app
+# apar-app <img src="https://github.com/Fangzsx/apar-app/blob/master/app/src/main/res/drawable/ic_shopping_cart_512.PNG?raw=true" width="48" height="48">
 An online ordering app where APAR can create, update, and delete products and save them to a Firebase Firestore.
 Users can then create a purchase order based on the products that were added and send it online. 
 
